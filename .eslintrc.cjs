@@ -6,18 +6,23 @@ module.exports = {
   },
   extends: [
     '@antfu',
+    'plugin:tailwindcss/recommended',
   ],
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
       parser: '@typescript-eslint/parser',
     },
+    {
+      files: ['*.vue'],
+      parser: 'vue-eslint-parser',
+    },
   ],
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
   },
-  plugins: ['react'],
+  plugins: ['tailwindcss', 'react'],
   rules: {
     'curly': 'off',
     'arrow-parens': ['error', 'always'],
@@ -27,6 +32,7 @@ module.exports = {
       'warn',
       { groups: ['builtin', 'external'], warnOnUnassignedImports: true },
     ],
+    'import/newline-after-import': 'off',
 
     // typescript-eslint
     '@typescript-eslint/consistent-type-definitions': 'off',
@@ -103,7 +109,7 @@ module.exports = {
     'react/jsx-pascal-case': 'error',
     'react/jsx-fragments': 'error',
     'react/jsx-props-no-multi-spaces': 'error',
-    'react/jsx-sort-default-props': 'error',
+    'react/sort-default-props': 'error',
     'react/jsx-sort-props': 'error',
     'react/jsx-tag-spacing': 'error',
     'react/jsx-uses-react': 'error',
