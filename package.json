@@ -16,6 +16,7 @@
     "clsx": "^2.1.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-tailwindcss": "^3.14.0",
+    "tailwind-merge": "^2.2.0",
     "vue": "^3.3.11",
     "vue-eslint-parser": "^9.4.0"
   },
