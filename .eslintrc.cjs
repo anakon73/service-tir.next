@@ -4,10 +4,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: [
-    '@antfu',
-    'plugin:tailwindcss/recommended',
-  ],
+  extends: ['@antfu', 'plugin:tailwindcss/recommended', 'plugin:storybook/recommended'],
   overrides: [
     {
       files: ['*.ts', '*.tsx'],
