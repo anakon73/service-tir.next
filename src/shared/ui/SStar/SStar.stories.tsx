@@ -6,6 +6,14 @@ export default {
   title: 'Shared/UI/SStar',
   component: SStar,
   tags: ['autodocs'],
+
+  args: {
+    active: false,
+  },
+
+  argTypes: {
+    active: { contorol: 'boolean' },
+  },
 } satisfies Meta<typeof SStar>
 
 type Story = StoryObj<typeof SStar>
