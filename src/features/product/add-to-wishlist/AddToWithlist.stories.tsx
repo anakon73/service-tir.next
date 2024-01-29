@@ -1,6 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { AddToWishlist } from '.'
+import {
+  AddToWishlist,
+  type AddToWishlistEmits,
+  type AddToWishlistProps,
+} from '.'
 
 export default {
   title: 'Features/Product/AddToWishlist',
@@ -12,10 +16,9 @@ export default {
   argTypes: {
     liked: { control: 'boolean' },
 
-    // @ts-expect-error sb types
     like: { table: { disable: true } },
   },
-} satisfies Meta<typeof AddToWishlist>
+} satisfies Meta<AddToWishlistProps & AddToWishlistEmits>
 
 type Story = StoryObj<typeof AddToWishlist>
 
