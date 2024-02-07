@@ -18,3 +18,11 @@ export interface Advantage {
   description: string
   image: string
 }
+
+export interface SearchItem {
+  name: string
+  image: string
+  rate: Rating
+  id: number
+  price: number
+}
