@@ -10,7 +10,7 @@ export interface Props extends /* @vue-ignore */ ButtonHTMLAttributes {
 }
 
 export type Emits = {
-  like: []
+  like: [value: boolean]
 }
 
 const props = defineProps<Props>()
@@ -32,7 +32,7 @@ const computedIcon = computed(() => {
         ? 'text-white bg-blue-600 hover:text-zinc-100 hover:bg-blue-700'
         : 'text-blue-600 bg-white hover:text-blue-700 hover:bg-zinc-100',
     )"
-    @click="emits('like')"
+    @click="emits('like', !liked)"
   >
     <component :is="computedIcon" class="size-3" />
   </button>
