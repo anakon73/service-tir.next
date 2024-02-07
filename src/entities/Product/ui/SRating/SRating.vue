@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { IRating } from '@/shared/types'
+import type { Rating } from '@/shared/types'
 import { SStar } from '@/shared/ui/SStar'
 
 export interface Props {
-  rating: IRating
+  rating: Rating
   quantity?: boolean
 }
 
