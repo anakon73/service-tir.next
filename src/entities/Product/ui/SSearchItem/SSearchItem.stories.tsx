@@ -4,6 +4,9 @@ import { SSearchItem, type SSearchItemProps } from '.'
 const meta = {
   title: 'Entities/Product/UI/SSearchItem',
   component: SSearchItem,
+  parameters: {
+    layout: 'fullscreen',
+  },
 } satisfies Meta<SSearchItemProps>
 
 export default meta
