@@ -17,7 +17,7 @@ export interface Props {
   priceWithDiscount?: number
 }
 
-const props = defineProps<Props>()
+defineProps<Props>()
 
 const liked = ref(false)
 </script>
