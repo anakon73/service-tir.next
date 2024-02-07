@@ -3,7 +3,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import { SRating } from '.'
 
 export default {
-  title: 'Entities/Product/SRating',
+  title: 'Entities/Product/UI/SRating',
   component: SRating,
   tags: ['autodocs'],
 
