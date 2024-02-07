@@ -12,3 +12,9 @@ export interface Product {
   price: number
   priceWithDiscount?: number
 }
+
+export interface Advantage {
+  name: string
+  description: string
+  image: string
+}
