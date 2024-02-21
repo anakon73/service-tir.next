@@ -26,3 +26,10 @@ export interface SearchItem {
   id: number
   price: number
 }
+
+export interface Article {
+  date: Date
+  name: string
+  description: string
+  image: string
+}
