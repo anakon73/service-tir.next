@@ -91,10 +91,7 @@ const liked = ref(false)
       >
         {{ price }} ₴
       </div>
-      <SButton
-        variant="primary"
-        size="base"
-      >
+      <SButton>
         В кошик
       </SButton>
     </div>

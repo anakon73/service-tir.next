@@ -66,10 +66,7 @@ import { SButton } from '@/shared/ui/SButton'
           {{ 'avtobaza12@ukr.net' }}
         </div>
       </div>
-      <SButton
-        variant="primary"
-        size="base"
-      >
+      <SButton>
         Зателефонувати
       </SButton>
     </div>
