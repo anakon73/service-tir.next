@@ -11,6 +11,7 @@ export default meta
 type Story = StoryObj<AdvantageCardProps>
 
 export const Default: Story = {
+  name: 'AdvantageCard',
   args: {
     name: 'Швидкість роботи',
     description: `

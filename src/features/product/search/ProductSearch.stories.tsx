@@ -4,6 +4,7 @@ import { ProductSearch } from '.'
 const meta = {
   title: 'Features/Product/Search',
   component: ProductSearch,
+
   parameters: {
     layout: 'fullscreen',
   },

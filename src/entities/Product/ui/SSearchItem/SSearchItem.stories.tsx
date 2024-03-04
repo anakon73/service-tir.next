@@ -4,6 +4,7 @@ import { SSearchItem, type SSearchItemProps } from '.'
 const meta = {
   title: 'Entities/Product/UI/SSearchItem',
   component: SSearchItem,
+
   parameters: {
     layout: 'fullscreen',
   },
@@ -14,6 +15,7 @@ export default meta
 type Story = StoryObj<SSearchItemProps>
 
 export const Default: Story = {
+  name: 'SSearchItem',
   args: {
     id: 6422889,
     image: `

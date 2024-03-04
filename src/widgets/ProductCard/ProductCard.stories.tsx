@@ -12,6 +12,7 @@ export default meta
 type Story = StoryObj<ProductCardProps>
 
 export const Default: Story = {
+  name: 'ProductCard',
   args: {
     name: 'Распредвал для Scania',
     description: `
