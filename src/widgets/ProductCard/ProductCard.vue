@@ -59,7 +59,7 @@ const liked = ref(false)
       </div>
       <div
         class="
-        mb-4 text-[10px] leading-4 text-neutral-500 opacity-70
+        mb-4 line-clamp-4 text-[10px] leading-4 text-neutral-500/70
         min-[400px]:max-w-[244px] lg:text-xs lg:leading-5
         "
       >
