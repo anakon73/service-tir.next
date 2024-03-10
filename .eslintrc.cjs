@@ -23,7 +23,6 @@ module.exports = {
   rules: {
     'curly': 'off',
     'arrow-parens': ['error', 'always'],
-    'max-len': ['error', { ignoreStrings: true }],
     'operator-linebreak': 'off',
     'import/order': [
       'warn',
