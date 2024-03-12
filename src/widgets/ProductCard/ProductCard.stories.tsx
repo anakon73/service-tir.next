@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import type { ProductCardProps } from '.'
-import { ProductCard } from '.'
+
+import { ProductCard, type ProductCardProps } from '.'
 
 const meta = {
   title: 'Widgets/ProductCard',
@@ -22,10 +22,7 @@ export const Default: Story = {
         с начала XVI века.
       `,
     discount: true,
-    image: `
-    https://e7.pngegg.com/pngimages/989/287/png-clipart-car-saab
--9-3-brake-pad-disc-brake-car-van-car-thumbnail.png
-    `,
+    image: 'https://images.prom.ua/4665477938_w640_h640_raspredval-scania-1270.jpg',
     price: 2200,
     rate: {
       quantity: 127,
