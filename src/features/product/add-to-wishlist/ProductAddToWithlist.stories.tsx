@@ -1,14 +1,14 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
 import {
-  AddToWishlist,
-  type AddToWishlistEmits,
-  type AddToWishlistProps,
+  ProductAddToWishlist,
+  type ProductAddToWishlistEmits,
+  type ProductAddToWishlistProps,
 } from '.'
 
 export default {
   title: 'Features/Product/AddToWishlist',
-  component: AddToWishlist,
+  component: ProductAddToWishlist,
   tags: ['autodocs'],
 
   args: { liked: false },
@@ -18,9 +18,9 @@ export default {
 
     like: { table: { disable: true } },
   },
-} satisfies Meta<AddToWishlistProps & AddToWishlistEmits>
+} satisfies Meta<ProductAddToWishlistProps & ProductAddToWishlistEmits>
 
-type Story = StoryObj<typeof AddToWishlist>
+type Story = StoryObj<ProductAddToWishlistProps & ProductAddToWishlistEmits>
 
 export const NotLiked: Story = {}
 

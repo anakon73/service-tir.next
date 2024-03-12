@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-import { AddToWishlist } from '@/features/product/add-to-wishlist'
+import { ProductAddToWishlist } from '@/features/product/add-to-wishlist'
 
 import type { Rating } from '@/shared/types'
 import { SButton } from '@/shared/ui/SButton'
@@ -37,7 +37,7 @@ const liked = ref(false)
         "
       >
         <button class="absolute right-2 top-2 z-10">
-          <AddToWishlist
+          <ProductAddToWishlist
             :liked="liked"
             @like="liked = $event"
           />

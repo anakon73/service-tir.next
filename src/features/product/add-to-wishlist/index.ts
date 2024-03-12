@@ -1,5 +1,5 @@
 export {
-  default as AddToWishlist,
-  type Props as AddToWishlistProps,
-  type Emits as AddToWishlistEmits,
-} from './AddToWishlist.vue'
+  default as ProductAddToWishlist,
+  type Props as ProductAddToWishlistProps,
+  type Emits as ProductAddToWishlistEmits,
+} from './ProductAddToWishlist.vue'
