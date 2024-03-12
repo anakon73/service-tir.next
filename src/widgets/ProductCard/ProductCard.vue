@@ -33,17 +33,17 @@ const liked = ref(false)
       <div
         class="
         relative mb-3 flex h-[130px] w-auto items-center justify-center
-        rounded-2xl bg-indigo-100 lg:h-[188px] lg:max-w-none
+        rounded-2xl border bg-white lg:h-[188px] lg:max-w-none
         "
       >
-        <button class="absolute right-2 top-2">
+        <button class="absolute right-2 top-2 z-10">
           <AddToWishlist
             :liked="liked"
             @like="liked = $event"
           />
         </button>
         <img
-          class="max-h-[130px] object-cover lg:max-h-[188px]"
+          class="max-h-[130px] object-cover p-1 lg:max-h-[188px]"
           :src="image"
           alt="product image"
         >
