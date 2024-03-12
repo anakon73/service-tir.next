@@ -29,6 +29,7 @@ module.exports = {
       { groups: ['builtin', 'external'], warnOnUnassignedImports: true },
     ],
     'import/newline-after-import': 'off',
+    'unused-imports/no-unused-imports': 'off',
 
     // typescript-eslint
     '@typescript-eslint/consistent-type-definitions': 'off',
