@@ -1,19 +1,18 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-
 import { ProductAddToWishlist } from '@/features/product/add-to-wishlist'
+import { SRating } from '@/entities/Product'
 
 import type { Rating } from '@/shared/types'
 import { SButton } from '@/shared/ui/SButton'
-import { SRating } from '@/entities/Product'
 
 export interface Props {
   name: string
   description: string
-  discount: boolean
   rate: Rating
   image: string
   price: number
+  discount?: boolean
   priceWithDiscount?: number
 }
 
@@ -53,7 +52,7 @@ const liked = ref(false)
       </h1>
       <div class="mb-2 flex flex-wrap items-center">
         <SRating
-          with-quantity
+          quantity
           :rating="rate"
         />
       </div>
