@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/vue3'
+import { type Meta, type StoryObj } from '@storybook/vue3'
 import { CatalogPage } from '.'
 
 export default {
