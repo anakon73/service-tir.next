@@ -1,6 +1,18 @@
-import type { Preview } from "@storybook/vue3";
+import { setup, type Preview } from "@storybook/vue3";
+import { mswDecorator , initialize } from 'msw-storybook-addon'
+
+import { applyProviders } from '@/app/providers'
+import { handlers } from '@/shared/api/handlers'
 
 import '@/app/styles/index.css';
+
+initialize({
+  onUnhandledRequest: 'bypass'
+})
+
+setup((app) => {
+  applyProviders(app)
+})
 
 const preview: Preview = {
   parameters: {
@@ -12,7 +24,9 @@ const preview: Preview = {
       },
     },
     layout: 'centered',
+    msw: { handlers }
   },
+  decorators: [mswDecorator],
 };
 
 export default preview;
