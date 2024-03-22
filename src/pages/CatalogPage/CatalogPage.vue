@@ -12,8 +12,10 @@ import { ProductCard } from '@/widgets/ProductCard'
 import { ProductFilterForm } from '@/features/product/filter-form'
 import { ProductPagination } from '@/features/product/pagination'
 
-import products from '@/shared/api/products/products.json'
+import { useProducts } from '@/shared/api/product'
 import { SFooter } from '@/shared/ui/SFooter'
+
+const { data: products, isFetching } = useProducts()
 
 const showFilters = ref(false)
 
@@ -22,7 +24,10 @@ const selectedPage = ref(1)
 const currentPageProducts = computed(() => {
   const startIndex = (selectedPage.value - 1) * 18
   const endIndex = startIndex + 18
-  return products.slice(startIndex, endIndex)
+  if (products.value?.length)
+    return products.value.slice(startIndex, endIndex)
+
+  return []
 })
 
 watch(selectedPage, () => {
@@ -73,7 +78,13 @@ watch(selectedPage, () => {
             @close="showFilters = false"
           />
         </div>
-        <div>
+        <div v-if="isFetching" class="w-full text-center text-3xl font-bold">
+          Loading
+        </div>
+        <div v-else-if="!products?.length" class="w-full text-center text-3xl font-bold">
+          No Products
+        </div>
+        <div v-else>
           <button
             class="
               card mb-8 flex w-full items-center
