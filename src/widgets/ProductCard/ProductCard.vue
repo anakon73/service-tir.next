@@ -13,7 +13,7 @@ export interface Props {
   image: string
   price: number
   discount?: boolean
-  priceWithDiscount?: number
+  priceWithDiscount: number | null
 }
 
 defineProps<Props>()

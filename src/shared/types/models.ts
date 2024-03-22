@@ -10,7 +10,7 @@ export interface Product {
   rate: Rating
   image: string
   price: number
-  priceWithDiscount?: number
+  priceWithDiscount: number | null
 }
 
 export interface Advantage {
