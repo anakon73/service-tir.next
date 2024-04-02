@@ -6,7 +6,7 @@ import {
   ChevronRightIcon,
 } from '@heroicons/vue/24/solid'
 
-import { SHeader } from '@/widgets/Header'
+import { SHeader } from '@/widgets/SHeader'
 import { ProductCard } from '@/widgets/ProductCard'
 
 import { ProductFilterForm } from '@/features/product/filter-form'
