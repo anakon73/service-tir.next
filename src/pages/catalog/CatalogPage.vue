@@ -6,8 +6,8 @@ import {
   ChevronRightIcon,
 } from '@heroicons/vue/24/solid'
 
-import { SHeader } from '@/widgets/SHeader'
-import { ProductCard } from '@/widgets/ProductCard'
+import { SHeader } from '@/widgets/header'
+import { ProductCard } from '@/widgets/product-card'
 
 import { ProductFilterForm } from '@/features/product/filter-form'
 import { ProductPagination } from '@/features/product/pagination'
@@ -129,3 +129,4 @@ watch(selectedPage, () => {
     <SFooter />
   </div>
 </template>
+@/widgets/product-card

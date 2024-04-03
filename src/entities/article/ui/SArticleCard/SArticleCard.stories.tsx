@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { ArticleCard } from '.'
+import { SArticleCard } from '.'
 
 export default {
-  title: 'Widgets/ArticleCard',
-  component: ArticleCard,
+  title: 'Entities/Article/UI/SArticleCard',
+  component: SArticleCard,
 
   args: {
     date: new Date('September 1, 2023'),
@@ -20,8 +20,8 @@ export default {
     description: { control: 'text' },
     image: { control: 'text' },
   },
-} satisfies Meta<typeof ArticleCard>
+} satisfies Meta<typeof SArticleCard>
 
-type Story = StoryObj<typeof ArticleCard>
+type Story = StoryObj<typeof SArticleCard>
 
-export const Default: Story = { name: 'ArticleCard' }
+export const Default: Story = { name: 'SArticleCard' }

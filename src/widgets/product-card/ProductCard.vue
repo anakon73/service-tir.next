@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { ProductAddToWishlist } from '@/features/product/add-to-wishlist'
-import { SRating } from '@/entities/Product'
+import { SRating } from '@/entities/product'
 
 import type { Rating } from '@/shared/types'
 import { SButton } from '@/shared/ui/SButton'

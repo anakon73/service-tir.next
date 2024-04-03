@@ -1,9 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { ServiceCard, type ServiceCardProps } from '.'
+import { SServiceCard, type SServiceCardProps } from '.'
 
 export default {
   title: 'Widgets/ServiceCard',
-  component: ServiceCard,
+  component: SServiceCard,
 
   args: {
     name: 'Дезинфекция и озонирование автомобилей и автобусов',
@@ -17,8 +17,8 @@ export default {
   argTypes: {
     image: { table: { disable: true } },
   },
-} satisfies Meta<ServiceCardProps>
+} satisfies Meta<SServiceCardProps>
 
-type Story = StoryObj<ServiceCardProps>
+type Story = StoryObj<SServiceCardProps>
 
-export const Default: Story = { name: 'ServiceCard' }
+export const Default: Story = { name: 'SServiceCard' }

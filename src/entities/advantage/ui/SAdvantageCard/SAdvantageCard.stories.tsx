@@ -1,17 +1,17 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import { AdvantageCard, type AdvantageCardProps } from '.'
+import { SAdvantageCard, type SAdvantageCardProps } from '.'
 
 const meta = {
-  title: 'Widgets/AdvantageCard',
-  component: AdvantageCard,
-} satisfies Meta<AdvantageCardProps>
+  title: 'Entities/Advantage/UI/SAdvantageCard',
+  component: SAdvantageCard,
+} satisfies Meta<SAdvantageCardProps>
 
 export default meta
 
-type Story = StoryObj<AdvantageCardProps>
+type Story = StoryObj<SAdvantageCardProps>
 
 export const Default: Story = {
-  name: 'AdvantageCard',
+  name: 'SAdvantageCard',
   args: {
     name: 'Швидкість роботи',
     description: `
