@@ -129,4 +129,3 @@ watch(selectedPage, () => {
     <SFooter />
   </div>
 </template>
-@/widgets/product-card
