@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid'
 
-import { SSearchItem } from '@/entities/Product'
+import { SSearchItem } from '@/entities/product'
 
 import { resultItems } from './config'
 
