@@ -22,7 +22,7 @@ const formattedDate = computed(() => format(date.value, 'd MMMM u'))
     <img
       :src="image"
       alt="article image"
-      class="max-h-[240px] rounded-lg"
+      class="h-40 rounded-lg object-cover md:h-48 lg:h-60"
     >
     <div class="flex w-full flex-col gap-2 md:gap-3">
       <p class="text-xs font-semibold leading-5 text-gray-400">
