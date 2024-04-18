@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { SRating } from '@/entities/Product/ui/SRating'
+import { SRating } from '@/entities/product'
 import type { Rating } from '@/shared/types'
 
 export interface Props {
