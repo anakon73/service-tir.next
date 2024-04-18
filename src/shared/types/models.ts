@@ -28,8 +28,14 @@ export interface SearchItem {
 }
 
 export interface Article {
+  id: number
   date: Date
   name: string
   description: string
-  image: string
+  previewImage: string
+  paragraphs: {
+    image: string
+    text: string[]
+  }[]
+  similarArticles: Omit<Article, 'paragraphs' | 'similarArticles'>[]
 }
