@@ -1,11 +1,9 @@
 import { HttpResponse, http } from 'msw'
 
-import products from './products.json'
+import products from '../db/products'
 
-function productsResolve() {
-  return HttpResponse.json(products)
-}
-
-export const productsHandler = http.get('/api/products', productsResolve)
-
-export const productsHandlers = [productsHandler]
+export const productsHandlers = [
+  http.get('/api/products', () => {
+    return HttpResponse.json(products)
+  }),
+]
