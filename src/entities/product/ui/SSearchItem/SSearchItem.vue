@@ -10,7 +10,7 @@ export interface Props {
   price: number
 }
 
-const props = defineProps<Props>()
+defineProps<Props>()
 </script>
 
 <template>
