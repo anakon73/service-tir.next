@@ -5,14 +5,7 @@ import { ProductCard, type ProductCardProps } from '.'
 const meta = {
   title: 'Widgets/ProductCard',
   component: ProductCard,
-} satisfies Meta<ProductCardProps>
 
-export default meta
-
-type Story = StoryObj<ProductCardProps>
-
-export const Default: Story = {
-  name: 'ProductCard',
   args: {
     name: 'Распредвал для Scania',
     description: `
@@ -30,4 +23,10 @@ export const Default: Story = {
     },
     priceWithDiscount: 2000,
   },
-}
+} satisfies Meta<ProductCardProps>
+
+export default meta
+
+type Story = StoryObj<ProductCardProps>
+
+export const Default: Story = { name: 'ProductCard' }
