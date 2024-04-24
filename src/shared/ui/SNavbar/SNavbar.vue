@@ -24,13 +24,12 @@
       >
         <p>Каталог</p>
         <p
-          id="catalogItems"
           class="
           relative bottom-2 h-4 rounded-md bg-blue-100 px-1
           text-[10px] font-medium text-blue-600
           "
         >
-          2000
+          {{ Number('2000').toLocaleString('en-US') }}
         </p>
       </li>
       <li
