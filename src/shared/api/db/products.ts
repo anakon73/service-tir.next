@@ -1,8 +1,151 @@
 import type { z } from 'zod'
-import type { ProductSchema } from '../product'
+import type {
+  BaseProductSchema,
+  ProductSchema,
+  SpecsSchema,
+} from '../product'
 
-const products: z.infer<typeof ProductSchema>[] = [
+const specs: z.infer<typeof SpecsSchema> = [
+  { name: 'Товщина', value: '1/2: 45/131 мм' },
+  { name: 'Внешний калибр', value: '429 мм' },
+  { name: 'Резьба диска', value: 'M16 x 1,5' },
+  { name: 'Поверхность', value: 'Промасленная' },
+  { name: 'Тип', value: 'Вентилируемый' },
+  { name: 'Масса нетто', value: '30,14 кг' },
+  { name: 'Товщина', value: '1/2: 45/131 мм' },
+  { name: 'Внешний калибр', value: '429 мм' },
+  { name: 'Резьба диска', value: 'M16 x 1,5' },
+  { name: 'Товщина', value: '1/2: 45/131 мм' },
+  { name: 'Внешний калибр', value: '429 мм' },
+  { name: 'Резьба диска', value: 'M16 x 1,5' },
+  { name: 'Поверхность', value: 'Промасленная' },
+  { name: 'Тип', value: 'Вентилируемый' },
+  { name: 'Масса нетто', value: '30,14 кг' },
+]
+
+const reviews = [
   {
+    author: 'Ann Lubin',
+    comment: `
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc
+      ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet
+      etiam tincidunt rhoncus, ullamcorper velit. Ullamcorper risus tempor, ac
+      nunc libero urna, feugiat. Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam
+      lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit.
+      Ullamcorper risus tempor, ac nunc libero urna, feugiat.
+    `,
+    productName: 'Диск гальмівний Scania',
+    rate: {
+      quantity: 17,
+      rate: 3.5,
+    },
+  },
+  {
+    author: 'Lubin',
+    comment: `
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc
+      ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet
+      etiam tincidunt rhoncus, ullamcorper velit. Ullamcorper risus tempor, ac
+      nunc libero urna, feugiat. Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam
+      lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit.
+      Ullamcorper risus tempor, ac nunc libero urna, feugiat.
+    `,
+    productName: 'Диск гальмівний Scania',
+    rate: {
+      quantity: 143,
+      rate: 4.3,
+    },
+  },
+  {
+    author: 'Ann',
+    comment: `
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc
+      ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet
+      etiam tincidunt rhoncus, ullamcorper velit. Ullamcorper risus tempor, ac
+      nunc libero urna, feugiat. Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam
+      lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit.
+      Ullamcorper risus tempor, ac nunc libero urna, feugiat.
+    `,
+    productName: 'Диск гальмівний Scania',
+    rate: {
+      quantity: 98,
+      rate: 2.7,
+    },
+  },
+  {
+    author: 'Ann Lubin',
+    comment: `
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc
+      ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet
+      etiam tincidunt rhoncus, ullamcorper velit. Ullamcorper risus tempor, ac
+      nunc libero urna, feugiat. Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam
+      lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit.
+      Ullamcorper risus tempor, ac nunc libero urna, feugiat.
+    `,
+    productName: 'Диск гальмівний Scania',
+    rate: {
+      quantity: 88,
+      rate: 3.9,
+    },
+  },
+  {
+    author: 'Lubin',
+    comment: `
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc
+      ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet
+      etiam tincidunt rhoncus, ullamcorper velit. Ullamcorper risus tempor, ac
+      nunc libero urna, feugiat. Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam
+      lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit.
+      Ullamcorper risus tempor, ac nunc libero urna, feugiat.
+    `,
+    productName: 'Диск гальмівний Scania',
+    rate: {
+      quantity: 32,
+      rate: 4.9,
+    },
+  },
+  {
+    author: 'Ann',
+    comment: `
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc
+      ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet
+      etiam tincidunt rhoncus, ullamcorper velit. Ullamcorper risus tempor, ac
+      nunc libero urna, feugiat. Lorem ipsum dolor sit amet, consectetur
+      adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam
+      lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit.
+      Ullamcorper risus tempor, ac nunc libero urna, feugiat.
+    `,
+    productName: 'Диск гальмівний Scania',
+    rate: {
+      quantity: 127,
+      rate: 4.7,
+    },
+  },
+]
+
+const full_description = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+aliquip ex ea commodo consequat. Duis aute irure dolor in
+reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum
+dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+mollit anim id est laborum.`
+
+const baseProducts: z.infer<typeof BaseProductSchema>[] = [
+  {
+    code: 6358726,
     name: 'Распредвал для Scania',
     description: 'Распредвал для Scania – высококачественная деталь, обеспечивающая эффективную работу двигателя. Изготовлен из прочного материала, обладает долгим сроком службы и отличной производительностью. Подходит для различных моделей Scania, обеспечивая надежность и высокий уровень производительности.',
     discount: true,
@@ -13,8 +156,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.8,
     },
     price_with_discount: 2000,
+    specs,
   },
   {
+    code: 2457962,
     name: 'Тормозные колодки Bosch',
     description: 'Оптимальное решение для надежного торможения – тормозные колодки Bosch. Изготовлены из высококачественных материалов, обеспечивают отличное сцепление с тормозным диском. Продукция Bosch известна своей надежностью и долговечностью. Совместимы с различными марками и моделями автомобилей.',
     discount: false,
@@ -25,8 +170,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.5,
     },
     price_with_discount: null,
+    specs,
   },
   {
+    code: 2443803,
     name: 'Фильтр масляный Mann-Filter',
     description: 'Обеспечьте оптимальное функционирование двигателя с фильтром масляным Mann-Filter. Эффективно задерживает твердые частицы и загрязнения, предотвращая износ деталей. Произведен с применением современных технологий для обеспечения максимальной производительности и долговечности вашего автомобиля.',
     discount: true,
@@ -37,8 +184,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.7,
     },
     price_with_discount: 750,
+    specs,
   },
   {
+    code: 2513099,
     name: 'Свечи зажигания NGK',
     description: 'Свечи зажигания NGK – надежное решение для эффективного сгорания топлива в цилиндрах. Обеспечивают стабильную и мощную работу двигателя. Изготовлены из высококачественных материалов, обладают высокой степенью надежности. Подходят для широкого спектра автомобилей различных марок.',
     discount: true,
@@ -49,8 +198,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.9,
     },
     price_with_discount: 1300,
+    specs,
   },
   {
+    code: 7831815,
     name: 'Амортизаторы Monroe',
     description: 'Обеспечьте комфорт и безопасность во время движения с амортизаторами Monroe. Изготовлены с использованием передовых технологий, обеспечивают отличную амортизацию и стабильность на дороге. Подходят для различных марок автомобилей, гарантируя надежную работу под любыми условиями.',
     discount: false,
@@ -61,8 +212,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.6,
     },
     price_with_discount: null,
+    specs,
   },
   {
+    code: 2845045,
     name: 'Ремень генератора Gates',
     description: 'Ремень генератора Gates – надежное решение для обеспечения бесперебойной работы системы зарядки. Изготовлен из прочных материалов, обеспечивает отличное сцепление и долгий срок службы. Подходит для различных моделей автомобилей, гарантируя эффективную передачу энергии от двигателя к генератору.',
     discount: true,
@@ -73,8 +226,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.5,
     },
     price_with_discount: 550,
+    specs,
   },
   {
+    code: 2436884,
     name: 'Топливный насос Bosch',
     description: 'Обеспечьте надежную подачу топлива в систему впрыска с топливным насосом Bosch. Изготовлен с использованием передовых технологий, обеспечивает стабильное топливоподачу для эффективной работы двигателя. Подходит для различных марок автомобилей, обеспечивая высокий уровень производительности.',
     discount: false,
@@ -85,8 +240,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.7,
     },
     price_with_discount: null,
+    specs,
   },
   {
+    code: 8066304,
     name: 'Термостат Behr',
     description: 'Термостат Behr - важная деталь системы охлаждения вашего автомобиля. Обеспечивает оптимальную температуру работы двигателя, предотвращая перегрев или недогрев. Изготовлен из высококачественных материалов, обеспечивая долгий срок службы. Совместим с различными моделями автомобилей.',
     discount: true,
@@ -97,8 +254,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.6,
     },
     price_with_discount: 900,
+    specs,
   },
   {
+    code: 6770833,
     name: 'Свечи накала Beru',
     description: 'Свечи накала Beru - надежное решение для систем подогрева дизельных двигателей. Обеспечивают легкий запуск в холодные условия и стабильную работу. Изготовлены с использованием высокотехнологичных материалов, обеспечивающих долгий срок службы.',
     discount: false,
@@ -109,8 +268,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.9,
     },
     price_with_discount: null,
+    specs,
   },
   {
+    code: 8839813,
     name: 'Радиатор охлаждения Nissens',
     description: 'Радиатор охлаждения Nissens - ключевая деталь системы охлаждения. Обеспечивает эффективное охлаждение двигателя, предотвращая перегрев в условиях высоких температур. Изготовлен из высококачественных материалов, обеспечивая надежность и долгий срок службы.',
     discount: true,
@@ -121,8 +282,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.7,
     },
     price_with_discount: 1500,
+    specs,
   },
   {
+    code: 7969782,
     name: 'Тормозные диски Zimmermann',
     description: 'Тормозные диски Zimmermann - высококачественные компоненты тормозной системы. Обеспечивают эффективное и безопасное торможение. Изготовлены из прочного сплава, обладают отличной теплоотводящей способностью. Совместимы с различными марками автомобилей.',
     discount: false,
@@ -133,8 +296,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.8,
     },
     price_with_discount: null,
+    specs,
   },
   {
+    code: 4786181,
     name: 'Датчик кислорода Denso',
     description: 'Датчик кислорода Denso - важная компонента системы управления двигателем. Обеспечивает точное измерение содержания кислорода в отработанных газах, оптимизируя смесь воздуха и топлива для эффективной работы двигателя. Совместим с различными моделями автомобилей.',
     discount: true,
@@ -145,8 +310,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.5,
     },
     price_with_discount: 850,
+    specs,
   },
   {
+    code: 3427409,
     name: 'Рулевая рейка TRW',
     description: 'Рулевая рейка TRW - надежное решение для стабильного и легкого управления автомобилем. Изготовлена с использованием высококачественных материалов, обеспечивает точное и плавное вращение рулевого колеса. Подходит для различных марок и моделей автомобилей.',
     discount: false,
@@ -157,8 +324,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.6,
     },
     price_with_discount: null,
+    specs,
   },
   {
+    code: 8078128,
     name: 'Масляный насос Aisin',
     description: 'Масляный насос Aisin - ключевой элемент системы смазки двигателя. Обеспечивает постоянный поток масла для смазывания двигателя и его компонентов. Изготовлен с применением передовых технологий, обеспечивает надежность и долгий срок службы.',
     discount: true,
@@ -169,8 +338,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.8,
     },
     price_with_discount: 1000,
+    specs,
   },
   {
+    code: 3012590,
     name: 'Комплект сцепления Exedy',
     description: 'Комплект сцепления Exedy - высококачественное решение для надежной передачи мощности от двигателя к трансмиссии. Идеально подходит для замены изношенных деталей, обеспечивая отличную сцепляемость и долгий срок эксплуатации.',
     discount: false,
@@ -181,8 +352,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.7,
     },
     price_with_discount: null,
+    specs,
   },
   {
+    code: 3441987,
     name: 'Сальник коленвала Corteco',
     description: 'Сальник коленвала Corteco - эффективная защита от утечек масла в районе коленвала. Изготовлен из высококачественных материалов, обеспечивает надежное уплотнение и предотвращение проникновения вредных веществ в двигатель. Совместим с различными автомобилями.',
     discount: true,
@@ -193,8 +366,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.5,
     },
     price_with_discount: 700,
+    specs,
   },
   {
+    code: 6844543,
     name: 'Термостатический корпус Wahler',
     description: 'Термостатический корпус Wahler - важная деталь системы охлаждения. Обеспечивает оптимальную температуру работы двигателя, регулируя поток охлаждающей жидкости. Изготовлен из прочного материала, обеспечивает стабильную работу.',
     discount: false,
@@ -205,8 +380,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.6,
     },
     price_with_discount: null,
+    specs,
   },
   {
+    code: 2958834,
     name: 'Фильтр воздушный K&N',
     description: 'Оптимизируйте производительность своего двигателя с фильтром воздушным K&N. Обеспечивает лучший поток воздуха, повышая эффективность сгорания топлива. Изготовлен из высококачественных материалов для долговечности и надежности.',
     discount: false,
@@ -217,8 +394,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.9,
     },
     price_with_discount: null,
+    specs,
   },
   {
+    code: 2164729,
     name: 'Шаровая опора Lemforder',
     description: 'Обеспечьте надежность и устойчивость ходовой части с шаровой опорой Lemforder. Изготовлена из прочных материалов, обеспечивает отличное сцепление с дорогой. Подходит для различных марок автомобилей.',
     discount: true,
@@ -229,8 +408,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.7,
     },
     price_with_discount: 750,
+    specs,
   },
   {
+    code: 6398727,
     name: 'Сальник коленвала Corteco',
     description: 'Сальник коленвала Corteco - надежное уплотнение для вашего двигателя. Предотвращает утечку масла и обеспечивает надежную работу. Изготовлен из высококачественных материалов для долговечности.',
     discount: false,
@@ -241,8 +422,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.6,
     },
     price_with_discount: null,
+    specs,
   },
   {
+    code: 5350624,
     name: 'Пружина подвески H&R',
     description: 'Повысьте уровень комфорта и управляемости с пружиной подвески H&R. Изготовлена из высококачественных материалов, обеспечивает стабильность на дороге. Подходит для тюнинга и повышения производительности автомобиля.',
     discount: true,
@@ -253,8 +436,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.8,
     },
     price_with_discount: 1100,
+    specs,
   },
   {
+    code: 4289142,
     name: 'Термостойкий антифриз Zerex',
     description: 'Обеспечьте оптимальную температуру охлаждения с термостойким антифризом Zerex. Защищает систему охлаждения от замерзания и перегрева. Подходит для широкого спектра автомобилей.',
     discount: false,
@@ -265,8 +450,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.5,
     },
     price_with_discount: null,
+    specs,
   },
   {
+    code: 6302835,
     name: 'Топливный фильтр Mann-Filter',
     description: 'Гарантируйте чистоту топлива с топливным фильтром Mann-Filter. Эффективно задерживает загрязнения и обеспечивает бесперебойную подачу топлива в систему впрыска. Произведен из высококачественных материалов для долговечности и надежности.',
     discount: true,
@@ -277,8 +464,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.7,
     },
     price_with_discount: 280,
+    specs,
   },
   {
+    code: 4793538,
     name: 'Трос ручника Febi Bilstein',
     description: 'Обеспечьте надежное удержание автомобиля на месте с тросом ручника Febi Bilstein. Изготовлен из прочных материалов, обеспечивает надежную фиксацию тормозов. Совместим с различными марками и моделями автомобилей.',
     discount: false,
@@ -289,8 +478,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.5,
     },
     price_with_discount: null,
+    specs,
   },
   {
+    code: 8598190,
     name: 'Топливный фильтр Mann-Filter',
     description: 'Гарантируйте чистоту топлива с топливным фильтром Mann-Filter. Эффективно задерживает загрязнения и обеспечивает бесперебойную подачу топлива в систему впрыска. Произведен из высококачественных материалов для долговечности и надежности.',
     discount: true,
@@ -301,8 +492,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.7,
     },
     price_with_discount: 280,
+    specs,
   },
   {
+    code: 7557058,
     name: 'Ремкомплект генератора Valeo',
     description: 'Обеспечьте бесперебойную работу генератора с ремкомплектом генератора Valeo. Включает в себя все необходимые детали для эффективного обслуживания и восстановления генератора. Изготовлен из качественных материалов.',
     discount: true,
@@ -313,8 +506,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.8,
     },
     price_with_discount: 130,
+    specs,
   },
   {
+    code: 5208109,
     name: 'Фильтр салона MANN-FILTER',
     description: 'Обеспечьте свежий воздух в салоне вашего автомобиля с фильтром салона MANN-FILTER. Эффективно задерживает пыль, грязь и неприятные запахи. Произведен из высококачественных материалов.',
     discount: false,
@@ -325,8 +520,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.6,
     },
     price_with_discount: null,
+    specs,
   },
   {
+    code: 8914221,
     name: 'Ремень ГРМ ContiTech',
     description: 'Обеспечьте точное взаимодействие двигательных компонентов с ремнем ГРМ ContiTech. Изготовлен из прочных материалов, обеспечивает долгий срок службы и надежную передачу момента. Подходит для различных моделей автомобилей.',
     discount: true,
@@ -337,8 +534,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.9,
     },
     price_with_discount: 320,
+    specs,
   },
   {
+    code: 7012778,
     name: 'Сайлентблоки Lemforder',
     description: 'Обеспечьте стабильность и комфорт в управлении с сайлентблоками Lemforder. Изготовлены из высококачественных материалов, обеспечивают надежное крепление подвески. Подходят для различных марок и моделей автомобилей.',
     discount: false,
@@ -349,8 +548,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.7,
     },
     price_with_discount: null,
+    specs,
   },
   {
+    code: 7087715,
     name: 'Топливный фильтр Hengst',
     description: 'Обеспечьте чистоту топлива с топливным фильтром Hengst. Эффективно задерживает загрязнения и обеспечивает бесперебойную подачу топлива в систему впрыска. Произведен из высококачественных материалов.',
     discount: true,
@@ -361,8 +562,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.8,
     },
     price_with_discount: 260,
+    specs,
   },
   {
+    code: 3429503,
     name: 'Стартер Bosch',
     description: 'Гарантируйте надежный пуск вашего двигателя с стартером Bosch. Изготовлен из высококачественных материалов, обеспечивает стабильную работу. Подходит для широкого спектра автомобилей.',
     discount: false,
@@ -373,8 +576,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.6,
     },
     price_with_discount: null,
+    specs,
   },
   {
+    code: 3806109,
     name: 'Масляный насос Febi Bilstein',
     description: 'Обеспечьте надежное смазывание двигателя с масляным насосом Febi Bilstein. Изготовлен из прочных материалов, обеспечивает стабильный масляный поток. Подходит для различных марок и моделей автомобилей.',
     discount: true,
@@ -385,8 +590,10 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.7,
     },
     price_with_discount: 160,
+    specs,
   },
   {
+    code: 8516784,
     name: 'Подшипники колеса SKF',
     description: 'Обеспечьте плавное вращение колес с подшипниками колеса SKF. Изготовлены из высококачественных материалов, обеспечивают надежность и долгий срок службы. Подходят для различных марок автомобилей.',
     discount: false,
@@ -397,7 +604,25 @@ const products: z.infer<typeof ProductSchema>[] = [
       rate: 4.8,
     },
     price_with_discount: null,
+    specs,
   },
 ]
+
+function generateProducts(
+  productsArray: z.infer<typeof BaseProductSchema>[],
+): z.infer<typeof ProductSchema>[] {
+  return productsArray.map((product) => ({
+    ...product,
+    reviews,
+    full_description,
+    quantity: Math.floor(Math.random() * 11),
+    images: Array.from({ length: 6 }, () => product.image),
+    similar_products: baseProducts
+      .filter((p) => p.code !== product.code)
+      .slice(0, 7),
+  }))
+}
+
+const products: z.infer<typeof ProductSchema>[] = generateProducts(baseProducts)
 
 export default products
