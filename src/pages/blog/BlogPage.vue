@@ -100,12 +100,7 @@ const formattedDate = computed(() => format(data.value!.date, 'd MMMM u'))
             </div>
           </div>
         </div>
-      </div>
-
-      <div
-        class="mx-auto max-w-[1480px] overflow-hidden xl:px-[150px]"
-      >
-        <div class="mb-[84px] overflow-hidden p-5">
+        <div class="-mx-5 mb-[84px] overflow-hidden p-5">
           <div class="mb-9 flex items-center justify-between">
             <div class="flex items-center gap-3">
               <div class="paragraphIcon size-10 rounded-full bg-white p-2 text-lg">
@@ -119,6 +114,10 @@ const formattedDate = computed(() => format(data.value!.date, 'd MMMM u'))
             </div>
           </div>
           <Swiper
+            :breakpoints="{
+              400: { slidesPerView: 2 },
+              768: { slidesPerView: 3 },
+            }"
             :pagination="{
               el: pagination,
               clickable: true,
@@ -128,7 +127,7 @@ const formattedDate = computed(() => format(data.value!.date, 'd MMMM u'))
               prevEl: prev,
               nextEl: next,
             }"
-            :slides-per-view="3"
+            :slides-per-view="1"
             loop
             :space-between="20"
           >
