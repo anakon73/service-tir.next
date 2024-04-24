@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/vue3'
 import { SServiceCard, type SServiceCardProps } from '.'
 
 export default {
-  title: 'Widgets/ServiceCard',
+  title: 'Entities/Service/UI/SServiceCard',
   component: SServiceCard,
 
   args: {
