@@ -8,6 +8,13 @@ export type Specs = {
   value: string
 }[]
 
+export interface Review {
+  rate: Rating
+  author: string
+  productName: string
+  comment: string
+}
+
 export interface Product {
   code: number
   name: string
@@ -19,10 +26,12 @@ export interface Product {
   priceWithDiscount: number | null
   specs: Specs
   similarProducts: Omit<
-  Product, 'specs' | 'similarProducts' | 'fullDescription' | 'images'
+  Product, 'specs' | 'similarProducts' | 'fullDescription' | 'images' | 'reviews' | 'quantity'
   >[]
   fullDescription: string
   images: string[]
+  reviews: Review[]
+  quantity: number
 }
 
 export interface Advantage {
