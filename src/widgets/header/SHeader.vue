@@ -128,7 +128,7 @@ const isShowDropdown = ref(false)
               </div>
             </div>
             <div class="flex gap-2">
-              <p>&#8372;10 000</p>
+              <p>&#8372; {{ Number('10000').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") }}</p>
               <p>Кошик</p>
             </div>
           </div>
@@ -210,7 +210,7 @@ const isShowDropdown = ref(false)
                 </div>
               </div>
               <div class="max-w-[80px] truncate">
-                &#8372; <span id="cartCost">10000</span>
+                &#8372; {{ Number('10000').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") }}
               </div>
             </button>
           </div>
