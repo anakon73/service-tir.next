@@ -3,11 +3,11 @@ import { computed, ref, watch } from 'vue'
 import { ChevronRightIcon } from '@heroicons/vue/24/solid'
 
 import { SHeader } from '@/widgets/header'
-import { ProductPagination } from '@/features/product/pagination'
 import { SArticleCard } from '@/entities/article'
 
 import { useArticles } from '@/shared/api/article'
 import { SFooter } from '@/shared/ui/SFooter'
+import { SPagination } from '@/shared/ui/SPagination'
 
 const { data: articles, isFetching } = useArticles()
 
@@ -86,7 +86,7 @@ watch(selectedPage, () => {
               :name="article.name"
             />
           </div>
-          <ProductPagination
+          <SPagination
             :items-per-page="12"
             :length="articles.length"
             :selected-page="selectedPage"

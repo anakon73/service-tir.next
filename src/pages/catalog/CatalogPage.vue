@@ -10,10 +10,10 @@ import { SHeader } from '@/widgets/header'
 import { ProductCard } from '@/widgets/product-card'
 
 import { ProductFilterForm } from '@/features/product/filter-form'
-import { ProductPagination } from '@/features/product/pagination'
 
 import { useProducts } from '@/shared/api/product'
 import { SFooter } from '@/shared/ui/SFooter'
+import { SPagination } from '@/shared/ui/SPagination'
 
 const { data: products, isFetching } = useProducts()
 
@@ -118,7 +118,7 @@ watch(selectedPage, () => {
               :rate="product.rate"
             />
           </div>
-          <ProductPagination
+          <SPagination
             :length="products.length"
             :selected-page="selectedPage"
             @change-page="selectedPage = $event"
