@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "@antfu/utils": "^0.7.7",
+    "@headlessui/vue": "^1.7.20",
     "@heroicons/vue": "^2.1.1",
     "@tanstack/vue-query": "^5.28.7",
     "@vueuse/core": "^10.9.0",
