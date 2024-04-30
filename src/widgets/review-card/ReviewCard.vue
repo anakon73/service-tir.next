@@ -22,7 +22,7 @@ defineProps<Props>()
     <h1 class="font-bold uppercase text-gray-800 lg:text-xl">
       {{ author }}
     </h1>
-    <div class="block items-center gap-2 min-[425px]:flex lg:gap-3">
+    <div class="block flex-wrap items-center gap-2 min-[425px]:flex lg:gap-3">
       <p
         class="
         whitespace-nowrap text-xs font-medium
