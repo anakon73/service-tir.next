@@ -44,6 +44,7 @@ const next = ref(null)
       <SwiperSlide
         v-for="{ author, comment, productName, rate } in list"
         :key="author"
+        class="!h-auto"
       >
         <ReviewCard
           :author="author"
