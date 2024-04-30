@@ -6,7 +6,7 @@ export interface Props {
   name: string
   image: string
   rate: Rating
-  id: number
+  code: number
   price: number
 }
 
@@ -24,11 +24,11 @@ defineProps<Props>()
       <div
         class="
         flex h-16 w-20 items-center
-        justify-center rounded-xl bg-indigo-100
+        justify-center rounded-xl border bg-white
         "
       >
         <img
-          class="rounded-xl"
+          class="rounded-xl object-cover p-2"
           :src="image"
           alt="result product image"
         >
@@ -39,7 +39,7 @@ defineProps<Props>()
         </h2>
         <div class="flex items-center gap-4">
           <p class="text-xs leading-5 text-neutral-500">
-            Код: {{ id }}
+            Код: {{ code }}
           </p>
           <SRating
             with-quantity
