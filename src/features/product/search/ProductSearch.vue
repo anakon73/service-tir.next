@@ -1,16 +1,27 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid'
 
 import { SSearchItem } from '@/entities/product'
-
-import { resultItems } from './config'
+import { useProducts } from '@/shared/api/product'
 
 defineProps<{
   mobile?: boolean
 }>()
 
 const searchValue = ref('')
+
+const { data } = useProducts()
+
+const filteredProducts = computed(() => {
+  return data.value?.filter((p) => (
+    p.name.toLocaleLowerCase().includes(searchValue.value.toLocaleLowerCase())
+  ))
+})
+
+const products = computed(() => {
+  return filteredProducts.value ? filteredProducts.value.slice(0, 3) : []
+})
 </script>
 
 <template>
@@ -43,31 +54,35 @@ const searchValue = ref('')
       >
     </div>
     <div
-      v-if="searchValue"
+      v-if="searchValue && filteredProducts"
       class="
       absolute top-[54px] z-10 flex w-full
       flex-col gap-1 rounded-2xl bg-white shadow-2xl
       "
     >
-      <div v-for="{ id, image, name, price, rate } in resultItems" :key="id">
+      <div
+        v-for="{ code, image, name, price, rate } in products"
+        :key="code"
+      >
         <SSearchItem
           v-bind="{
-            id,
+            code,
             image,
             name,
             price,
             rate,
           }"
         />
-        <hr>
+        <hr v-if="filteredProducts.length > products.length">
       </div>
       <div
+        v-if="filteredProducts.length > products.length"
         class="
         px-2 py-3 text-sm font-semibold leading-small text-blue-600
         transition-colors duration-300 hover:text-blue-800
         "
       >
-        Показати всі (239)
+        Показати всі ({{ filteredProducts.length }})
       </div>
     </div>
     <div
@@ -89,6 +104,7 @@ const searchValue = ref('')
         <MagnifyingGlassIcon class="size-6 text-slate-700" />
       </button>
       <input
+        v-model="searchValue"
         class="
         w-[75%] border-x-0 border-b border-t-0 border-zinc-50
         bg-blue-600 p-0 pb-2 text-xs font-medium leading-7 text-white
