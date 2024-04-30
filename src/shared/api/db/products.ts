@@ -4,6 +4,7 @@ import type {
   ProductSchema,
   SpecsSchema,
 } from '../product'
+import { makeReviewSchemaMock } from '../review/mock'
 
 const specs: z.infer<typeof SpecsSchema> = [
   { name: 'Товщина', value: '1/2: 45/131 мм' },
@@ -21,111 +22,6 @@ const specs: z.infer<typeof SpecsSchema> = [
   { name: 'Поверхность', value: 'Промасленная' },
   { name: 'Тип', value: 'Вентилируемый' },
   { name: 'Масса нетто', value: '30,14 кг' },
-]
-
-const reviews = [
-  {
-    author: 'Ann Lubin',
-    comment: `
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc
-      ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet
-      etiam tincidunt rhoncus, ullamcorper velit. Ullamcorper risus tempor, ac
-      nunc libero urna, feugiat. Lorem ipsum dolor sit amet, consectetur
-      adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam
-      lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit.
-      Ullamcorper risus tempor, ac nunc libero urna, feugiat.
-    `,
-    productName: 'Диск гальмівний Scania',
-    rate: {
-      quantity: 17,
-      rate: 3.5,
-    },
-  },
-  {
-    author: 'Lubin',
-    comment: `
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc
-      ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet
-      etiam tincidunt rhoncus, ullamcorper velit. Ullamcorper risus tempor, ac
-      nunc libero urna, feugiat. Lorem ipsum dolor sit amet, consectetur
-      adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam
-      lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit.
-      Ullamcorper risus tempor, ac nunc libero urna, feugiat.
-    `,
-    productName: 'Диск гальмівний Scania',
-    rate: {
-      quantity: 143,
-      rate: 4.3,
-    },
-  },
-  {
-    author: 'Ann',
-    comment: `
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc
-      ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet
-      etiam tincidunt rhoncus, ullamcorper velit. Ullamcorper risus tempor, ac
-      nunc libero urna, feugiat. Lorem ipsum dolor sit amet, consectetur
-      adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam
-      lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit.
-      Ullamcorper risus tempor, ac nunc libero urna, feugiat.
-    `,
-    productName: 'Диск гальмівний Scania',
-    rate: {
-      quantity: 98,
-      rate: 2.7,
-    },
-  },
-  {
-    author: 'Ann Lubin',
-    comment: `
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc
-      ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet
-      etiam tincidunt rhoncus, ullamcorper velit. Ullamcorper risus tempor, ac
-      nunc libero urna, feugiat. Lorem ipsum dolor sit amet, consectetur
-      adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam
-      lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit.
-      Ullamcorper risus tempor, ac nunc libero urna, feugiat.
-    `,
-    productName: 'Диск гальмівний Scania',
-    rate: {
-      quantity: 88,
-      rate: 3.9,
-    },
-  },
-  {
-    author: 'Lubin',
-    comment: `
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc
-      ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet
-      etiam tincidunt rhoncus, ullamcorper velit. Ullamcorper risus tempor, ac
-      nunc libero urna, feugiat. Lorem ipsum dolor sit amet, consectetur
-      adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam
-      lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit.
-      Ullamcorper risus tempor, ac nunc libero urna, feugiat.
-    `,
-    productName: 'Диск гальмівний Scania',
-    rate: {
-      quantity: 32,
-      rate: 4.9,
-    },
-  },
-  {
-    author: 'Ann',
-    comment: `
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Viverra nunc
-      ante velit vitae. Est tellus vitae, nullam lobortis enim. Faucibus amet
-      etiam tincidunt rhoncus, ullamcorper velit. Ullamcorper risus tempor, ac
-      nunc libero urna, feugiat. Lorem ipsum dolor sit amet, consectetur
-      adipiscing elit. Viverra nunc ante velit vitae. Est tellus vitae, nullam
-      lobortis enim. Faucibus amet etiam tincidunt rhoncus, ullamcorper velit.
-      Ullamcorper risus tempor, ac nunc libero urna, feugiat.
-    `,
-    productName: 'Диск гальмівний Scania',
-    rate: {
-      quantity: 127,
-      rate: 4.7,
-    },
-  },
 ]
 
 const full_description = `Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
@@ -613,8 +509,11 @@ function generateProducts(
 ): z.infer<typeof ProductSchema>[] {
   return productsArray.map((product) => ({
     ...product,
-    reviews,
     full_description,
+    reviews: Array.from(
+      { length: Math.floor(Math.random() * 6) + 3 },
+      () => makeReviewSchemaMock(),
+    ),
     quantity: Math.floor(Math.random() * 11),
     images: Array.from({ length: 6 }, () => product.image),
     similar_products: baseProducts
