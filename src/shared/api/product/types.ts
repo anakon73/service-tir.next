@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { ReviewSchema } from '../review'
 
 export const SpecsSchema = z.array(z.object({
   name: z.string(),
@@ -26,14 +27,6 @@ export const ProductSchema = BaseProductSchema.extend({
   similar_products: z.array(ProductSimilarSchema),
   full_description: z.string(),
   images: z.array(z.string()),
-  reviews: z.array(z.object({
-    rate: z.object({
-      rate: z.number(),
-      quantity: z.number(),
-    }),
-    author: z.string(),
-    productName: z.string(),
-    comment: z.string(),
-  })),
+  reviews: z.array(ReviewSchema),
   quantity: z.number(),
 })

@@ -7,6 +7,7 @@ import type {
   ProductSchema,
   ProductSimilarSchema,
 } from './types'
+import { normalizeReview } from '../review'
 
 export function normalizeBaseProduct(
   product: z.infer<typeof BaseProductSchema>,
@@ -47,8 +48,9 @@ export function normalizeProduct(
   product: z.infer<typeof ProductSchema>,
 ): Product {
   return {
-    ...objectPick(product, ['images', 'reviews', 'quantity']),
+    ...objectPick(product, ['images', 'quantity']),
     ...normalizeBaseProduct(product),
+    reviews: product.reviews.map((r) => normalizeReview(r)),
     similarProducts: product.similar_products.map((p) => normalizeProductSimilar(p)),
     fullDescription: product.full_description,
   }
