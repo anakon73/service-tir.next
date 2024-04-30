@@ -8,7 +8,9 @@ export interface Props {
   size?: Size
 }
 
-defineProps<Props>()
+withDefaults(defineProps<Props>(), {
+  size: 'sm',
+})
 </script>
 
 <template>
