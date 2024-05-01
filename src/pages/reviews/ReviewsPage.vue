@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { ChevronRightIcon } from '@heroicons/vue/24/solid'
 
 import { SHeader } from '@/widgets/header'
@@ -24,6 +24,10 @@ const currentPageReviews = computed(() => {
     return reviews.value.slice(startIndex, endIndex)
 
   return []
+})
+
+watch(selectedPage, () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' })
 })
 </script>
 
