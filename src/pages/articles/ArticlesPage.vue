@@ -28,7 +28,7 @@ watch(selectedPage, () => {
 </script>
 
 <template>
-  <div class="flex min-h-screen flex-col justify-between font-montserrat">
+  <div class="flex min-h-screen flex-col justify-between">
     <div>
       <SHeader class="mb-10 md:mb-5" />
 
