@@ -5,14 +5,14 @@ import { ChevronRightIcon } from '@heroicons/vue/24/solid'
 import { SHeader } from '@/widgets/header'
 import { ProductCard } from '@/widgets/product-card'
 
-import { useProducts } from '@/shared/api/product'
+import { useProductsSearch } from '@/shared/api/product'
 import { SFooter } from '@/shared/ui/SFooter'
 import { SPagination } from '@/shared/ui/SPagination'
 
 const searchValue = ref('насос')
 const selectedPage = ref(1)
 
-const { data, isFetching } = useProducts()
+const { data, isFetching } = useProductsSearch({ search: searchValue })
 
 const filteredProducts = computed(() => {
   return data.value?.filter((p) => (
@@ -79,7 +79,6 @@ watch(selectedPage, () => {
         <div
           class="mb-10 grid gap-5 min-[400px]:grid-cols-2 sm:grid-cols-3 min-[880px]:grid-cols-4"
         >
-          <!-- 24 items -->
           <div
             v-for="{
               code,
