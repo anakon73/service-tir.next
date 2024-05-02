@@ -3,24 +3,19 @@ import { computed, ref } from 'vue'
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid'
 
 import { SSearchItem } from '@/entities/product'
-import { useProducts } from '@/shared/api/product'
+import { useProductsSearch } from '@/shared/api/product'
 
 defineProps<{
   mobile?: boolean
 }>()
 
+const isFocus = ref(false)
 const searchValue = ref('')
 
-const { data } = useProducts()
-
-const filteredProducts = computed(() => {
-  return data.value?.filter((p) => (
-    p.name.toLocaleLowerCase().includes(searchValue.value.toLocaleLowerCase())
-  ))
-})
+const { data } = useProductsSearch({ search: searchValue })
 
 const products = computed(() => {
-  return filteredProducts.value ? filteredProducts.value.slice(0, 3) : []
+  return data.value ? data.value.slice(0, 3) : []
 })
 </script>
 
@@ -51,10 +46,12 @@ const products = computed(() => {
         placeholder:text-slate-500 focus:ring-0"
         type="text"
         placeholder="Напишіть назву товару"
+        @focus="isFocus = true"
+        @blur="isFocus = false"
       >
     </div>
     <div
-      v-if="searchValue && filteredProducts"
+      v-if="searchValue && data?.length && isFocus"
       class="
       absolute top-[54px] z-10 flex w-full
       flex-col gap-1 rounded-2xl bg-white shadow-2xl
@@ -73,20 +70,19 @@ const products = computed(() => {
             rate,
           }"
         />
-        <hr v-if="filteredProducts.length > products.length">
+        <hr>
       </div>
-      <div
-        v-if="filteredProducts.length > products.length"
+      <button
         class="
-        px-2 py-3 text-sm font-semibold leading-small text-blue-600
-        transition-colors duration-300 hover:text-blue-800
+        px-2 py-3 text-left text-sm font-semibold leading-small
+        text-blue-600 transition-colors duration-300 hover:text-blue-800
         "
       >
-        Показати всі ({{ filteredProducts.length }})
-      </div>
+        Показати всі ({{ data.length }})
+      </button>
     </div>
     <div
-      v-if="searchValue"
+      v-if="searchValue && isFocus"
       class="fixed inset-0 size-full border border-black/10 bg-black/25 blur-sm"
     />
   </div>
