@@ -15,6 +15,11 @@ const endpoints = {
     method: 'get',
     schema: ProductSchema,
   },
+  search: {
+    url: ({ search }: ProductsSearchParams) => `/api/products?search=${search}`,
+    method: 'get',
+    schema: ProductSchema,
+  },
 } satisfies ApiEndpointsAndSchemas
 
 export { endpoints as productEndpoints }
@@ -35,4 +40,14 @@ export async function productByCode({ code }: ProductByCodeParams) {
   return normalizeProduct(
     schema.parse(await fetch(url({ code }), { method }).then((r) => r.json())),
   )
+}
+
+export type ProductsSearchParams = { search: string }
+export type ProductsSearchKeyParams = ToKeyParams<ProductsSearchParams>
+export async function productsSearch({ search }: ProductsSearchParams) {
+  const { url, method, schema } = endpoints.search
+
+  return z.array(schema)
+    .parse(await fetch(url({ search }), { method }).then((r) => r.json()))
+    .map((product) => normalizeProduct(product))
 }
