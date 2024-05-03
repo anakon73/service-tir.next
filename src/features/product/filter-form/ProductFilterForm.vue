@@ -95,7 +95,13 @@ onUnmounted(() => {
             v-model="minPrice"
             placeholder="Від"
             type="number"
-            class="w-[72px] rounded border border-slate-300 bg-white text-sm font-semibold text-gray-900 [appearance:textfield] placeholder:text-zinc-300 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+            class="
+            w-[72px] rounded border border-slate-300 bg-white text-sm
+            font-semibold text-gray-900 [appearance:textfield]
+            placeholder:text-zinc-300
+            [&::-webkit-inner-spin-button]:appearance-none
+            [&::-webkit-outer-spin-button]:appearance-none
+            "
           >
           <p class="text-sm font-semibold text-gray-900">
             -
@@ -104,13 +110,23 @@ onUnmounted(() => {
             v-model="maxPrice"
             placeholder="До"
             type="number"
-            class="w-[72px] rounded border border-slate-300 bg-white text-sm font-semibold text-gray-900 [appearance:textfield] placeholder:text-zinc-300 [&::-webkit-inner-spin-button]:appearance-none [&::-webkit-outer-spin-button]:appearance-none"
+            class="
+            w-[72px] rounded border border-slate-300 bg-white text-sm
+            font-semibold text-gray-900 [appearance:textfield]
+            placeholder:text-zinc-300
+            [&::-webkit-inner-spin-button]:appearance-none
+            [&::-webkit-outer-spin-button]:appearance-none
+            "
           >
         </div>
       </div>
       <div>
         <button
-          class="whitespace-nowrap rounded-large bg-blue-600 px-9 py-3 text-xs font-bold text-white transition-colors duration-300 hover:bg-blue-700 hover:text-zinc-100"
+          class="
+          whitespace-nowrap rounded-large bg-blue-600 px-9 py-3 text-xs
+          font-bold text-white transition-colors duration-300
+          hover:bg-blue-700 hover:text-zinc-100
+          "
           @click="emits('close')"
         >
           Застосувати фільтр
