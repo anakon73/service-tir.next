@@ -13,23 +13,27 @@ defineProps<Props>()
 <template>
   <div
     class="
-    card flex h-full max-w-[560px] flex-col gap-4
-    rounded-2xl py-3 pl-3 pr-1.5 lg:flex-row
+    card flex max-w-[560px] flex-col gap-3
+    rounded-2xl p-3 lg:flex-row lg:gap-4 lg:pr-5
     "
   >
-    <img
-      class="max-h-80 rounded-2xl lg:max-h-40"
-      :src="image"
-      alt="service icon"
-    >
-    <div class="flex flex-col gap-2">
-      <h1 class="text-lg font-bold leading-6 text-gray-900">
-        {{ name }}
-      </h1>
-      <p class="text-xs leading-5 text-neutral-500 opacity-70">
-        {{ description }}
-      </p>
-      <SButton>
+    <div>
+      <img
+        class="h-40 w-full rounded-2xl object-cover lg:w-auto lg:max-w-52"
+        :src="image"
+        alt="service icon"
+      >
+    </div>
+    <div class="flex h-full flex-col justify-between gap-2">
+      <div>
+        <h1 class="mb-2 line-clamp-2 text-lg font-bold leading-6 text-gray-900">
+          {{ name }}
+        </h1>
+        <p class="text-xs leading-5 text-neutral-500 opacity-70">
+          {{ description }}
+        </p>
+      </div>
+      <SButton class="self-start">
         Детальніше
       </SButton>
     </div>
