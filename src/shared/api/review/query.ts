@@ -6,7 +6,7 @@ const Scopes = { All: 'all' } as const
 
 const keys = {
   getReviews: () => [{ entity, scope: Scopes.All }],
-}
+} as const
 
 export {
   entity as reviewEntity,

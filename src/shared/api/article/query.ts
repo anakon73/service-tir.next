@@ -10,7 +10,7 @@ const keys = {
   byId: (
     params: ArticleByIdKeyParams,
   ) => [{ entity, scope: Scopes.ById, ...params }],
-}
+} as const
 
 export {
   entity as articleEntity,

@@ -19,7 +19,7 @@ const keys = {
   search: (
     params: ProductsSearchKeyParams,
   ) => [{ entity, scope: Scopes.Search, ...params }],
-}
+} as const
 
 export {
   entity as productEntity,
