@@ -60,3 +60,31 @@ export interface Article {
   }[]
   similarArticles: Omit<Article, 'paragraphs' | 'similarArticles'>[]
 }
+
+export type Price = {
+  name: string
+  duration: {
+    min: number | null
+    max: number | null
+  }
+  price: number
+}
+
+export interface Service {
+  id: number
+  name: string
+  description: string
+  fullDescription: string
+  image: string
+  category:
+  'TIR Сервіс'
+  | 'Віділ запчастин'
+  | 'Мотор сервіс'
+  | 'Турбо сервіс'
+  | 'Металообробка'
+  | 'Мийка, шиномонтаж'
+  | 'Вантажні перевезення'
+  | 'Стоянка TIR'
+  | 'Тех. огляд'
+  prices: Price[]
+}
