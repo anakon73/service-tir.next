@@ -80,13 +80,13 @@ const liked = ref(false)
             {{ price }} ₴
           </p>
         </div>
-        <div class="text-xl font-bold leading-none lg:text-2xl">
+        <div class="whitespace-nowrap text-xl font-bold leading-none lg:text-2xl">
           {{ priceWithDiscount }} ₴
         </div>
       </div>
       <div
         v-if="!discount"
-        class="text-xl font-bold leading-none lg:text-2xl"
+        class="whitespace-nowrap text-xl font-bold leading-none lg:text-2xl"
       >
         {{ price }} ₴
       </div>
