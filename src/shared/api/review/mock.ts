@@ -1,12 +1,12 @@
 import type { z } from 'zod'
-import { fakerUK as f } from '@faker-js/faker'
 import { HttpResponse, http } from 'msw'
+import { fakerUK as f } from '@faker-js/faker'
 
 import type { Review } from '@/shared/types'
+import { SuccessfulResponseMock } from '../lib'
 
 import type { ReviewSchema } from './types'
 import { normalizeReview } from './normalizers'
-import { SuccessfulResponseMock } from '../lib'
 
 export function makeReviewSchemaMock(): z.infer<typeof ReviewSchema> {
   return {
