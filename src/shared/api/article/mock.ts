@@ -1,5 +1,4 @@
 import { HttpResponse, http } from 'msw'
-
 import articles from '../db/articles'
 
 export const articlesHandlers = [
