@@ -1,6 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
 
-import { Category } from './types'
+import { Categories } from './types'
 import { ServiceCategory } from '.'
 
 export default {
@@ -12,7 +12,7 @@ export default {
   },
 
   argTypes: {
-    selectedCategory: { control: 'select', options: Category },
+    selectedCategory: { control: 'select', options: Categories },
 
     // @ts-expect-error sb types
     changeCategory: { table: { disable: true } },
