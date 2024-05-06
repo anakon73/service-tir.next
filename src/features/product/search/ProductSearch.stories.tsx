@@ -4,10 +4,7 @@ import { ProductSearch } from '.'
 const meta = {
   title: 'Features/Product/Search',
   component: ProductSearch,
-
-  parameters: {
-    layout: 'fullscreen',
-  },
+  parameters: { layout: 'fullscreen' },
 } satisfies Meta<{ mobile: boolean }>
 
 export default meta

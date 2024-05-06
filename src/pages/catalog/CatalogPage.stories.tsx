@@ -4,10 +4,7 @@ import { CatalogPage } from '.'
 export default {
   title: 'Pages/CatalogPage',
   component: CatalogPage,
-
-  parameters: {
-    layout: 'fullscreen',
-  },
+  parameters: { layout: 'fullscreen' },
 } satisfies Meta<typeof CatalogPage>
 
 type Story = StoryObj<typeof CatalogPage>

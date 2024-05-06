@@ -6,10 +6,7 @@ import { SDialog, type SDialogProps } from '.'
 export default {
   title: 'Shared/UI/SDialog',
   component: SDialog,
-
-  parameters: {
-    layout: 'fullscreen',
-  },
+  parameters: { layout: 'fullscreen' },
 
   args: {
     open: true,

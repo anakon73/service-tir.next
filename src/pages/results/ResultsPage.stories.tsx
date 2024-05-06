@@ -4,10 +4,7 @@ import { ResultsPage } from '.'
 export default {
   title: 'Pages/ResultsPage',
   component: ResultsPage,
-
-  parameters: {
-    layout: 'fullscreen',
-  },
+  parameters: { layout: 'fullscreen' },
 } satisfies Meta<typeof ResultsPage>
 
 type Story = StoryObj<typeof ResultsPage>

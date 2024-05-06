@@ -4,10 +4,7 @@ import { ServicesPage } from '.'
 export default {
   title: 'Pages/ServicesPage',
   component: ServicesPage,
-
-  parameters: {
-    layout: 'fullscreen',
-  },
+  parameters: { layout: 'fullscreen' },
 } satisfies Meta<typeof ServicesPage>
 
 type Story = StoryObj<typeof ServicesPage>

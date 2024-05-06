@@ -4,10 +4,7 @@ import { SHeader } from '.'
 export default {
   title: 'Widgets/SHeader',
   component: SHeader,
-
-  parameters: {
-    layout: 'fullscreen',
-  },
+  parameters: { layout: 'fullscreen' },
 
   args: {
     logged: false,

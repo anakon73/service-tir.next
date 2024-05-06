@@ -8,10 +8,7 @@ import {
 export default {
   title: 'Features/Product/FilterForm',
   component: ProductFilterForm,
-
-  parameters: {
-    layout: 'fullscreen',
-  },
+  parameters: { layout: 'fullscreen' },
 
   args: { show: false },
 

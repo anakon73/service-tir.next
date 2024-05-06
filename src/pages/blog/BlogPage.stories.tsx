@@ -4,10 +4,7 @@ import { BlogPage } from '.'
 export default {
   title: 'Pages/BlogPage',
   component: BlogPage,
-
-  parameters: {
-    layout: 'fullscreen',
-  },
+  parameters: { layout: 'fullscreen' },
 } satisfies Meta<typeof BlogPage>
 
 type Story = StoryObj<typeof BlogPage>

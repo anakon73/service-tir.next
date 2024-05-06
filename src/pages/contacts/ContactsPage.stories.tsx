@@ -4,10 +4,7 @@ import { ContactsPage } from '.'
 export default {
   title: 'Pages/ContactsPage',
   component: ContactsPage,
-
-  parameters: {
-    layout: 'fullscreen',
-  },
+  parameters: { layout: 'fullscreen' },
 } satisfies Meta<typeof ContactsPage>
 
 type Story = StoryObj<typeof ContactsPage>
