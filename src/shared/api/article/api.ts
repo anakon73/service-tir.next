@@ -27,9 +27,7 @@ export async function getArticles() {
     .map((article) => normalizeArticle(article))
 }
 
-export type ArticleByIdParams = {
-  id: number
-}
+export type ArticleByIdParams = { id: number }
 export type ArticleByIdKeyParams = ToKeyParams<ArticleByIdParams>
 export async function articleById({ id }: ArticleByIdParams) {
   const { url, method, schema } = endpoints.byId
