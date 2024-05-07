@@ -55,9 +55,9 @@ const inStock = computed(() => {
       <div v-else class="container mb-[100px] lg:mb-[120px]">
         <div
           class="
-            mb-9 flex items-center gap-1 text-xs text-gray-900
-            transition-colors duration-300 hover:text-gray-950 md:mb-10
-            "
+          mb-9 flex items-center gap-1 text-xs text-gray-900
+          transition-colors duration-300 hover:text-gray-950 md:mb-10
+          "
         >
           <p class="cursor-pointer opacity-50">
             Головна
