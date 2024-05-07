@@ -60,7 +60,7 @@ onUnmounted(() => {
         transition-transform duration-300 ease-in-out bg-white pb-24 pl-5
         overflow-y-auto overflow-x-hidden lg:rounded-2xl
         pr-14 pt-5 lg:size-auto lg:pb-5 z-40`,
-        !show && 'max-[1024px]:-translate-x-full',
+        !show && 'max-[1023px]:-translate-x-full',
       )"
     >
       <button
