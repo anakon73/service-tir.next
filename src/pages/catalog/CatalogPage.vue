@@ -36,7 +36,7 @@ watch(selectedPage, () => {
 </script>
 
 <template>
-  <SHeader class="mb-10 md:mb-5" />
+  <SHeader class="relative z-30 mb-10 md:mb-5" />
   <div
     class="
     container mb-24 px-5 max-[425px]:px-3
@@ -71,7 +71,7 @@ watch(selectedPage, () => {
       </h1>
     </div>
     <div class="gap-3 lg:flex xl:gap-5">
-      <div class="fixed left-0 top-0 z-40 lg:relative">
+      <div class="fixed left-0 top-0 z-20 lg:relative">
         <ProductFilterForm
           :show="showFilters"
           @close="showFilters = false"
