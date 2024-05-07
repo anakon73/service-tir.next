@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ArrowRightIcon, ChevronRightIcon } from '@heroicons/vue/24/solid'
+import { ArrowRightIcon, ChevronRightIcon, XMarkIcon } from '@heroicons/vue/24/solid'
 
 import { SHeader } from '@/widgets/header'
 import { ServicePriceList } from '@/widgets/service-price-list'
@@ -13,17 +13,76 @@ import { SAdvantageCard } from '@/entities/advantage'
 
 import { useServiceById } from '@/shared/api/service'
 import { SButton } from '@/shared/ui/SButton'
+import { SDialog } from '@/shared/ui/SDialog'
 import { SFooter } from '@/shared/ui/SFooter'
 
 import { advantages, reviews } from './config'
 
 const isOpen = ref(false)
+const isOpenSighModal = ref(false)
 
 const { data: service, isLoading } = useServiceById({ id: 1 })
 </script>
 
 <template>
   <ReviewCreate :open="isOpen" @close="isOpen = false" />
+  <SDialog
+    :open="isOpenSighModal"
+    size="md"
+    @close="isOpenSighModal = false"
+  >
+    <div class="relative rounded-large bg-white">
+      <button
+        class="absolute -top-5 right-6 focus:outline-0"
+        @click="isOpenSighModal = false"
+      >
+        <XMarkIcon class="size-3" />
+      </button>
+      <div class="mx-auto flex w-full max-w-[340px] flex-col items-center gap-3">
+        <h2
+          class="
+          text-xl font-semibold leading-[30px] tracking-[0.4px] text-black
+          "
+        >
+          Запис на ремонт
+        </h2>
+        <p class="text-center leading-6 tracking-[0.32px] text-black">
+          Зателефонуйте нам для уточнення часу запису на ремонт
+        </p>
+        <ul
+          class="
+          flex flex-col items-center gap-2.5
+          text-lg font-medium leading-7 text-blue-600
+          "
+        >
+          <li>
+            <a
+              class="transition-colors duration-300 hover:text-blue-800"
+              href="tel:+380980000122"
+            >
+              +38(098)-0000-122
+            </a>
+          </li>
+          <li>
+            <a
+              class="transition-colors duration-300 hover:text-blue-800"
+              href="tel:+380960000127"
+            >
+              +38(096)-0000-127
+            </a>
+          </li>
+          <li>
+            <a
+              class="transition-colors duration-300 hover:text-blue-800"
+              href="tel:+380980000127"
+            >
+              +38(098)-0000-127
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </SDialog>
   <div
     class="flex min-h-screen flex-col justify-between"
   >
@@ -79,7 +138,7 @@ const { data: service, isLoading } = useServiceById({ id: 1 })
                 >
                   {{ service.fullDescription }}
                 </p>
-                <SButton class="self-start">
+                <SButton class="self-start" @click="isOpenSighModal = true">
                   Записатись на ремонт
                 </SButton>
               </div>
