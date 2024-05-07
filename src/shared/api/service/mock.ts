@@ -16,4 +16,9 @@ export const serviceHandlers = [
       )
     }
   }),
+  http.get('/api/services/:id', ({ params }) => {
+    const { id } = params
+    const item = services.find((i) => i.id === +id)
+    return HttpResponse.json(item)
+  }),
 ]
