@@ -7,6 +7,7 @@ import type { Rating } from '@/shared/types'
 import { SButton } from '@/shared/ui/SButton'
 
 export interface Props {
+  code: number
   name: string
   description: string
   rate: Rating
@@ -22,7 +23,8 @@ const liked = ref(false)
 </script>
 
 <template>
-  <div
+  <RouterLink
+    :to="`/product/${code}`"
     class="
     card relative inline-flex h-full select-none flex-col justify-between
     rounded-2xl px-3 pb-6 pt-3 text-gray-900 lg:max-w-none
@@ -94,5 +96,5 @@ const liked = ref(false)
         В кошик
       </SButton>
     </div>
-  </div>
+  </RouterLink>
 </template>

@@ -43,15 +43,15 @@ import { SButton } from '@/shared/ui/SButton'
         <div class="font-bold">
           Телефон
         </div>
-        <div class="cursor-pointer leading-7">
+        <a href="tel:380980000122" class="leading-7">
           +38(098)-0000-122
-        </div>
-        <div class="cursor-pointer leading-7">
+        </a>
+        <a href="tel:380980000122" class="leading-7">
           +38(096)-0000-127
-        </div>
-        <div class="cursor-pointer leading-7">
+        </a>
+        <a href="tel:380980000122" class="leading-7">
           +38(098)-0000-127
-        </div>
+        </a>
       </div>
       <div
         class="
@@ -62,9 +62,12 @@ import { SButton } from '@/shared/ui/SButton'
         <div class="font-bold">
           Пошта:
         </div>
-        <div class="cursor-pointer leading-7 underline underline-offset-2">
+        <a
+          href="mailto:avtobaza12@ukr.net"
+          class="leading-7 underline underline-offset-2"
+        >
           {{ 'avtobaza12@ukr.net' }}
-        </div>
+        </a>
       </div>
       <SButton>
         Зателефонувати

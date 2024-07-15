@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { useRoute } from 'vue-router'
+import { ref, watch } from 'vue'
 import {
   Bars3Icon,
   HeartIcon,
@@ -18,6 +19,10 @@ defineProps<{
 }>()
 
 const isShowDropdown = ref(false)
+
+const route = useRoute()
+
+watch(() => route.fullPath, () => isShowDropdown.value = false)
 </script>
 
 <template>
@@ -32,27 +37,39 @@ const isShowDropdown = ref(false)
         )"
       >
         <div class="flex items-center justify-between">
-          <img
-            src="../../shared/assets/images/logo.svg"
-            alt="service tir logo"
-            class="max-w-none"
-          >
+          <RouterLink to="/">
+            <img
+              src="../../shared/assets/images/logo.svg"
+              alt="service tir logo"
+              class="max-w-none"
+            >
+          </RouterLink>
           <button @click="isShowDropdown = false">
             <XMarkIcon class="size-5 text-white hover:text-zinc-200" />
           </button>
         </div>
-        <ul
-          class="
-          flex flex-col gap-5 transition-colors duration-300 hover:text-zinc-200
-          "
-        >
-          <li>Головна</li>
-          <li>Каталог</li>
-          <li>Послуги</li>
-          <li>Про нас</li>
-          <li>Контакти</li>
-          <li>Відгуки</li>
-          <li>Статті</li>
+        <ul class="flex flex-col gap-5 transition-colors duration-300 hover:text-zinc-200">
+          <RouterLink to="/">
+            Головна
+          </RouterLink>
+          <RouterLink to="/catalog">
+            Каталог
+          </RouterLink>
+          <RouterLink to="/services">
+            Послуги
+          </RouterLink>
+          <RouterLink to="/about-us">
+            Про нас
+          </RouterLink>
+          <RouterLink to="/contacts">
+            Контакти
+          </RouterLink>
+          <RouterLink to="/reviews">
+            Відгуки
+          </RouterLink>
+          <RouterLink to="/articles">
+            Статті
+          </RouterLink>
         </ul>
         <hr class="border-[0.5px] border-zinc-50/50">
         <div
@@ -75,8 +92,9 @@ const isShowDropdown = ref(false)
             </p>
           </div>
         </div>
-        <button
+        <RouterLink
           v-else
+          to="/authentication"
           class="group flex items-center gap-2"
         >
           <UserIcon
@@ -85,7 +103,7 @@ const isShowDropdown = ref(false)
           <p class="transition-colors duration-300 group-hover:text-zinc-200">
             Особистий кабінет
           </p>
-        </button>
+        </RouterLink>
         <button class="group flex items-center gap-2">
           <div class="relative">
             <HeartIcon
@@ -142,11 +160,13 @@ const isShowDropdown = ref(false)
           gap-2 px-8 md:flex xl:max-w-[1440px] xl:px-36
           "
         >
-          <img
-            src="../../shared/assets/images/logo.svg"
-            alt="service tir logo"
-            class="max-w-none"
-          >
+          <RouterLink to="/">
+            <img
+              src="../../shared/assets/images/logo.svg"
+              alt="service tir logo"
+              class="max-w-none"
+            >
+          </RouterLink>
           <div class="w-full max-w-lg">
             <ProductSearch />
           </div>
@@ -174,10 +194,9 @@ const isShowDropdown = ref(false)
                 </a>
               </div>
             </div>
-            <UserIcon
-              v-else
-              class="size-5 text-gray-900 hover:text-gray-950"
-            />
+            <RouterLink v-else to="/authentication">
+              <UserIcon class="size-5 text-gray-900 hover:text-gray-950" />
+            </RouterLink>
 
             <button class="relative">
               <HeartIcon
@@ -217,11 +236,13 @@ const isShowDropdown = ref(false)
         </div>
         <div class="px-5 md:hidden">
           <div class="flex items-center justify-between">
-            <img
-              src="../../shared/assets/images/logo.svg"
-              alt="service tir logo"
-              class="max-w-none"
-            >
+            <RouterLink to="/">
+              <img
+                src="../../shared/assets/images/logo.svg"
+                alt="service tir logo"
+                class="max-w-none"
+              >
+            </RouterLink>
             <button
               class="h-4 w-6"
               @click="isShowDropdown = true"

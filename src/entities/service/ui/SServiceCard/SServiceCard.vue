@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import SButton from '@/shared/ui/SButton/SButton.vue'
+import { RouterLink } from 'vue-router'
+import { SButton } from '@/shared/ui/SButton'
 
 export interface Props {
+  id: number
   image: string
   name: string
   description: string
@@ -33,7 +35,7 @@ defineProps<Props>()
           {{ description }}
         </p>
       </div>
-      <SButton class="self-start">
+      <SButton :as="RouterLink" :to="{ name: 'Service', params: { id } }" class="self-start">
         Детальніше
       </SButton>
     </div>

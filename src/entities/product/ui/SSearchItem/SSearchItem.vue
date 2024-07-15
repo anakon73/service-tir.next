@@ -14,7 +14,8 @@ defineProps<Props>()
 </script>
 
 <template>
-  <div
+  <RouterLink
+    :to="{ name: 'Product', params: { code } }"
     class="
     flex w-full max-w-[504px] items-center
     justify-between rounded-2xl bg-white px-4 py-3
@@ -51,5 +52,5 @@ defineProps<Props>()
     <div class="text-xl font-semibold text-gray-900">
       {{ price }} &#8372;
     </div>
-  </div>
+  </RouterLink>
 </template>

@@ -4,6 +4,7 @@ import { computed, toRefs } from 'vue'
 import { ArrowUpRightIcon } from '@heroicons/vue/24/solid'
 
 export interface Props {
+  id: number
   date: Date
   name: string
   description: string
@@ -34,9 +35,9 @@ const formattedDate = computed(() => format(date.value, 'd MMMM u'))
         >
           {{ name }}
         </h1>
-        <button>
+        <RouterLink :to="`/blog/${id}`">
           <ArrowUpRightIcon class="size-6 pt-2" />
-        </button>
+        </RouterLink>
       </div>
       <p class="text-xs leading-4 text-gray-400 md:text-base md:leading-6">
         {{ description }}

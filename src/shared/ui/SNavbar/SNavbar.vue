@@ -1,4 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { cn } from '@/shared/lib/styles'
+import { links } from './config'
+</script>
 
 <template>
   <div class="hidden bg-gray-100 text-sm md:block">
@@ -8,54 +11,22 @@
       gap-14 text-gray-900
       "
     >
-      <li
-        class="px-2 py-5 font-bold underline decoration-2
-        underline-offset-[23px] transition-colors duration-300
-        hover:text-slate-500
-        "
+      <RouterLink
+        v-for="link in links"
+        v-slot="{ isActive }"
+        :key="link.name.toLocaleLowerCase()"
+        :to="link.route"
       >
-        Головна
-      </li>
-      <li
-        class="
-        flex cursor-pointer px-2 py-5 transition-colors
-        duration-300 hover:text-slate-400
-        "
-      >
-        <p>Каталог</p>
         <p
-          class="
-          relative bottom-2 h-4 rounded-md bg-blue-100 px-1
-          text-[10px] font-medium text-blue-600
-          "
+          :class="cn(
+            `flex cursor-pointer px-2 py-5 transition-colors
+            duration-300 hover:text-slate-400`,
+            isActive && 'font-bold underline decoration-2 underline-offset-[23px]',
+          )"
         >
-          {{ Number('2000').toLocaleString('en-US') }}
+          {{ link.name }}
         </p>
-      </li>
-      <li
-        class="
-        cursor-pointer px-2 py-5 transition-colors duration-300
-        hover:text-slate-400
-        "
-      >
-        Послуги
-      </li>
-      <li
-        class="
-        cursor-pointer px-2 py-5 transition-colors duration-300
-        hover:text-slate-400
-        "
-      >
-        Про нас
-      </li>
-      <li
-        class="
-        cursor-pointer px-2 py-5 transition-colors duration-300
-        hover:text-slate-400
-        "
-      >
-        Контакти
-      </li>
+      </RouterLink>
     </ul>
   </div>
 </template>
