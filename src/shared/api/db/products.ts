@@ -129,7 +129,7 @@ const baseProducts: z.infer<typeof BaseProductSchema>[] = [
     name: 'Топливный насос Bosch',
     description: 'Обеспечьте надежную подачу топлива в систему впрыска с топливным насосом Bosch. Изготовлен с использованием передовых технологий, обеспечивает стабильное топливоподачу для эффективной работы двигателя. Подходит для различных марок автомобилей, обеспечивая высокий уровень производительности.',
     discount: false,
-    image: 'https://nparts.ua/imgbank/tcd/30/00305753801255.jpg',
+    image: 'https://ucar.net.ua/images/20210615/Toplivnyj-nasos-Bosch-0580454094-front-800x800-1623705668.jpg',
     price: 1400,
     rate: {
       quantity: 85,
@@ -255,7 +255,7 @@ const baseProducts: z.infer<typeof BaseProductSchema>[] = [
     name: 'Сальник коленвала Corteco',
     description: 'Сальник коленвала Corteco - эффективная защита от утечек масла в районе коленвала. Изготовлен из высококачественных материалов, обеспечивает надежное уплотнение и предотвращение проникновения вредных веществ в двигатель. Совместим с различными автомобилями.',
     discount: true,
-    image: 'https://kitaec.ua/upload/resize_cache/iblock/6ea/704_429_1b24bf9e35bfbc8de9fc7f31afe648f50/salnik-kolenvala-peredniy-geely-ck-mk-corteco-e040110005_e040110005-corteco_foto1.png',
+    image: 'https://images.prom.ua/2833687174_w600_h600_2833687174.jpg',
     price: 750,
     rate: {
       quantity: 80,

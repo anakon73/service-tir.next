@@ -76,7 +76,7 @@ const articles: z.infer<typeof BaseArticleSchema>[] = [
     name: 'Замена фильтра воздушного очистителя',
     description: 'Замена фильтра для повышения эффективности воздушной очистки',
     date: '2024-04-10',
-    preview_image: 'https://a.d-cd.net/t2AAAgEnS-A-960.jpg',
+    preview_image: 'https://fortunaavto.com.ua/all/image/zamena_vozdushnogo_filtra.jpg',
     paragraphs,
   },
   {
@@ -164,7 +164,7 @@ const articles: z.infer<typeof BaseArticleSchema>[] = [
     name: 'Устранение течи масла',
     description: 'Поиск и устранение утечки масла',
     date: '2024-04-21',
-    preview_image: 'https://vagdrive.com/data/attachments/10/10283-b7083d81561c4376b259764cb9daf23b.jpg',
+    preview_image: 'https://mytechlife.ru/wp-content/uploads/germetik-i-ochistka-pomogut-pri-poverhnostnoj-razgermetizacii-dvs.jpg',
     paragraphs,
   },
   {
