@@ -1,9 +1,7 @@
 <script setup lang="ts">
 import { ChevronRightIcon } from '@heroicons/vue/24/solid'
-import { SHeader } from '@/widgets/header'
 
 import { SButton } from '@/shared/ui/SButton'
-import { SFooter } from '@/shared/ui/SFooter'
 
 const phones = ['380980000122', '380980000122']
 const emails = ['avtobaza12@ukr.net', 'avtobaza12@ukr.net']
@@ -20,10 +18,6 @@ function formatPhoneNumber(number: string) {
 </script>
 
 <template>
-  <div class="mb-10 sm:mb-5">
-    <SHeader />
-  </div>
-
   <div class="container mb-24 lg:mb-32">
     <div
       class="
@@ -31,9 +25,9 @@ function formatPhoneNumber(number: string) {
       transition-colors duration-300 hover:text-gray-950 sm:mb-10
       "
     >
-      <p class="opacity-50">
+      <RouterLink to="/" class="opacity-50">
         Головна
-      </p>
+      </RouterLink>
       <ChevronRightIcon class="size-2" />
       <p>Контакти</p>
     </div>
@@ -119,6 +113,4 @@ function formatPhoneNumber(number: string) {
       referrerpolicy="no-referrer-when-downgrade"
     />
   </div>
-
-  <SFooter />
 </template>

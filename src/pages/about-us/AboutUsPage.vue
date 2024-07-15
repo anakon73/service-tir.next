@@ -2,24 +2,18 @@
 import { ref } from 'vue'
 import { ArrowRightIcon, ChevronRightIcon } from '@heroicons/vue/24/solid'
 
-import { SHeader } from '@/widgets/header'
 import { MapFrame } from '@/widgets/map-frame'
 import { ReviewCard } from '@/widgets/review-card'
 import { ReviewsSwiper } from '@/widgets/reviews-swiper'
 
 import { SAdvantageCard } from '@/entities/advantage'
-
-import { SFooter } from '@/shared/ui/SFooter'
 import { SButton } from '@/shared/ui/SButton'
-
 import { advantages, reviews, workers } from './config'
 
 const isOpen = ref(false)
 </script>
 
 <template>
-  <SHeader class="mb-10 md:mb-5" />
-
   <div class="container">
     <div
       class="
@@ -27,11 +21,11 @@ const isOpen = ref(false)
       transition-colors duration-300 hover:text-gray-950 md:mb-10
       "
     >
-      <p class="cursor-pointer opacity-50">
+      <RouterLink to="/" class="opacity-50">
         Головна
-      </p>
+      </RouterLink>
       <ChevronRightIcon class="size-2" />
-      <p class="cursor-pointer">
+      <p>
         Про нас
       </p>
     </div>
@@ -212,7 +206,7 @@ const isOpen = ref(false)
               Faucibus amet.
             </p>
           </div>
-          <a class="group hidden items-center gap-1 pt-3 lg:flex">
+          <RouterLink to="/reviews" class="group hidden items-center gap-1 pt-3 lg:flex">
             <p
               class="
               whitespace-nowrap text-xs font-bold text-white
@@ -222,7 +216,7 @@ const isOpen = ref(false)
               Всі відгуки
             </p>
             <ArrowRightIcon class="h-3 w-4 text-white" />
-          </a>
+          </RouterLink>
         </div>
         <SButton
           variant="white"
@@ -253,7 +247,7 @@ const isOpen = ref(false)
         />
       </div>
       <div class="flex w-full flex-col items-center gap-7 lg:hidden">
-        <a class="group flex items-center justify-center gap-1 pt-3">
+        <RouterLink to="/reviews" class="group flex items-center justify-center gap-1 pt-3">
           <p
             class="
             whitespace-nowrap text-xs font-bold text-white
@@ -263,7 +257,7 @@ const isOpen = ref(false)
             Всі відгуки
           </p>
           <ArrowRightIcon class="h-3 w-4 text-white" />
-        </a>
+        </RouterLink>
         <SButton
           variant="white"
           class="block lg:hidden"
@@ -276,6 +270,4 @@ const isOpen = ref(false)
   </div>
 
   <MapFrame />
-
-  <SFooter />
 </template>

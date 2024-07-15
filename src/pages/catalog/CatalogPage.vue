@@ -1,18 +1,15 @@
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, ref } from 'vue'
 import {
   AdjustmentsHorizontalIcon,
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@heroicons/vue/24/solid'
 
-import { SHeader } from '@/widgets/header'
 import { ProductCard } from '@/widgets/product-card'
-
 import { ProductFilterForm } from '@/features/product/filter-form'
 
 import { useProducts } from '@/shared/api/product'
-import { SFooter } from '@/shared/ui/SFooter'
 import { SPagination } from '@/shared/ui/SPagination'
 
 const { data: products, isFetching } = useProducts()
@@ -29,14 +26,9 @@ const currentPageProducts = computed(() => {
 
   return []
 })
-
-watch(selectedPage, () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' })
-})
 </script>
 
 <template>
-  <SHeader class="relative z-30 mb-10 md:mb-5" />
   <div
     class="
     container mb-24 px-5 max-[425px]:px-3
@@ -49,9 +41,9 @@ watch(selectedPage, () => {
       transition-colors duration-300 hover:text-gray-950 md:mb-10
       "
     >
-      <p class="opacity-50">
+      <RouterLink to="/" class="opacity-50">
         Головна
-      </p>
+      </RouterLink>
       <ChevronRightIcon class="size-2" />
       <p class="cursor-pointer">
         Каталог
@@ -101,13 +93,14 @@ watch(selectedPage, () => {
         </button>
         <div
           class="
-              mb-10 grid gap-5 min-[400px]:grid-cols-2
-              sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3
-              "
+          mb-10 grid gap-5 min-[400px]:grid-cols-2
+          sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3
+          "
         >
           <ProductCard
             v-for="product in currentPageProducts"
             :key="product.name"
+            :code="product.code"
             :image="product.image"
             :description="product.description"
             :discount="product.discount"
@@ -125,5 +118,4 @@ watch(selectedPage, () => {
       </div>
     </div>
   </div>
-  <SFooter />
 </template>
