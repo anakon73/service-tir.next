@@ -3,4 +3,4 @@ import { applyAppOnlyProviders, applyProviders } from './providers'
 import './styles/index.css'
 
 applyProviders(app)
-applyAppOnlyProviders()
+applyAppOnlyProviders(app)

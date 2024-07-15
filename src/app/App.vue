@@ -1,7 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { RouterView } from 'vue-router'
+import AppLayout from '@/pages/layouts/AppLayout.vue'
+</script>
 
 <template>
-  <h1 class="block text-3xl font-bold underline">
-    Hello world!
-  </h1>
+  <AppLayout>
+    <RouterView :key="$route.fullPath" />
+  </AppLayout>
 </template>
