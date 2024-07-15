@@ -7,6 +7,11 @@ export default {
   component: SInput,
   tags: ['autodocs'],
 
+  args: {
+    label: '',
+    small: false,
+  },
+
   argTypes: {
     class: { table: { disable: true } },
   },
@@ -15,3 +20,7 @@ export default {
 type Story = StoryObj<typeof SInput>
 
 export const Default: Story = {}
+
+export const WithLabel: Story = { args: { label: 'Label' } }
+
+export const Small: Story = { args: { small: true } }
