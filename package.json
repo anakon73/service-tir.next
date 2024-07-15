@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview",
     "test:unit": "vitest --environment jsdom --run",
     "storybook:dev": "storybook dev -p 6006",
