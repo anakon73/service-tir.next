@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { onKeyDown } from '@vueuse/core'
 import { MagnifyingGlassIcon } from '@heroicons/vue/24/solid'
 
 import { SSearchItem } from '@/entities/product'
@@ -9,15 +11,24 @@ defineProps<{
   mobile?: boolean
 }>()
 
+const router = useRouter()
+
 const isFocus = ref(false)
 const searchValue = ref('')
 
 const { data } = useProductsSearch({ search: searchValue })
 
-const onBlur = () => setTimeout(() => isFocus.value = false, 100)
+const onBlur = () => setTimeout(() => isFocus.value = false, 150)
 
 const products = computed(() => {
   return data.value ? data.value.slice(0, 3) : []
+})
+
+onKeyDown('Enter', () => {
+  if (isFocus.value) {
+    router.push({ path: '/results', query: { search_query: searchValue.value } })
+    isFocus.value = false
+  }
 })
 </script>
 
@@ -32,14 +43,15 @@ const products = computed(() => {
       items-end gap-6 rounded-3xl bg-white
       "
     >
-      <button
+      <RouterLink
+        :to="{ path: '/results', query: { search_query: searchValue } }"
         class="
         rounded-[20px] bg-gray-100 p-3
         transition-colors duration-300 hover:bg-gray-200
         "
       >
         <MagnifyingGlassIcon class="size-6 text-slate-700" />
-      </button>
+      </RouterLink>
       <input
         v-model="searchValue"
         class="
@@ -74,14 +86,15 @@ const products = computed(() => {
         />
         <hr>
       </div>
-      <button
+      <RouterLink
+        :to="{ path: '/results', query: { search_query: searchValue } }"
         class="
         px-2 py-3 text-left text-sm font-semibold leading-small
         text-blue-600 transition-colors duration-300 hover:text-blue-800
         "
       >
         Показати всі ({{ data.length }})
-      </button>
+      </RouterLink>
     </div>
     <div
       v-if="searchValue && isFocus"
@@ -93,14 +106,15 @@ const products = computed(() => {
     class="relative z-20 w-full"
   >
     <div class="relative z-10 flex w-full items-end gap-6 rounded-3xl">
-      <button
+      <RouterLink
+        :to="{ path: '/results', query: { search_query: searchValue } }"
         class="
         rounded-[14px] bg-gray-100 p-2.5
         transition-colors duration-300 hover:bg-gray-200
         "
       >
         <MagnifyingGlassIcon class="size-6 text-slate-700" />
-      </button>
+      </RouterLink>
       <input
         v-model="searchValue"
         class="
