@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { useRoute } from 'vue-router'
 import { ChevronRightIcon } from '@heroicons/vue/24/solid'
 
 import { ProductCard } from '@/widgets/product-card'
@@ -7,7 +8,9 @@ import { ProductCard } from '@/widgets/product-card'
 import { useProductsSearch } from '@/shared/api/product'
 import { SPagination } from '@/shared/ui/SPagination'
 
-const searchValue = ref('насос')
+const route = useRoute()
+
+const searchValue = ref(route.query.search_query?.toString() || ' ')
 const selectedPage = ref(1)
 
 const { data, isFetching } = useProductsSearch({ search: searchValue })
@@ -91,6 +94,7 @@ const currentPageProducts = computed(() => {
       >
         <ProductCard
           v-bind="{
+            code,
             name,
             description,
             rate,

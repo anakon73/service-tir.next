@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { computed, toRefs } from 'vue'
-import {
-  ChevronLeftIcon,
-  ChevronRightIcon,
-} from '@heroicons/vue/24/solid'
+import { useRoute, useRouter } from 'vue-router'
+import { computed, toRefs, watch } from 'vue'
+import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/vue/24/solid'
+
 import { cn } from '@/shared/lib/styles'
 
 export interface Props {
@@ -16,17 +15,43 @@ const props = withDefaults(defineProps<Props>(), {
   itemsPerPage: 18,
 })
 
-const { itemsPerPage, length } = toRefs(props)
-
 export type Emits = {
   changePage: [page: number]
 }
 
 const emits = defineEmits<Emits>()
 
+const { itemsPerPage, length, selectedPage } = toRefs(props)
+
+const route = useRoute()
+const router = useRouter()
+
 const totalPages = computed(() => {
   return Math.ceil(length.value / itemsPerPage.value)
 })
+
+function changePage(newPage: number) {
+  router.push({
+    path: route.path,
+    query: { ...route.query, page: newPage === 1 ? undefined : newPage },
+  })
+}
+
+watch(
+  () => route.query.page,
+  (newPage) => {
+    if (+newPage! > totalPages.value) {
+      changePage(1)
+    }
+    if (newPage) {
+      emits('changePage', +newPage)
+    }
+    else {
+      emits('changePage', 1)
+    }
+  },
+  { immediate: true },
+)
 </script>
 
 <template>
@@ -34,7 +59,7 @@ const totalPages = computed(() => {
     <button
       class="text-slate-400 disabled:text-gray-300"
       :disabled="selectedPage === 1"
-      @click="emits('changePage', selectedPage - 1)"
+      @click="changePage(selectedPage - 1)"
     >
       <ChevronLeftIcon class="size-6" />
     </button>
@@ -47,14 +72,14 @@ const totalPages = computed(() => {
          rounded text-sm font-medium leading-5`,
         pageNumber === selectedPage && 'border border-slate-300 text-blue-600',
       )"
-      @click="emits('changePage', pageNumber)"
+      @click="changePage(pageNumber)"
     >
       {{ pageNumber }}
     </button>
     <button
       class="text-slate-400 disabled:text-gray-300"
       :disabled="selectedPage === totalPages"
-      @click="emits('changePage', selectedPage + 1)"
+      @click="changePage(selectedPage + 1)"
     >
       <ChevronRightIcon
         class="size-6"
