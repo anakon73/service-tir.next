@@ -125,9 +125,9 @@ const inStock = computed(() => {
             :key="i"
             :src="image"
             class="
-                h-10 w-14 rounded-lg border bg-white
-                p-2 lg:h-14 lg:w-[72px] lg:p-2.5
-                "
+            h-10 w-14 rounded-lg border bg-white
+            p-2 lg:h-14 lg:w-[72px] lg:p-2.5
+            "
           >
         </div>
       </div>
