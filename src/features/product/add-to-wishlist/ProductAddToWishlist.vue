@@ -19,6 +19,11 @@ const { liked } = toRefs(props)
 
 const emits = defineEmits<Emits>()
 
+function likeProduct(e: Event) {
+  e.preventDefault()
+  emits('like', !liked.value)
+}
+
 const computedIcon = computed(() => {
   return liked.value ? HeartIconSolid : HeartIcon
 })
@@ -32,7 +37,7 @@ const computedIcon = computed(() => {
         ? 'text-white bg-blue-600 hover:text-zinc-100 hover:bg-blue-700'
         : 'text-blue-600 bg-white hover:text-blue-700 hover:bg-zinc-100',
     )"
-    @click="emits('like', !liked)"
+    @click="likeProduct($event)"
   >
     <component :is="computedIcon" class="size-3" />
   </button>
