@@ -10,7 +10,8 @@ export const useUserStore = defineStore('user', () => {
   const loginError = ref<string | null>(null)
 
   const usersInLocalStorage = localStorage.getItem('users')
-  if (usersInLocalStorage) users.value = JSON.parse(usersInLocalStorage)._value
+  if (usersInLocalStorage)
+    users.value = JSON.parse(usersInLocalStorage)._value
 
   function registerNewUser(newUser: User) {
     users.value.push(newUser)
@@ -21,7 +22,7 @@ export const useUserStore = defineStore('user', () => {
   function login(userData: Omit<User, 'name'>) {
     loginError.value = null
 
-    const currentUser = users.value.find((u) => u.email === userData.email)
+    const currentUser = users.value.find(u => u.email === userData.email)
 
     if (currentUser) {
       if (currentUser.password === userData.password) {

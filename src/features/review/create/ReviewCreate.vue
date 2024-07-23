@@ -54,7 +54,8 @@ function close() {
 }
 
 function setRating(newRating: number) {
-  if (rating.value === newRating) rating.value = 0
+  if (rating.value === newRating)
+    rating.value = 0
   else rating.value = newRating
 }
 
@@ -67,12 +68,20 @@ watch(initialValues, (values) => {
   <SDialog size="lg" :open="open" @close="close">
     <form
       v-if="!successfully"
-      class="relative flex w-full flex-col items-center gap-8 px-6 md:px-[120px]"
+      class="
+        relative flex w-full flex-col items-center gap-8 px-6
+
+        md:px-[120px]
+      "
       @submit="onSubmit"
     >
       <button
         type="button"
-        class="absolute -top-4 right-4 focus:outline-0"
+        class="
+          absolute -top-4 right-4
+
+          focus:outline-0
+        "
         @click="close"
       >
         <XMarkIcon class="size-4" />
@@ -83,7 +92,14 @@ watch(initialValues, (values) => {
         >
           Залишити відгук
         </h1>
-        <div class="flex gap-3 whitespace-nowrap text-[10px] font-medium leading-[18px] text-slate-700 min-[425px]:gap-4 min-[425px]:text-xs">
+        <div
+          class="
+            flex gap-3 whitespace-nowrap text-[10px] font-medium leading-[18px]
+            text-slate-700
+
+            min-[425px]:gap-4 min-[425px]:text-xs
+          "
+        >
           <div
             v-for="(label, index) in labels"
             :key="index"
@@ -123,7 +139,11 @@ watch(initialValues, (values) => {
     </form>
     <div
       v-if="successfully"
-      class="flex flex-col items-center gap-8 px-6 md:px-[75px]"
+      class="
+        flex flex-col items-center gap-8 px-6
+
+        md:px-[75px]
+      "
     >
       <div class="flex flex-col items-center gap-3">
         <CheckCircleIcon class="size-[60px] text-emerald-500" />

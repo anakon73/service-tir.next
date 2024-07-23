@@ -22,11 +22,20 @@ const currentPageArticles = computed(() => {
 </script>
 
 <template>
-  <div class="container mb-24 lg:mb-[120px]">
+  <div
+    class="
+      container mb-24
+
+      lg:mb-[120px]
+    "
+  >
     <div
       class="
-      mb-9 flex items-center gap-1 text-xs text-gray-900
-      transition-colors duration-300 hover:text-gray-950 md:mb-10
+        mb-9 flex items-center gap-1 text-xs text-gray-900 transition-colors duration-300
+
+        hover:text-gray-950
+
+        md:mb-10
       "
     >
       <RouterLink to="/" class="opacity-50">
@@ -37,14 +46,18 @@ const currentPageArticles = computed(() => {
         Статті
       </p>
     </div>
-    <div class="mb-9 flex items-center gap-3 md:mb-10">
+    <div
+      class="
+        mb-9 flex items-center gap-3
+
+        md:mb-10
+      "
+    >
       <div class="paragraphIcon size-10 rounded-full bg-white p-2 text-lg">
         📝
       </div>
       <h1
-        class="
-            ml-3 mr-4 font-jakarta text-big font-bold leading-extra-height
-            "
+        class="ml-3 mr-4 font-jakarta text-big font-bold leading-extra-height"
       >
         Блог
       </h1>
@@ -62,7 +75,17 @@ const currentPageArticles = computed(() => {
       No Articles
     </div>
     <div v-else>
-      <div class="mb-10 grid gap-5 min-[400px]:grid-cols-2 sm:grid-cols-3 md:gap-y-12">
+      <div
+        class="
+          mb-10 grid gap-5
+
+          md:gap-y-12
+
+          min-[400px]:grid-cols-2
+
+          sm:grid-cols-3
+        "
+      >
         <SArticleCard
           v-for="article in currentPageArticles"
           :id="article.id"

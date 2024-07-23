@@ -18,8 +18,12 @@ export type ToKeyParams<T extends Record<string, unknown>> = {
   [K in keyof T]: KeyParam<T[K]>
 }
 
-export const paramsAnd = (params: Record<string, KeyParam<unknown>>) => and(...Object.values(params))
+export function paramsAnd(params: Record<string, KeyParam<unknown>>) {
+  return and(...Object.values(params))
+}
 
 // Misc
 export const SuccessfulResponse = z.object({ status: z.literal('success') })
-export const SuccessfulResponseMock = { status: 'success' } satisfies z.infer<typeof SuccessfulResponse>
+export const SuccessfulResponseMock = {
+  status: 'success',
+} satisfies z.infer<typeof SuccessfulResponse>

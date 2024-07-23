@@ -1,5 +1,5 @@
 <script setup lang="ts" generic="TModel extends CheckboxValue, TValue extends TModel">
-import { type InputHTMLAttributes } from 'vue'
+import type { InputHTMLAttributes } from 'vue'
 import { useVModel } from '@vueuse/core'
 
 import { type ClassValue, cn } from '@/shared/lib/styles'
@@ -13,7 +13,8 @@ export type CheckboxValue =
   | number
 
 export interface Props<
-  TModel extends CheckboxValue, TValue extends TModel,
+  TModel extends CheckboxValue,
+  TValue extends TModel,
 > extends /* @vue-ignore */ InputHTMLAttributes {
   id?: string
   subCheckbox?: boolean
@@ -55,8 +56,13 @@ const vModel = useVModel(props, 'modelValue', emit)
       v-model="vModel"
       :value="value"
       :class="cn(
-        `size-4 rounded-sm border-slate-300
-        checked:bg-blue-600 focus:ring-transparent`,
+        `
+          size-4 rounded-sm border-slate-300
+
+          checked:bg-blue-600
+
+          focus:ring-transparent
+        `,
         props.class ?? '',
       )"
       type="checkbox"
@@ -66,7 +72,7 @@ const vModel = useVModel(props, 'modelValue', emit)
       v-if="$slots.default"
       :for="id"
       :class="cn(
-        'text-sm uppercase text-gray-900 cursor-pointer',
+        'cursor-pointer text-sm uppercase text-gray-900',
         !subCheckbox && 'font-medium',
       )"
     >

@@ -46,6 +46,6 @@ export function normalizeArticle(
 ): Article {
   return {
     ...normalizeBaseArticle(article),
-    similarArticles: article.similar_articles.map((a) => normalizeArticleSimilar(a)),
+    similarArticles: article.similar_articles.map(a => normalizeArticleSimilar(a)),
   }
 }

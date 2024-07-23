@@ -10,16 +10,27 @@ import { useServicesByCategory } from '@/shared/api/service'
 
 const selectedCategory = ref<Categories>('TIR Сервіс')
 
-const { data: services, isLoading } = useServicesByCategory({ category: selectedCategory })
+const {
+  data: services,
+  isLoading,
+} = useServicesByCategory({ category: selectedCategory })
 </script>
 
 <template>
-  <div class="container mb-24 lg:mb-32">
+  <div
+    class="
+      container mb-24
+
+      lg:mb-32
+    "
+  >
     <div
       class="
-      mb-8 flex items-center gap-1 text-xs
-      text-gray-900 transition-colors duration-300
-      hover:text-gray-950 md:mb-10
+        mb-8 flex items-center gap-1 text-xs text-gray-900 transition-colors duration-300
+
+        hover:text-gray-950
+
+        md:mb-10
       "
     >
       <RouterLink to="/" class="cursor-pointer opacity-50">
@@ -36,8 +47,9 @@ const { data: services, isLoading } = useServicesByCategory({ category: selected
       </div>
       <h1
         class="
-        font-jakarta text-3xl font-bold leading-normal
-        text-gray-900 lg:text-big lg:leading-extra-height
+          font-jakarta text-3xl font-bold leading-normal text-gray-900
+
+          lg:text-big lg:leading-extra-height
         "
       >
         Наші послуги
@@ -60,7 +72,18 @@ const { data: services, isLoading } = useServicesByCategory({ category: selected
     >
       Not Found Services
     </div>
-    <div v-else class="grid gap-5 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-2">
+    <div
+      v-else
+      class="
+        grid gap-5
+
+        lg:grid-cols-2
+
+        md:grid-cols-3
+
+        sm:grid-cols-2
+      "
+    >
       <SServiceCard
         v-for="{ id, name, description, image } in services"
         :id="id"

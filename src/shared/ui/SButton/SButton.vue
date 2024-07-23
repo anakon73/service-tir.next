@@ -27,12 +27,12 @@ const props = withDefaults(defineProps<Props>(), {
   size: 'base',
 })
 
+const slots = defineSlots<Slots>()
+
 export interface Slots {
   default: any
   append: any
 }
-
-const slots = defineSlots<Slots>()
 
 const { icon } = toRefs(props)
 

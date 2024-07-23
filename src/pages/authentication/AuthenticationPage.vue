@@ -29,7 +29,8 @@ const showPassword = ref(false)
 const onSubmit = handleSubmit((result) => {
   showPassword.value = false
   login(result)
-  if (loginError === null) resetForm()
+  if (loginError === null)
+    resetForm()
 })
 
 watch(initialValues, (values) => {
@@ -99,8 +100,10 @@ watch(initialValues, (values) => {
         </Field>
         <p
           class="
-          ml-2 cursor-pointer text-xs font-medium leading-[18px] text-blue-600
-          transition-colors duration-300 hover:text-blue-800
+            ml-2 cursor-pointer text-xs font-medium leading-[18px] text-blue-600
+            transition-colors duration-300
+
+            hover:text-blue-800
           "
         >
           Забули пароль?

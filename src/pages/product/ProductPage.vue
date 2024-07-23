@@ -49,17 +49,27 @@ const inStock = computed(() => {
     Not Found Product
   </div>
 
-  <div v-else class="container mb-[100px] lg:mb-[120px]">
+  <div
+    v-else
+    class="
+      container mb-[100px]
+
+      lg:mb-[120px]
+    "
+  >
     <div
       class="
-      mb-9 flex items-center gap-1 text-xs text-gray-900
-      transition-colors duration-300 hover:text-gray-950 md:mb-10
+        mb-9 flex items-center gap-1 text-xs text-gray-900 transition-colors duration-300
+
+        hover:text-gray-950
+
+        md:mb-10
       "
     >
       <RouterLink to="/" class="opacity-50">
         Головна
       </RouterLink>
-      <ChevronRightIcon class="size-2 " />
+      <ChevronRightIcon class="size-2" />
       <RouterLink to="/catalog" class="opacity-50">
         Каталог
       </RouterLink>
@@ -69,13 +79,29 @@ const inStock = computed(() => {
       </p>
     </div>
 
-    <div class="relative mb-16 flex flex-col gap-7 md:flex-row md:gap-12">
+    <div
+      class="
+        relative mb-16 flex flex-col gap-7
+
+        md:flex-row md:gap-12
+      "
+    >
       <p
-        class="absolute top-10 hidden w-full text-right text-xs text-neutral-500/70 md:block"
+        class="
+          absolute top-10 hidden w-full text-right text-xs text-neutral-500/70
+
+          md:block
+        "
       >
         Код: {{ product.code }}
       </p>
-      <div class="flex flex-col gap-2 md:hidden">
+      <div
+        class="
+          flex flex-col gap-2
+
+          md:hidden
+        "
+      >
         <h1
           class="font-jakarta text-3xl font-bold leading-normal text-gray-900"
         >
@@ -109,31 +135,56 @@ const inStock = computed(() => {
       <div
         class="card relative flex flex-col gap-2 rounded-2xl bg-white p-3"
       >
-        <ProductAddToWishlist :liked="isLiked" class="absolute right-7 top-7" @like="isLiked = $event" />
+        <ProductAddToWishlist
+          :liked="isLiked"
+          class="absolute right-7 top-7"
+          @like="isLiked = $event"
+        />
         <div
-          class="mb-2 flex h-64 items-center justify-center rounded-2xl border bg-white md:h-80 md:max-w-[472px]"
+          class="
+            mb-2 flex h-64 items-center justify-center rounded-2xl border bg-white
+
+            md:h-80 md:max-w-[472px]
+          "
         >
           <img
-            class="h-64 object-cover p-2 md:h-80 md:max-w-[472px]"
+            class="
+              h-64 object-cover p-2
+
+              md:h-80 md:max-w-[472px]
+            "
             :src="product.image"
             alt="product image"
           >
         </div>
-        <div class="flex flex-wrap gap-1.5 md:gap-2">
+        <div
+          class="
+            flex flex-wrap gap-1.5
+
+            md:gap-2
+          "
+        >
           <img
             v-for="(image, i) in product.images"
             :key="i"
             :src="image"
             class="
-            h-10 w-14 rounded-lg border bg-white
-            p-2 lg:h-14 lg:w-[72px] lg:p-2.5
+              h-10 w-14 rounded-lg border bg-white p-2
+
+              lg:h-14 lg:w-[72px] lg:p-2.5
             "
           >
         </div>
       </div>
       <div class="flex flex-col justify-between gap-7">
         <div>
-          <div class="mb-7 hidden flex-col gap-2 md:flex">
+          <div
+            class="
+              mb-7 hidden flex-col gap-2
+
+              md:flex
+            "
+          >
             <h1 class="text-[32px] font-bold leading-[51px] text-gray-900">
               {{ product.name }}
             </h1>
@@ -160,7 +211,11 @@ const inStock = computed(() => {
             <SRating quantity :rating="product.rate" />
           </div>
           <div class="flex flex-col gap-3 text-sm text-gray-900">
-            <div v-for="(spec, i) in product.specs.slice(0, 6)" :key="i" class="flex gap-11">
+            <div
+              v-for="(spec, i) in product.specs.slice(0, 6)"
+              :key="i"
+              class="flex gap-11"
+            >
               <h2 class="w-40 font-semibold leading-small">
                 {{ spec.name }}
               </h2>
@@ -194,16 +249,25 @@ const inStock = computed(() => {
     </div>
 
     <div
-      class="mb-4 flex w-full gap-0 border-b border-gray-900/10 min-[425px]:gap-8 md:gap-[102px]"
+      class="
+        mb-4 flex w-full gap-0 border-b border-gray-900/10
+
+        md:gap-[102px]
+
+        min-[425px]:gap-8
+      "
     >
       <button
         class="
-        p-2 leading-6 text-black transition-colors
-        duration-300 hover:text-slate-600 min-[425px]:p-2.5
+          p-2 leading-6 text-black transition-colors duration-300
+
+          hover:text-slate-600
+
+          min-[425px]:p-2.5
         "
         :class="
           selectedView === 'description'
-            && 'underline decoration-2 underline-offset-[17px] font-semibold'
+            && 'font-semibold underline decoration-2 underline-offset-[17px]'
         "
         @click="selectedView = 'description'"
       >
@@ -211,12 +275,15 @@ const inStock = computed(() => {
       </button>
       <button
         class="
-        p-2 leading-6 text-black transition-colors
-        duration-300 hover:text-slate-600 min-[425px]:p-2.5
+          p-2 leading-6 text-black transition-colors duration-300
+
+          hover:text-slate-600
+
+          min-[425px]:p-2.5
         "
         :class="
           selectedView === 'specs'
-            && 'underline decoration-2 underline-offset-[17px] font-semibold'
+            && 'font-semibold underline decoration-2 underline-offset-[17px]'
         "
         @click="selectedView = 'specs'"
       >
@@ -224,12 +291,15 @@ const inStock = computed(() => {
       </button>
       <button
         class="
-        p-2 leading-6 text-black transition-colors
-        duration-300 hover:text-slate-600 min-[425px]:p-2.5
+          p-2 leading-6 text-black transition-colors duration-300
+
+          hover:text-slate-600
+
+          min-[425px]:p-2.5
         "
         :class="
           selectedView === 'reviews'
-            && 'underline decoration-2 underline-offset-[17px] font-semibold'
+            && 'font-semibold underline decoration-2 underline-offset-[17px]'
         "
         @click="selectedView = 'reviews'"
       >
@@ -240,8 +310,9 @@ const inStock = computed(() => {
     <div
       v-if="selectedView === 'description'"
       class="
-      mb-[100px] max-w-[947px] text-sm
-      leading-6 text-gray-900 md:mb-[120px]
+        mb-[100px] max-w-[947px] text-sm leading-6 text-gray-900
+
+        md:mb-[120px]
       "
     >
       {{ product.fullDescription }}
@@ -249,7 +320,13 @@ const inStock = computed(() => {
 
     <div
       v-if="selectedView === 'specs'"
-      class="mb-[100px] grid grid-cols-1 gap-x-20 gap-y-3 md:grid-cols-2 xl:grid-cols-3"
+      class="
+        mb-[100px] grid grid-cols-1 gap-x-20 gap-y-3
+
+        md:grid-cols-2
+
+        xl:grid-cols-3
+      "
     >
       <div
         v-for="(spec, i) in product.specs"
@@ -267,17 +344,41 @@ const inStock = computed(() => {
 
     <div
       v-if="selectedView === 'reviews'"
-      class="mb-[84px] lg:mb-[104px]"
+      class="
+        mb-[84px]
+
+        lg:mb-[104px]
+      "
     >
-      <div class="mb-8 items-center gap-3 md:flex">
+      <div
+        class="
+          mb-8 items-center gap-3
+
+          md:flex
+        "
+      >
         <p
-          class="text-base font-semibold leading-[30px] text-gray-800 md:text-[20px]"
+          class="
+            text-base font-semibold leading-[30px] text-gray-800
+
+            md:text-[20px]
+          "
         >
           Відгук про товар:
         </p>
-        <div class="gap-2 min-[425px]:flex">
+        <div
+          class="
+            gap-2
+
+            min-[425px]:flex
+          "
+        >
           <p
-            class="text-xs font-semibold leading-[30px] text-blue-600 md:text-base"
+            class="
+              text-xs font-semibold leading-[30px] text-blue-600
+
+              md:text-base
+            "
           >
             {{ product.name }}
           </p>

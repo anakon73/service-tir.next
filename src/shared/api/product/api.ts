@@ -28,8 +28,8 @@ export async function getProducts() {
   const { url, method, schema } = endpoints.getProducts
 
   return z.array(schema)
-    .parse(await fetch(url, { method }).then((r) => r.json()))
-    .map((product) => normalizeProduct(product))
+    .parse(await fetch(url, { method }).then(r => r.json()))
+    .map(product => normalizeProduct(product))
 }
 
 export type ProductByCodeParams = { code: number }
@@ -38,7 +38,7 @@ export async function productByCode({ code }: ProductByCodeParams) {
   const { url, method, schema } = endpoints.byCode
 
   return normalizeProduct(
-    schema.parse(await fetch(url({ code }), { method }).then((r) => r.json())),
+    schema.parse(await fetch(url({ code }), { method }).then(r => r.json())),
   )
 }
 
@@ -48,6 +48,6 @@ export async function productsSearch({ search }: ProductsSearchParams) {
   const { url, method, schema } = endpoints.search
 
   return z.array(schema)
-    .parse(await fetch(url({ search }), { method }).then((r) => r.json()))
-    .map((product) => normalizeProduct(product))
+    .parse(await fetch(url({ search }), { method }).then(r => r.json()))
+    .map(product => normalizeProduct(product))
 }

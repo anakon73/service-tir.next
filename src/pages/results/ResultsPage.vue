@@ -16,7 +16,7 @@ const selectedPage = ref(1)
 const { data, isFetching } = useProductsSearch({ search: searchValue })
 
 const filteredProducts = computed(() => {
-  return data.value?.filter((p) => (
+  return data.value?.filter(p => (
     p.name.toLocaleLowerCase().includes(searchValue.value.toLocaleLowerCase())
   ))
 })
@@ -43,11 +43,21 @@ const currentPageProducts = computed(() => {
     No Products
   </div>
 
-  <div v-else class="container mb-24 lg:mb-32">
+  <div
+    v-else
+    class="
+      container mb-24
+
+      lg:mb-32
+    "
+  >
     <div
       class="
-      mb-8 flex items-center gap-1 text-xs text-gray-900
-      transition-colors duration-300 hover:text-gray-950 md:mb-10
+        mb-8 flex items-center gap-1 text-xs text-gray-900 transition-colors duration-300
+
+        hover:text-gray-950
+
+        md:mb-10
       "
     >
       <RouterLink to="/" class="opacity-50">
@@ -58,26 +68,45 @@ const currentPageProducts = computed(() => {
         Результати пошуку «{{ searchValue }}»
       </p>
     </div>
-    <div class="mb-6 flex items-end gap-3 lg:mb-8">
+    <div
+      class="
+        mb-6 flex items-end gap-3
+
+        lg:mb-8
+      "
+    >
       <div class="paragraphIcon size-10 rounded-full bg-white p-2 text-lg">
         🛠️
       </div>
       <h1
         class="
-        self-center font-jakarta text-2xl font-bold leading-[26px]
-        text-gray-900 lg:text-[44px] lg:leading-extra-height
+          self-center font-jakarta text-2xl font-bold leading-[26px] text-gray-900
+
+          lg:text-[44px] lg:leading-extra-height
         "
       >
         Результати пошуку «{{ searchValue }}»
       </h1>
       <p
-        class="font-jakarta text-sm font-bold leading-4 text-gray-400 lg:text-xl lg:leading-small"
+        class="
+          font-jakarta text-sm font-bold leading-4 text-gray-400
+
+          lg:text-xl lg:leading-small
+        "
       >
         {{ filteredProducts.length }}
       </p>
     </div>
     <div
-      class="mb-10 grid gap-5 min-[400px]:grid-cols-2 sm:grid-cols-3 min-[880px]:grid-cols-4"
+      class="
+        mb-10 grid gap-5
+
+        min-[400px]:grid-cols-2
+
+        min-[880px]:grid-cols-4
+
+        sm:grid-cols-3
+      "
     >
       <div
         v-for="{

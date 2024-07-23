@@ -23,8 +23,8 @@ export async function getArticles() {
   const { url, method, schema } = endpoints.getArticles
 
   return z.array(schema)
-    .parse(await fetch(url, { method }).then((r) => r.json()))
-    .map((article) => normalizeArticle(article))
+    .parse(await fetch(url, { method }).then(r => r.json()))
+    .map(article => normalizeArticle(article))
 }
 
 export type ArticleByIdParams = { id: number }
@@ -33,6 +33,6 @@ export async function articleById({ id }: ArticleByIdParams) {
   const { url, method, schema } = endpoints.byId
 
   return normalizeArticle(
-    schema.parse(await fetch(url({ id }), { method }).then((r) => r.json())),
+    schema.parse(await fetch(url({ id }), { method }).then(r => r.json())),
   )
 }

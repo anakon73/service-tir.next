@@ -4,7 +4,13 @@ import { links } from './config'
 </script>
 
 <template>
-  <div class="hidden bg-gray-100 text-sm md:block">
+  <div
+    class="
+      hidden bg-gray-100 text-sm
+
+      md:block
+    "
+  >
     <ul
       class="
       flex w-full select-none items-center justify-center
@@ -19,8 +25,11 @@ import { links } from './config'
       >
         <p
           :class="cn(
-            `flex cursor-pointer px-2 py-5 transition-colors
-            duration-300 hover:text-slate-400`,
+            `
+              flex cursor-pointer px-2 py-5 transition-colors duration-300
+
+              hover:text-slate-400
+            `,
             isActive && 'font-bold underline decoration-2 underline-offset-[23px]',
           )"
         >

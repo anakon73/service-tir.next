@@ -15,9 +15,9 @@ export type Emits = {
 
 const props = defineProps<Props>()
 
-const { liked } = toRefs(props)
-
 const emits = defineEmits<Emits>()
+
+const { liked } = toRefs(props)
 
 function likeProduct(e: Event) {
   e.preventDefault()
@@ -32,10 +32,18 @@ const computedIcon = computed(() => {
 <template>
   <button
     :class="cn(
-      'p-1.5 rounded-full transition-colors duration-300',
+      'rounded-full p-1.5 transition-colors duration-300',
       liked
-        ? 'text-white bg-blue-600 hover:text-zinc-100 hover:bg-blue-700'
-        : 'text-blue-600 bg-white hover:text-blue-700 hover:bg-zinc-100',
+        ? `
+          bg-blue-600 text-white
+
+          hover:bg-blue-700 hover:text-zinc-100
+        `
+        : `
+          bg-white text-blue-600
+
+          hover:bg-zinc-100 hover:text-blue-700
+        `,
     )"
     @click="likeProduct($event)"
   >

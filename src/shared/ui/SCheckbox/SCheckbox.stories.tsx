@@ -58,16 +58,16 @@ export const ArrayModelValue: Story = {
       return () => (
         <>
           <div class="mb-4 flex flex-col gap-3">
-            {plans.map((plan) => (
+            {plans.map(plan => (
               <SCheckbox
-                  id={plan.id}
-                  key={plan.id}
-                  name="plan"
-                  v-model={selected.value}
-                  v-slots={{
-                    default: () => plan.name,
-                  }}
-                  value={plan.id}
+                id={plan.id}
+                key={plan.id}
+                name="plan"
+                v-model={selected.value}
+                v-slots={{
+                  default: () => plan.name,
+                }}
+                value={plan.id}
               />
             ))}
           </div>

@@ -6,7 +6,13 @@ import { SFooter } from '@/shared/ui/SFooter'
 <template>
   <div class="flex min-h-screen flex-col justify-between">
     <div>
-      <SHeader class="relative z-50 mb-10 md:mb-5" />
+      <SHeader
+        class="
+          relative z-50 mb-10
+
+          md:mb-5
+        "
+      />
       <slot />
     </div>
     <SFooter />

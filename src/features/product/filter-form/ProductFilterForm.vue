@@ -7,21 +7,21 @@ import { SCheckbox } from '@/shared/ui/SCheckbox'
 
 import { type FilterData, filterData } from './config'
 
-const selectedFilterData = ref<FilterData['id'][]>([])
-
 export interface Props {
   show: boolean
 }
-
-const props = defineProps<Props>()
-
-const { show } = toRefs(props)
 
 export type Emits = {
   close: []
 }
 
+const props = defineProps<Props>()
+
 const emits = defineEmits<Emits>()
+
+const { show } = toRefs(props)
+
+const selectedFilterData = ref<FilterData['id'][]>([])
 
 const minPrice = ref('')
 const maxPrice = ref('')
@@ -34,13 +34,15 @@ watch(show, () => {
 
 onMounted(() => {
   window.addEventListener('resize', () => {
-    if (innerWidth >= 1024 && show.value) emits('close')
+    if (innerWidth >= 1024 && show.value)
+      emits('close')
   })
 })
 
 onUnmounted(() => {
   window.removeEventListener('resize', () => {
-    if (innerWidth >= 1024 && show.value) emits('close')
+    if (innerWidth >= 1024 && show.value)
+      emits('close')
   })
 })
 </script>
@@ -49,22 +51,33 @@ onUnmounted(() => {
   <div>
     <div
       :class="cn(
-        'fixed z-30 size-full bg-black/10 lg:hidden',
+        `
+          fixed z-30 size-full bg-black/10
+
+          lg:hidden
+        `,
         show ? 'block' : 'hidden',
       )"
       @click="emits('close')"
     />
     <div
       :class="cn(
-        `card relative inline-flex h-screen w-full max-w-[270px] flex-col gap-5
-        transition-transform duration-300 ease-in-out bg-white pb-24 pl-5
-        overflow-y-auto overflow-x-hidden lg:rounded-2xl
-        pr-14 pt-5 lg:size-auto lg:pb-5 z-40`,
+        `
+          card relative z-40 inline-flex h-screen w-full max-w-[270px] flex-col gap-5
+          overflow-y-auto overflow-x-hidden bg-white pb-24 pl-5 pr-14 pt-5
+          transition-transform duration-300 ease-in-out
+
+          lg:size-auto lg:rounded-2xl lg:pb-5
+        `,
         !show && 'max-[1023px]:-translate-x-full',
       )"
     >
       <button
-        class="absolute right-2 top-2 block lg:hidden"
+        class="
+          absolute right-2 top-2 block
+
+          lg:hidden
+        "
         @click="emits('close')"
       >
         <XMarkIcon class="size-8" />
@@ -96,11 +109,15 @@ onUnmounted(() => {
             placeholder="Від"
             type="number"
             class="
-            w-[72px] rounded border border-slate-300 bg-white text-sm
-            font-semibold text-gray-900 [appearance:textfield]
-            placeholder:text-zinc-300
-            [&::-webkit-inner-spin-button]:appearance-none
-            [&::-webkit-outer-spin-button]:appearance-none
+              w-[72px] rounded border border-slate-300 bg-white text-sm font-semibold
+              text-gray-900
+
+              [&::-webkit-inner-spin-button]:appearance-none
+              [&::-webkit-outer-spin-button]:appearance-none
+
+              [appearance:textfield]
+
+              placeholder:text-zinc-300
             "
           >
           <p class="text-sm font-semibold text-gray-900">
@@ -111,11 +128,15 @@ onUnmounted(() => {
             placeholder="До"
             type="number"
             class="
-            w-[72px] rounded border border-slate-300 bg-white text-sm
-            font-semibold text-gray-900 [appearance:textfield]
-            placeholder:text-zinc-300
-            [&::-webkit-inner-spin-button]:appearance-none
-            [&::-webkit-outer-spin-button]:appearance-none
+              w-[72px] rounded border border-slate-300 bg-white text-sm font-semibold
+              text-gray-900
+
+              [&::-webkit-inner-spin-button]:appearance-none
+              [&::-webkit-outer-spin-button]:appearance-none
+
+              [appearance:textfield]
+
+              placeholder:text-zinc-300
             "
           >
         </div>
@@ -123,9 +144,10 @@ onUnmounted(() => {
       <div>
         <button
           class="
-          whitespace-nowrap rounded-large bg-blue-600 px-9 py-3 text-xs
-          font-bold text-white transition-colors duration-300
-          hover:bg-blue-700 hover:text-zinc-100
+            whitespace-nowrap rounded-large bg-blue-600 px-9 py-3 text-xs font-bold
+            text-white transition-colors duration-300
+
+            hover:bg-blue-700 hover:text-zinc-100
           "
           @click="emits('close')"
         >

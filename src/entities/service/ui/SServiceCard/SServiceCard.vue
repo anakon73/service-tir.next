@@ -15,13 +15,18 @@ defineProps<Props>()
 <template>
   <div
     class="
-    card flex max-w-[560px] flex-col gap-3
-    rounded-2xl p-3 lg:flex-row lg:gap-4 lg:pr-5
+      card flex max-w-[560px] flex-col gap-3 rounded-2xl p-3
+
+      lg:flex-row lg:gap-4 lg:pr-5
     "
   >
     <div>
       <img
-        class="h-40 w-full rounded-2xl object-cover lg:w-auto lg:max-w-52"
+        class="
+          h-40 w-full rounded-2xl object-cover
+
+          lg:w-auto lg:max-w-52
+        "
         :src="image"
         alt="service icon"
       >
@@ -35,7 +40,11 @@ defineProps<Props>()
           {{ description }}
         </p>
       </div>
-      <SButton :as="RouterLink" :to="{ name: 'Service', params: { id } }" class="self-start">
+      <SButton
+        :as="RouterLink"
+        :to="{ name: 'Service', params: { id } }"
+        class="self-start"
+      >
         Детальніше
       </SButton>
     </div>

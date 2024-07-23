@@ -8,7 +8,7 @@ export const productsHandlers = [
     const searchValue = url.searchParams.get('search')
 
     if (searchValue) {
-      const filteredProducts = products.filter((p) => (
+      const filteredProducts = products.filter(p => (
         p.name.toLocaleLowerCase().includes(searchValue.toLocaleLowerCase())
       ))
 
@@ -20,7 +20,7 @@ export const productsHandlers = [
   }),
   http.get('/api/products/:code', ({ params }) => {
     const { code } = params
-    const item = products.find((p) => p.code === +code)
+    const item = products.find(p => p.code === +code)
     return HttpResponse.json(item)
   }),
 ]

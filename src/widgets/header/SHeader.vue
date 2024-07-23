@@ -30,10 +30,13 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
     <div>
       <div
         :class="cn(
-          `fixed top-0 z-50 flex size-full flex-col gap-6 overflow-y-auto
-          bg-blue-600 px-8 py-7 text-white transition-all
-          duration-300 ease-in md:hidden`,
-          !isShowDropdown && 'opacity-0 -translate-y-full',
+          `
+            fixed top-0 z-50 flex size-full flex-col gap-6 overflow-y-auto bg-blue-600
+            px-8 py-7 text-white transition-all duration-300 ease-in
+
+            md:hidden
+          `,
+          !isShowDropdown && '-translate-y-full opacity-0',
         )"
       >
         <div class="flex items-center justify-between">
@@ -45,10 +48,22 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
             >
           </RouterLink>
           <button @click="isShowDropdown = false">
-            <XMarkIcon class="size-5 text-white hover:text-zinc-200" />
+            <XMarkIcon
+              class="
+                size-5 text-white
+
+                hover:text-zinc-200
+              "
+            />
           </button>
         </div>
-        <ul class="flex flex-col gap-5 transition-colors duration-300 hover:text-zinc-200">
+        <ul
+          class="
+            flex flex-col gap-5 transition-colors duration-300
+
+            hover:text-zinc-200
+          "
+        >
           <RouterLink to="/">
             Головна
           </RouterLink>
@@ -77,15 +92,27 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
           class="flex items-center gap-2"
         >
           <UserIcon
-            class="size-5 text-white group-hover:text-zinc-200"
+            class="
+              size-5 text-white
+
+              group-hover:text-zinc-200
+            "
           />
           <div class="text-xs font-medium">
-            <p class="transition-colors duration-300 hover:text-zinc-200">
+            <p
+              class="
+                transition-colors duration-300
+
+                hover:text-zinc-200
+              "
+            >
               Олександр
             </p>
             <p
               class="
-              text-white transition-colors duration-300 hover:text-zinc-200
+                text-white transition-colors duration-300
+
+                hover:text-zinc-200
               "
             >
               Вийти
@@ -98,66 +125,103 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
           class="group flex items-center gap-2"
         >
           <UserIcon
-            class="size-5 text-white group-hover:text-zinc-200"
+            class="
+              size-5 text-white
+
+              group-hover:text-zinc-200
+            "
           />
-          <p class="transition-colors duration-300 group-hover:text-zinc-200">
+          <p
+            class="
+              transition-colors duration-300
+
+              group-hover:text-zinc-200
+            "
+          >
             Особистий кабінет
           </p>
         </RouterLink>
         <button class="group flex items-center gap-2">
           <div class="relative">
             <HeartIcon
-              class="size-5 text-white group-hover:text-zinc-200"
+              class="
+                size-5 text-white
+
+                group-hover:text-zinc-200
+              "
             />
             <div
               id="favorite"
               class="
-              absolute -top-0.5 left-3.5 inline-flex h-2.5 items-center
-              justify-center rounded-full border border-white bg-cyan-100
-              px-0.5 text-center text-[8px] text-sky-500
+                absolute -top-0.5 left-3.5 inline-flex h-2.5 items-center justify-center
+                rounded-full border border-white bg-cyan-100 px-0.5 text-center text-[8px]
+                text-sky-500
               "
             >
               0
             </div>
           </div>
-          <p class="transition-colors duration-300 group-hover:text-zinc-200">
+          <p
+            class="
+              transition-colors duration-300
+
+              group-hover:text-zinc-200
+            "
+          >
             Обране
           </p>
         </button>
         <div class="group">
           <div
             class="
-            flex items-center gap-2 transition-colors
-            duration-300 group-hover:text-zinc-200
+              flex items-center gap-2 transition-colors duration-300
+
+              group-hover:text-zinc-200
             "
           >
             <div class="relative">
               <ShoppingCartIcon
-                class="size-5 text-white group-hover:text-zinc-200"
+                class="
+                  size-5 text-white
+
+                  group-hover:text-zinc-200
+                "
               />
               <div
                 class="
-                absolute -top-0.5 left-3.5 inline-flex h-2.5 items-center
-                justify-center rounded-full border border-white bg-green-100
-                px-0.5 text-center text-[8px] text-emerald-500
+                  absolute -top-0.5 left-3.5 inline-flex h-2.5 items-center justify-center
+                  rounded-full border border-white bg-green-100 px-0.5 text-center
+                  text-[8px] text-emerald-500
                 "
               >
                 6
               </div>
             </div>
             <div class="flex gap-2">
-              <p>&#8372; {{ Number('10000').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") }}</p>
+              <p>
+                &#8372;
+                {{ Number('10000').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") }}
+              </p>
               <p>Кошик</p>
             </div>
           </div>
         </div>
         <ProductSearch mobile />
       </div>
-      <header class="relative z-20 py-7 text-sm text-gray-900 md:py-5">
+      <header
+        class="
+          relative z-20 py-7 text-sm text-gray-900
+
+          md:py-5
+        "
+      >
         <div
           class="
-          mx-auto hidden items-center justify-between
-          gap-2 px-8 md:flex xl:max-w-[1440px] xl:px-36
+            mx-auto hidden items-center justify-between gap-2 px-8
+
+            md:flex
+
+            xl:max-w-[1440px] xl:px-36
           "
         >
           <RouterLink to="/">
@@ -176,7 +240,11 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
               class="flex items-center gap-1"
             >
               <UserIcon
-                class="size-5 text-gray-900 hover:text-gray-950"
+                class="
+                  size-5 text-gray-900
+
+                  hover:text-gray-950
+                "
               />
               <div class="text-xs font-medium">
                 <p class="transition-colors duration-300">
@@ -185,8 +253,9 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
                 <a href="/">
                   <p
                     class="
-                    text-blue-600 transition-colors
-                    duration-300 hover:text-blue-800
+                      text-blue-600 transition-colors duration-300
+
+                      hover:text-blue-800
                     "
                   >
                     Вийти
@@ -195,19 +264,29 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
               </div>
             </div>
             <RouterLink v-else to="/authentication">
-              <UserIcon class="size-5 text-gray-900 hover:text-gray-950" />
+              <UserIcon
+                class="
+                  size-5 text-gray-900
+
+                  hover:text-gray-950
+                "
+              />
             </RouterLink>
 
             <button class="relative">
               <HeartIcon
-                class="size-5 text-gray-900 hover:text-gray-950"
+                class="
+                  size-5 text-gray-900
+
+                  hover:text-gray-950
+                "
               />
               <div
                 id="favorite"
                 class="
-                absolute -top-0.5 left-3.5 inline-flex h-2.5 items-center
-                justify-center rounded-full border border-white bg-cyan-100
-                px-0.5 text-center text-[8px] text-sky-500
+                  absolute -top-0.5 left-3.5 inline-flex h-2.5 items-center justify-center
+                  rounded-full border border-white bg-cyan-100 px-0.5 text-center
+                  text-[8px] text-sky-500
                 "
               >
                 0
@@ -216,25 +295,36 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
             <button class="flex items-center gap-2">
               <div class="relative">
                 <ShoppingCartIcon
-                  class="size-5 text-gray-900 hover:text-gray-950"
+                  class="
+                    size-5 text-gray-900
+
+                    hover:text-gray-950
+                  "
                 />
                 <div
                   class="
-                  absolute -top-0.5 left-3.5 inline-flex h-2.5 items-center
-                  justify-center rounded-full border border-white bg-green-100
-                  px-0.5 text-center text-[8px] text-emerald-500
+                    absolute -top-0.5 left-3.5 inline-flex h-2.5 items-center
+                    justify-center rounded-full border border-white bg-green-100 px-0.5
+                    text-center text-[8px] text-emerald-500
                   "
                 >
                   6
                 </div>
               </div>
               <div class="max-w-[80px] truncate">
-                &#8372; {{ Number('10000').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") }}
+                &#8372;
+                {{ Number('10000').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") }}
               </div>
             </button>
           </div>
         </div>
-        <div class="px-5 md:hidden">
+        <div
+          class="
+            px-5
+
+            md:hidden
+          "
+        >
           <div class="flex items-center justify-between">
             <RouterLink to="/">
               <img
@@ -248,13 +338,23 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
               @click="isShowDropdown = true"
             >
               <Bars3Icon
-                class="text-gray-900 hover:text-gray-950"
+                class="
+                  text-gray-900
+
+                  hover:text-gray-950
+                "
               />
             </button>
           </div>
         </div>
       </header>
     </div>
-    <SNavbar class="hidden md:block" />
+    <SNavbar
+      class="
+        hidden
+
+        md:block
+      "
+    />
   </div>
 </template>

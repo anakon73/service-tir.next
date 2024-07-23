@@ -15,11 +15,11 @@ export interface Props {
 
 defineProps<Props>()
 
+const $slots = defineSlots<Slots>()
+
 export interface Slots {
   default?: () => any
 }
-
-const $slots = defineSlots<Slots>()
 
 const modules = [Navigation, Pagination]
 
@@ -85,8 +85,9 @@ const next = ref(null)
       <button
         ref="prev"
         class="
-        paragraphIcon rounded-full bg-white p-2 transition-all
-        duration-300 hover:scale-105 hover:bg-zinc-50
+          paragraphIcon rounded-full bg-white p-2 transition-all duration-300
+
+          hover:scale-105 hover:bg-zinc-50
         "
       >
         <ChevronLeftIcon class="size-6" />
@@ -95,8 +96,9 @@ const next = ref(null)
       <button
         ref="next"
         class="
-        paragraphIcon rounded-full bg-white p-2 transition-all
-        duration-300 hover:scale-105 hover:bg-zinc-50
+          paragraphIcon rounded-full bg-white p-2 transition-all duration-300
+
+          hover:scale-105 hover:bg-zinc-50
         "
       >
         <ChevronRightIcon class="size-6" />

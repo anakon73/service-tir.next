@@ -29,7 +29,11 @@ defineProps<Props>()
     <p
       v-if="quantity"
       aria-label="quantity"
-      class="ml-1 whitespace-nowrap text-[10px] lg:text-xs"
+      class="
+        ml-1 whitespace-nowrap text-[10px]
+
+        lg:text-xs
+      "
     >
       <span class="font-medium leading-5 text-blue-600">{{
         rating.rate

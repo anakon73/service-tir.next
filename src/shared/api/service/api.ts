@@ -30,8 +30,8 @@ export async function servicesByCategory(
   const { url, method, schema } = endpoints.byCategory
 
   return z.array(schema)
-    .parse(await fetch(url({ category }), { method }).then((r) => r.json()))
-    .map((service) => normalizeService(service))
+    .parse(await fetch(url({ category }), { method }).then(r => r.json()))
+    .map(service => normalizeService(service))
 }
 
 export type ServiceByIdParams = { id: number }
@@ -40,6 +40,6 @@ export async function serviceById({ id }: ServiceByIdParams) {
   const { url, method, schema } = endpoints.byId
 
   return normalizeService(
-    schema.parse(await fetch(url({ id }), { method }).then((r) => r.json())),
+    schema.parse(await fetch(url({ id }), { method }).then(r => r.json())),
   )
 }

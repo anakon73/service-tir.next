@@ -15,11 +15,11 @@ const props = withDefaults(defineProps<Props>(), {
   itemsPerPage: 18,
 })
 
+const emits = defineEmits<Emits>()
+
 export type Emits = {
   changePage: [page: number]
 }
-
-const emits = defineEmits<Emits>()
 
 const { itemsPerPage, length, selectedPage } = toRefs(props)
 
@@ -57,7 +57,11 @@ watch(
 <template>
   <div class="flex items-center justify-center gap-2">
     <button
-      class="text-slate-400 disabled:text-gray-300"
+      class="
+        text-slate-400
+
+        disabled:text-gray-300
+      "
       :disabled="selectedPage === 1"
       @click="changePage(selectedPage - 1)"
     >
@@ -77,7 +81,11 @@ watch(
       {{ pageNumber }}
     </button>
     <button
-      class="text-slate-400 disabled:text-gray-300"
+      class="
+        text-slate-400
+
+        disabled:text-gray-300
+      "
       :disabled="selectedPage === totalPages"
       @click="changePage(selectedPage + 1)"
     >

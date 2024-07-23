@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import type { z } from 'zod'
 import type { PriceSchema, ServiceSchema } from '../service'
 

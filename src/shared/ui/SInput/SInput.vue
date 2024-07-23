@@ -10,13 +10,13 @@ export interface Props extends /* @vue-ignore */ InputHTMLAttributes {
   small?: boolean
 }
 
-const props = defineProps<Props>()
-
-const modelValue = defineModel<string>()
-
 defineOptions({
   inheritAttrs: false,
 })
+
+const props = defineProps<Props>()
+
+const modelValue = defineModel<string>()
 </script>
 
 <template>
@@ -30,7 +30,11 @@ defineOptions({
     <input
       v-model="modelValue"
       :class="cn(
-        'rounded-lg border-slate-300 p-4 focus:ring-0',
+        `
+          rounded-lg border-slate-300 p-4
+
+          focus:ring-0
+        `,
         props.small && 'text-sm font-semibold leading-small',
         props.class ?? '',
       )"

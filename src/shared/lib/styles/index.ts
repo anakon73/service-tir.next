@@ -26,7 +26,6 @@ export type AsTag =
   | 'svg'
   | 'ul'
   | 'template'
-  // eslint-disable-next-line @typescript-eslint/ban-types
   | ({} & string) // any other string
 
 export function cn(...inputs: ClassValue[]) {

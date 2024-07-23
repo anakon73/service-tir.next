@@ -32,12 +32,25 @@ const currentPageProducts = computed(() => {
 <template>
   <div
     class="
-    container mb-24 px-5 max-[425px]:px-3
-    lg:mb-32 xl:px-24 min-[1400px]:px-[150px]
+      container mb-24 px-5
+
+      lg:mb-32
+
+      max-[425px]:px-3
+
+      min-[1400px]:px-[150px]
+
+      xl:px-24
     "
   >
     <div
-      class="mb-8 flex items-center gap-1 text-xs text-gray-900 transition-colors duration-300 hover:text-gray-950 md:mb-10"
+      class="
+        mb-8 flex items-center gap-1 text-xs text-gray-900 transition-colors duration-300
+
+        hover:text-gray-950
+
+        md:mb-10
+      "
     >
       <RouterLink to="/" class="opacity-50">
         Головна
@@ -47,21 +60,42 @@ const currentPageProducts = computed(() => {
         Каталог
       </p>
     </div>
-    <div class="mb-6 flex items-center gap-3 md:mb-8">
+    <div
+      class="
+        mb-6 flex items-center gap-3
+
+        md:mb-8
+      "
+    >
       <div class="paragraphIcon size-10 rounded-full bg-white p-2 text-lg">
         🛠️
       </div>
       <h1
         class="
-        font-jakarta text-3xl font-bold leading-normal
-        text-gray-900 lg:text-big lg:leading-extra-height
+          font-jakarta text-3xl font-bold leading-normal text-gray-900
+
+          lg:text-big lg:leading-extra-height
         "
       >
         Каталог товарів
       </h1>
     </div>
-    <div class="gap-3 lg:flex xl:gap-5">
-      <div class="fixed left-0 top-0 z-20 lg:relative">
+    <div
+      class="
+        gap-3
+
+        lg:flex
+
+        xl:gap-5
+      "
+    >
+      <div
+        class="
+          fixed left-0 top-0 z-20
+
+          lg:relative
+        "
+      >
         <ProductFilterForm
           :show="showFilters"
           @close="showFilters = false"
@@ -76,8 +110,9 @@ const currentPageProducts = computed(() => {
       <div v-else>
         <button
           class="
-          card mb-8 flex w-full items-center
-          justify-between rounded-2xl px-6 py-3 lg:hidden
+            card mb-8 flex w-full items-center justify-between rounded-2xl px-6 py-3
+
+            lg:hidden
           "
           @click="showFilters = true"
         >
@@ -91,8 +126,15 @@ const currentPageProducts = computed(() => {
         </button>
         <div
           class="
-          mb-10 grid gap-5 min-[400px]:grid-cols-2
-          sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-3
+            mb-10 grid gap-5
+
+            lg:grid-cols-3
+
+            md:grid-cols-4
+
+            min-[400px]:grid-cols-2
+
+            sm:grid-cols-3
           "
         >
           <ProductCard

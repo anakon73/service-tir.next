@@ -5,21 +5,27 @@ import { SButton } from '@/shared/ui/SButton'
 
 <template>
   <div
-    class="contactCard inline-block rounded-2xl bg-white p-8 min-[425px]:pr-16"
+    class="
+      contactCard inline-block rounded-2xl bg-white p-8
+
+      min-[425px]:pr-16
+    "
   >
     <div class="mb-9 flex items-center gap-3">
       <div
         class="
-        paragraphIcon hidden size-10 rounded-full
-        bg-white p-2 text-lg min-[425px]:block
+          paragraphIcon hidden size-10 rounded-full bg-white p-2 text-lg
+
+          min-[425px]:block
         "
       >
         📱
       </div>
       <h1
         class="
-        whitespace-nowrap font-jakarta text-3xl font-bold
-        leading-normal text-gray-900 lg:text-big lg:leading-extra-height
+          whitespace-nowrap font-jakarta text-3xl font-bold leading-normal text-gray-900
+
+          lg:text-big lg:leading-extra-height
         "
       >
         Наші контакти
@@ -36,8 +42,9 @@ import { SButton } from '@/shared/ui/SButton'
       </div>
       <div
         class="
-        flex flex-col gap-2.5 transition-colors
-        duration-300 hover:text-zinc-900
+          flex flex-col gap-2.5 transition-colors duration-300
+
+          hover:text-zinc-900
         "
       >
         <div class="font-bold">
@@ -55,8 +62,9 @@ import { SButton } from '@/shared/ui/SButton'
       </div>
       <div
         class="
-        flex flex-col gap-2.5 transition-colors
-        duration-300 hover:text-zinc-900
+          flex flex-col gap-2.5 transition-colors duration-300
+
+          hover:text-zinc-900
         "
       >
         <div class="font-bold">

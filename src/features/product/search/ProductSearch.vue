@@ -46,8 +46,9 @@ onKeyDown('Enter', () => {
       <RouterLink
         :to="{ path: '/results', query: { search_query: searchValue } }"
         class="
-        rounded-[20px] bg-gray-100 p-3
-        transition-colors duration-300 hover:bg-gray-200
+          rounded-[20px] bg-gray-100 p-3 transition-colors duration-300
+
+          hover:bg-gray-200
         "
       >
         <MagnifyingGlassIcon class="size-6 text-slate-700" />
@@ -55,9 +56,13 @@ onKeyDown('Enter', () => {
       <input
         v-model="searchValue"
         class="
-        w-full border-x-0 border-b border-t-0 border-gray-100
-        p-0 pb-2 text-xs font-medium leading-7 text-gray-900
-        placeholder:text-slate-500 focus:ring-0"
+          w-full border-x-0 border-b border-t-0 border-gray-100 p-0 pb-2 text-xs
+          font-medium leading-7 text-gray-900
+
+          focus:ring-0
+
+          placeholder:text-slate-500
+        "
         type="text"
         placeholder="Напишіть назву товару"
         @focus="isFocus = true"
@@ -67,8 +72,8 @@ onKeyDown('Enter', () => {
     <div
       v-if="searchValue && data?.length && isFocus"
       class="
-      absolute top-[54px] z-10 flex w-full
-      flex-col gap-1 rounded-2xl bg-white shadow-2xl
+        absolute top-[54px] z-10 flex w-full flex-col gap-1 rounded-2xl bg-white
+        shadow-2xl
       "
     >
       <div
@@ -89,8 +94,10 @@ onKeyDown('Enter', () => {
       <RouterLink
         :to="{ path: '/results', query: { search_query: searchValue } }"
         class="
-        px-2 py-3 text-left text-sm font-semibold leading-small
-        text-blue-600 transition-colors duration-300 hover:text-blue-800
+          px-2 py-3 text-left text-sm font-semibold leading-small text-blue-600
+          transition-colors duration-300
+
+          hover:text-blue-800
         "
       >
         Показати всі ({{ data.length }})
@@ -109,8 +116,9 @@ onKeyDown('Enter', () => {
       <RouterLink
         :to="{ path: '/results', query: { search_query: searchValue } }"
         class="
-        rounded-[14px] bg-gray-100 p-2.5
-        transition-colors duration-300 hover:bg-gray-200
+          rounded-[14px] bg-gray-100 p-2.5 transition-colors duration-300
+
+          hover:bg-gray-200
         "
       >
         <MagnifyingGlassIcon class="size-6 text-slate-700" />
@@ -118,9 +126,12 @@ onKeyDown('Enter', () => {
       <input
         v-model="searchValue"
         class="
-        w-full border-x-0 border-b border-t-0 border-zinc-50
-        bg-blue-600 p-0 pb-2 text-xs font-medium leading-7 text-white
-        placeholder:text-white/50 focus:border-white focus:ring-0
+          w-full border-x-0 border-b border-t-0 border-zinc-50 bg-blue-600 p-0 pb-2
+          text-xs font-medium leading-7 text-white
+
+          focus:border-white focus:ring-0
+
+          placeholder:text-white/50
         "
         type="text"
         placeholder="Напишіть назву товару"

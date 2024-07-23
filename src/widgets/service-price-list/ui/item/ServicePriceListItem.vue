@@ -30,16 +30,36 @@ const duration = computed(() => {
 <template>
   <div
     :class="cn(
-      'py-2 tracking-[0.32px] text-gray-900 md:flex',
+      `
+        py-2 tracking-[0.32px] text-gray-900
+
+        md:flex
+      `,
       props.secondary
-        ? 'bg-gray-100 py-2 tracking-[0.32px] text-gray-900 md:flex'
+        ? `
+          bg-gray-100 py-2 tracking-[0.32px] text-gray-900
+
+          md:flex
+        `
         : 'bg-white',
     )"
   >
-    <p class="w-full p-3 font-medium md:max-w-[63%] md:truncate">
+    <p
+      class="
+        w-full p-3 font-medium
+
+        md:max-w-[63%] md:truncate
+      "
+    >
       {{ props.name }}
     </p>
-    <div class="flex w-full md:max-w-[37%]">
+    <div
+      class="
+        flex w-full
+
+        md:max-w-[37%]
+      "
+    >
       <p class="w-full max-w-[63.6%] p-3">
         {{ duration }}
       </p>

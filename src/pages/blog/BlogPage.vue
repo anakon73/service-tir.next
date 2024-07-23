@@ -45,8 +45,12 @@ const formattedDate = computed(() => format(data.value!.date, 'd MMMM u'))
     <div v-else>
       <div
         class="
-        mb-6 flex items-center gap-1 text-xs text-gray-900
-        transition-colors duration-300 hover:text-gray-950 md:mb-12
+          mb-6 flex items-center gap-1 text-xs text-gray-900 transition-colors
+          duration-300
+
+          hover:text-gray-950
+
+          md:mb-12
         "
       >
         <RouterLink to="/" class="opacity-50">
@@ -65,7 +69,13 @@ const formattedDate = computed(() => format(data.value!.date, 'd MMMM u'))
         <p class="mb-4 text-xs font-semibold leading-5 text-gray-400">
           {{ formattedDate }}
         </p>
-        <h1 class="mb-6 text-3xl font-semibold text-zinc-900 lg:text-big">
+        <h1
+          class="
+            mb-6 text-3xl font-semibold text-zinc-900
+
+            lg:text-big
+          "
+        >
           {{ data.name }}
         </h1>
         <div
@@ -78,14 +88,17 @@ const formattedDate = computed(() => format(data.value!.date, 'd MMMM u'))
             class="flex flex-col gap-7"
           >
             <img
-              class="rounded-lg "
+              class="rounded-lg"
               :src="image"
               :alt="`paragraph ${index} image`"
             >
             <div
               class="
-              flex flex-col gap-7 text-xs leading-5 text-gray-900
-              md:text-sm lg:text-base lg:leading-6
+                flex flex-col gap-7 text-xs leading-5 text-gray-900
+
+                lg:text-base lg:leading-6
+
+                md:text-sm
               "
             >
               <p v-for="(t, i) in text" :key="i">
@@ -103,7 +116,11 @@ const formattedDate = computed(() => format(data.value!.date, 'd MMMM u'))
             📝
           </div>
           <div
-            class="font-jakarta text-3xl font-bold leading-normal text-gray-900 lg:text-big lg:leading-extra-height"
+            class="
+              font-jakarta text-3xl font-bold leading-normal text-gray-900
+
+              lg:text-big lg:leading-extra-height
+            "
           >
             Схожі статті
           </div>
@@ -140,14 +157,22 @@ const formattedDate = computed(() => format(data.value!.date, 'd MMMM u'))
       <div class="mt-5 flex items-end justify-center gap-5">
         <button
           ref="prev"
-          class="paragraphIcon rounded-full bg-white p-2 transition-all duration-300 hover:scale-105 hover:bg-zinc-50"
+          class="
+            paragraphIcon rounded-full bg-white p-2 transition-all duration-300
+
+            hover:scale-105 hover:bg-zinc-50
+          "
         >
           <ChevronLeftIcon class="size-6" />
         </button>
         <div ref="pagination" class="!relative !w-auto" />
         <button
           ref="next"
-          class="paragraphIcon rounded-full bg-white p-2 transition-all duration-300 hover:scale-105 hover:bg-zinc-50"
+          class="
+            paragraphIcon rounded-full bg-white p-2 transition-all duration-300
+
+            hover:scale-105 hover:bg-zinc-50
+          "
         >
           <ChevronRightIcon class="size-6" />
         </button>

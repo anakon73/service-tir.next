@@ -17,8 +17,8 @@ defineProps<Props>()
   <RouterLink
     :to="{ name: 'Product', params: { code } }"
     class="
-    flex w-full max-w-[504px] items-center
-    justify-between rounded-2xl bg-white px-4 py-3
+      flex w-full max-w-[504px] items-center justify-between rounded-2xl bg-white px-4
+      py-3
     "
   >
     <div class="flex items-center gap-3">

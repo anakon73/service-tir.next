@@ -11,7 +11,14 @@ import { normalizeReview } from '../review'
 
 export function normalizeBaseProduct(
   product: z.infer<typeof BaseProductSchema>,
-): Omit<Product, 'similarProducts' | 'fullDescription' | 'images' | 'reviews' | 'quantity'> {
+): Omit<
+    Product,
+    'similarProducts'
+    | 'fullDescription'
+    | 'images'
+    | 'reviews'
+    | 'quantity'
+  > {
   return {
     ...objectPick(product, [
       'code',
@@ -29,7 +36,15 @@ export function normalizeBaseProduct(
 
 export function normalizeProductSimilar(
   product: z.infer<typeof ProductSimilarSchema>,
-): Omit<Product, 'specs' | 'similarProducts' | 'fullDescription' | 'images' | 'reviews' | 'quantity'> {
+): Omit<
+    Product,
+    'specs'
+    | 'similarProducts'
+    | 'fullDescription'
+    | 'images'
+    | 'reviews'
+    | 'quantity'
+  > {
   return {
     ...objectPick(product, [
       'code',
@@ -50,8 +65,8 @@ export function normalizeProduct(
   return {
     ...objectPick(product, ['images', 'quantity']),
     ...normalizeBaseProduct(product),
-    reviews: product.reviews.map((r) => normalizeReview(r)),
-    similarProducts: product.similar_products.map((p) => normalizeProductSimilar(p)),
+    reviews: product.reviews.map(r => normalizeReview(r)),
+    similarProducts: product.similar_products.map(p => normalizeProductSimilar(p)),
     fullDescription: product.full_description,
   }
 }

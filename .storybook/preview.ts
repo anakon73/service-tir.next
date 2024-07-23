@@ -1,13 +1,13 @@
-import { setup, type Preview } from "@storybook/vue3";
-import { mswDecorator , initialize } from 'msw-storybook-addon'
+import { type Preview, setup } from '@storybook/vue3'
+import { initialize, mswDecorator } from 'msw-storybook-addon'
 
 import { applyProviders } from '@/app/providers'
 import { handlers } from '@/shared/api/handlers'
 
-import '@/app/styles/index.css';
+import '@/app/styles/index.css'
 
 initialize({
-  onUnhandledRequest: 'bypass'
+  onUnhandledRequest: 'bypass',
 })
 
 setup((app) => {
@@ -16,7 +16,7 @@ setup((app) => {
 
 const preview: Preview = {
   parameters: {
-    actions: { argTypesRegex: "^on[A-Z].*" },
+    actions: { argTypesRegex: '^on[A-Z].*' },
     controls: {
       matchers: {
         color: /(background|color)$/i,
@@ -24,9 +24,9 @@ const preview: Preview = {
       },
     },
     layout: 'centered',
-    msw: { handlers }
+    msw: { handlers },
   },
   decorators: [mswDecorator],
-};
+}
 
-export default preview;
+export default preview

@@ -12,13 +12,13 @@ export const serviceHandlers = [
     }
     else {
       return HttpResponse.json(
-        services.filter((service) => service.category === category),
+        services.filter(service => service.category === category),
       )
     }
   }),
   http.get('/api/services/:id', ({ params }) => {
     const { id } = params
-    const item = services.find((i) => i.id === +id)
+    const item = services.find(i => i.id === +id)
     return HttpResponse.json(item)
   }),
 ]

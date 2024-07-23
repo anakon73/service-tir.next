@@ -23,8 +23,8 @@ export async function getReviews() {
   const { url, method, schema } = endpoints.getReviews
 
   return z.array(schema)
-    .parse(await fetch(url, { method }).then((r) => r.json()))
-    .map((review) => normalizeReview(review))
+    .parse(await fetch(url, { method }).then(r => r.json()))
+    .map(review => normalizeReview(review))
 }
 
 export type CreateReviewParams = {

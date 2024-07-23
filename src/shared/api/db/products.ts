@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import type { z } from 'zod'
 import type {
   BaseProductSchema,
@@ -507,7 +508,7 @@ const baseProducts: z.infer<typeof BaseProductSchema>[] = [
 function generateProducts(
   productsArray: z.infer<typeof BaseProductSchema>[],
 ): z.infer<typeof ProductSchema>[] {
-  return productsArray.map((product) => ({
+  return productsArray.map(product => ({
     ...product,
     full_description,
     reviews: Array.from(
@@ -517,7 +518,7 @@ function generateProducts(
     quantity: Math.floor(Math.random() * 11),
     images: Array.from({ length: 6 }, () => product.image),
     similar_products: baseProducts
-      .filter((p) => p.code !== product.code)
+      .filter(p => p.code !== product.code)
       .slice(0, 7),
   }))
 }

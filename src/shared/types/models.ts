@@ -26,7 +26,8 @@ export interface Product {
   priceWithDiscount: number | null
   specs: Specs
   similarProducts: Omit<
-  Product, 'specs' | 'similarProducts' | 'fullDescription' | 'images' | 'reviews' | 'quantity'
+    Product,
+'specs' | 'similarProducts' | 'fullDescription' | 'images' | 'reviews' | 'quantity'
   >[]
   fullDescription: string
   images: string[]
@@ -77,15 +78,15 @@ export interface Service {
   fullDescription: string
   image: string
   category:
-  'TIR Сервіс'
-  | 'Віділ запчастин'
-  | 'Мотор сервіс'
-  | 'Турбо сервіс'
-  | 'Металообробка'
-  | 'Мийка, шиномонтаж'
-  | 'Вантажні перевезення'
-  | 'Стоянка TIR'
-  | 'Тех. огляд'
+    'TIR Сервіс'
+    | 'Віділ запчастин'
+    | 'Мотор сервіс'
+    | 'Турбо сервіс'
+    | 'Металообробка'
+    | 'Мийка, шиномонтаж'
+    | 'Вантажні перевезення'
+    | 'Стоянка TIR'
+    | 'Тех. огляд'
   prices: Price[]
 }
 

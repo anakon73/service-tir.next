@@ -42,7 +42,7 @@ export const Link: Story = {
   render: () => () => (
     <div class="bg-slate-600 p-2">
       <SButton
-          variant='link'
+        variant="link"
       >
         {text}
       </SButton>
@@ -53,7 +53,7 @@ export const Link: Story = {
 export const LinkWhite: Story = { args: { variant: 'link-white' } }
 
 const ButtonsWrapper: FunctionalComponent = (_, { slots }) => (
-  <div class="flex items-center justify-center gap-8 rounded-md bg-slate-200 p-1" >
+  <div class="flex items-center justify-center gap-8 rounded-md bg-slate-200 p-1">
     {slots.default?.()}
   </div>
 )
@@ -61,10 +61,10 @@ const ButtonsWrapper: FunctionalComponent = (_, { slots }) => (
 export const BaseRow: Story = {
   render: () => () => (
     <ButtonsWrapper>
-      {Variant.map((variant) => (
+      {Variant.map(variant => (
         <SButton
-            key={variant}
-            variant={variant}
+          key={variant}
+          variant={variant}
         >
           {text}
         </SButton>
@@ -76,11 +76,11 @@ export const BaseRow: Story = {
 export const LargeRow: Story = {
   render: () => () => (
     <ButtonsWrapper>
-      {Variant.map((variant) => (
+      {Variant.map(variant => (
         <SButton
-            key={variant}
-            size='lg'
-            variant={variant}
+          key={variant}
+          size="lg"
+          variant={variant}
         >
           {text}
         </SButton>
@@ -92,16 +92,16 @@ export const LargeRow: Story = {
 export const AppendIconRow: Story = {
   render: () => () => (
     <ButtonsWrapper>
-      {Variant.map((variant) => (
+      {Variant.map(variant => (
         <SButton
-            key={variant}
-            variant={variant}
+          key={variant}
+          variant={variant}
         >
           {{
             default: () => text,
             append: () => (
               <ArrowRightIcon
-                  class="size-3"
+                class="size-3"
               />
             ),
           }}

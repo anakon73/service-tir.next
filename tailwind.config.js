@@ -19,6 +19,12 @@ export default {
       '6xl': '3.75rem', // 60px
     },
     extend: {
+      dropShadow: {
+        list: [
+          'drop-shadow(0px 4px 8px rgba(0, 0, 0, 0.06))',
+          'drop-shadow(0px 0px 4px rgba(0, 0, 0, 0.04))',
+        ],
+      },
       fontFamily: {
         montserrat: ['Montserrat'],
         lato: ['Lato'],

@@ -123,9 +123,11 @@ watch(initialValues, (values) => {
       <a
         href="/authentication/"
         class="
-            ml-2 font-medium text-blue-600 underline underline-offset-2
-            transition-colors duration-300 hover:text-blue-800
-            "
+          ml-2 font-medium text-blue-600 underline underline-offset-2 transition-colors
+          duration-300
+
+          hover:text-blue-800
+        "
       >
         Увійти
       </a>
