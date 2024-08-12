@@ -9,14 +9,16 @@ import {
   XMarkIcon,
 } from '@heroicons/vue/24/outline'
 
+import { storeToRefs } from 'pinia'
 import { ProductSearch } from '@/features/product/search'
 
 import { cn } from '@/shared/lib/styles'
 import { SNavbar } from '@/shared/ui/SNavbar'
+import { useUserStore } from '@/entities/user'
 
-defineProps<{
-  logged?: boolean
-}>()
+const userStore = useUserStore()
+
+const { user } = storeToRefs(userStore)
 
 const isShowDropdown = ref(false)
 
@@ -40,7 +42,7 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
         )"
       >
         <div class="flex items-center justify-between">
-          <RouterLink to="/">
+          <RouterLink :to="{ name: 'Home' }">
             <img
               src="../../shared/assets/images/logo.svg"
               alt="service tir logo"
@@ -64,31 +66,31 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
             hover:text-zinc-200
           "
         >
-          <RouterLink to="/">
+          <RouterLink :to="{ name: 'Home' }">
             Головна
           </RouterLink>
-          <RouterLink to="/catalog">
+          <RouterLink :to="{ name: 'Catalog' }">
             Каталог
           </RouterLink>
-          <RouterLink to="/services">
+          <RouterLink :to="{ name: 'Services' }">
             Послуги
           </RouterLink>
-          <RouterLink to="/about-us">
+          <RouterLink :to="{ name: 'AboutUs' }">
             Про нас
           </RouterLink>
-          <RouterLink to="/contacts">
+          <RouterLink :to="{ name: 'Contacts' }">
             Контакти
           </RouterLink>
-          <RouterLink to="/reviews">
+          <RouterLink :to="{ name: 'Reviews' }">
             Відгуки
           </RouterLink>
-          <RouterLink to="/articles">
+          <RouterLink :to="{ name: 'Articles' }">
             Статті
           </RouterLink>
         </ul>
         <hr class="border-[0.5px] border-zinc-50/50">
         <div
-          v-if="logged"
+          v-if="user"
           class="flex items-center gap-2"
         >
           <UserIcon
@@ -106,22 +108,23 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
                 hover:text-zinc-200
               "
             >
-              Олександр
+              {{ user.name }}
             </p>
-            <p
+            <button
               class="
                 text-white transition-colors duration-300
 
                 hover:text-zinc-200
               "
+              @click="userStore.logout"
             >
               Вийти
-            </p>
+            </button>
           </div>
         </div>
         <RouterLink
           v-else
-          to="/authentication"
+          :to="{ name: 'Register' }"
           class="group flex items-center gap-2"
         >
           <UserIcon
@@ -224,7 +227,7 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
             xl:max-w-[1440px] xl:px-36
           "
         >
-          <RouterLink to="/">
+          <RouterLink :to="{ name: 'Home' }">
             <img
               src="../../shared/assets/images/logo.svg"
               alt="service tir logo"
@@ -236,7 +239,7 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
           </div>
           <div class="flex h-5 gap-8">
             <div
-              v-if="logged"
+              v-if="user"
               class="flex items-center gap-1"
             >
               <UserIcon
@@ -248,22 +251,21 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
               />
               <div class="text-xs font-medium">
                 <p class="transition-colors duration-300">
-                  Олександр
+                  {{ user.name }}
                 </p>
-                <a href="/">
-                  <p
-                    class="
-                      text-blue-600 transition-colors duration-300
+                <button
+                  class="
+                    text-blue-600 transition-colors duration-300
 
-                      hover:text-blue-800
-                    "
-                  >
-                    Вийти
-                  </p>
-                </a>
+                    hover:text-blue-800
+                  "
+                  @click="userStore.logout"
+                >
+                  Вийти
+                </button>
               </div>
             </div>
-            <RouterLink v-else to="/authentication">
+            <RouterLink v-else :to="{ name: 'Register' }">
               <UserIcon
                 class="
                   size-5 text-gray-900
@@ -326,7 +328,7 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
           "
         >
           <div class="flex items-center justify-between">
-            <RouterLink to="/">
+            <RouterLink :to="{ name: 'Home' }">
               <img
                 src="../../shared/assets/images/logo.svg"
                 alt="service tir logo"
