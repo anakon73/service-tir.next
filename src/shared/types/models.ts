@@ -90,8 +90,23 @@ export interface Service {
   prices: Price[]
 }
 
+export type CartItem = {
+  product: Product
+  count: number
+}
+
+export interface Order {
+  code: number
+  date: Date
+  fullPrice: number
+  products: Product[]
+}
+
 export interface User {
   name: string
   email: string
   password: string
+  likedProducts: Product[]
+  orders: any[]
+  cart: Product[]
 }
