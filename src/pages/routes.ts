@@ -103,8 +103,8 @@ export interface RouteNamedMap {
   AboutUs: RouteRecordInfo<'AboutUs', '/about-us'>
   Articles: RouteRecordInfo<'Articles', '/articles'>
   Authentication: RouteRecordInfo<'Authentication', '/authentication'>
-  blog: RouteRecordInfo<
-    'blog',
+  Blog: RouteRecordInfo<
+    'Blog',
     '/blog/:id',
     { id: string | number }
   >
