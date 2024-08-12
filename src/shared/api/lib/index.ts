@@ -27,3 +27,23 @@ export const SuccessfulResponse = z.object({ status: z.literal('success') })
 export const SuccessfulResponseMock = {
   status: 'success',
 } satisfies z.infer<typeof SuccessfulResponse>
+
+// Error handling
+export class FetchError extends Error {
+  constructor(
+    public response: Response,
+    message?: string,
+  ) {
+    super(message ?? response.statusText)
+  }
+}
+
+export async function handleError<T>(
+  response: Response,
+  schema: z.ZodType<T>,
+): Promise<T> {
+  if (response.ok) {
+    return schema.parse(await response.json())
+  }
+  throw new FetchError(await response.json())
+}
