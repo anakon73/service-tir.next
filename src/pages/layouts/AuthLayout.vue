@@ -11,7 +11,7 @@
     <RouterLink :to="{ name: 'Home' }">
       <img
         class="absolute top-4"
-        src="/src/shared/assets/images/newLogo.svg"
+        src="/src/shared/assets/images/logo.svg"
         alt="service tir logo"
       >
     </RouterLink>
