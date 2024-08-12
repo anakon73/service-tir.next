@@ -1,6 +1,5 @@
 <script setup lang="ts">
-import { SButton } from '@/shared/ui/SButton'
-import { SInput } from '@/shared/ui/SInput'
+import { FormResetPassword } from '@/features/form/reset-password'
 </script>
 
 <template>
@@ -8,18 +7,6 @@ import { SInput } from '@/shared/ui/SInput'
     <h1 class="mb-6 text-2xl font-semibold text-gray-900">
       Відновлення паролю
     </h1>
-    <SInput
-      class="mb-6 w-full"
-      label="Ваш e-mail"
-      small
-    />
-    <div class="flex items-start gap-5">
-      <SButton variant="light">
-        Назад
-      </SButton>
-      <SButton>
-        Далі
-      </SButton>
-    </div>
+    <FormResetPassword />
   </div>
 </template>
