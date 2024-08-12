@@ -34,7 +34,7 @@ function formatPhoneNumber(number: string) {
         sm:mb-10
       "
     >
-      <RouterLink to="/" class="opacity-50">
+      <RouterLink :to="{ name: 'Home' }" class="opacity-50">
         Головна
       </RouterLink>
       <ChevronRightIcon class="size-2" />

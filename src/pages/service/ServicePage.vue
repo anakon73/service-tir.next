@@ -136,11 +136,11 @@ const { data: service, isLoading } = useServiceById({ id: +id || 1 })
             hover:text-gray-950
           "
         >
-          <RouterLink to="/" class="opacity-50">
+          <RouterLink :to="{ name: 'Home' }" class="opacity-50">
             Головна
           </RouterLink>
           <ChevronRightIcon class="size-2" />
-          <RouterLink to="/services" class="cursor-pointer opacity-50">
+          <RouterLink :to="{ name: 'Services' }" class="cursor-pointer opacity-50">
             Послуги
           </RouterLink>
           <ChevronRightIcon class="size-2" />
@@ -349,7 +349,7 @@ const { data: service, isLoading } = useServiceById({ id: +id || 1 })
               </p>
             </div>
             <RouterLink
-              to="/services"
+              :to="{ name: 'Reviews' }"
               class="
                 group hidden items-center gap-1 pt-3
 
@@ -421,7 +421,7 @@ const { data: service, isLoading } = useServiceById({ id: +id || 1 })
           "
         >
           <RouterLink
-            to="/services"
+            :to="{ name: 'Reviews' }"
             class="group flex items-center justify-center gap-1 pt-3"
           >
             <p

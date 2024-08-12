@@ -66,11 +66,11 @@ const inStock = computed(() => {
         md:mb-10
       "
     >
-      <RouterLink to="/" class="opacity-50">
+      <RouterLink :to="{ name: 'Home' }" class="opacity-50">
         Головна
       </RouterLink>
       <ChevronRightIcon class="size-2" />
-      <RouterLink to="/catalog" class="opacity-50">
+      <RouterLink :to="{ name: 'Catalog' }" class="opacity-50">
         Каталог
       </RouterLink>
       <ChevronRightIcon class="size-2" />

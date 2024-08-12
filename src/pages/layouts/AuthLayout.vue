@@ -8,7 +8,7 @@
       xl:pr-20
     "
   >
-    <RouterLink to="/">
+    <RouterLink :to="{ name: 'Home' }">
       <img
         class="absolute top-4"
         src="/src/shared/assets/images/newLogo.svg"

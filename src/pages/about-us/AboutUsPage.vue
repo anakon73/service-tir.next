@@ -24,7 +24,7 @@ const isOpen = ref(false)
         md:mb-10
       "
     >
-      <RouterLink to="/" class="opacity-50">
+      <RouterLink :to="{ name: 'Home' }" class="opacity-50">
         Головна
       </RouterLink>
       <ChevronRightIcon class="size-2" />
@@ -284,7 +284,7 @@ const isOpen = ref(false)
             </p>
           </div>
           <RouterLink
-            to="/reviews"
+            :to="{ name: 'Reviews' }"
             class="
               group hidden items-center gap-1 pt-3
 
@@ -356,7 +356,7 @@ const isOpen = ref(false)
         "
       >
         <RouterLink
-          to="/reviews"
+          :to="{ name: 'Reviews' }"
           class="group flex items-center justify-center gap-1 pt-3"
         >
           <p

@@ -26,7 +26,7 @@ const products = computed(() => {
 
 onKeyDown('Enter', () => {
   if (isFocus.value) {
-    router.push({ path: '/results', query: { search_query: searchValue.value } })
+    router.push({ name: 'Results', query: { search_query: searchValue.value } })
     isFocus.value = false
   }
 })
@@ -44,7 +44,7 @@ onKeyDown('Enter', () => {
       "
     >
       <RouterLink
-        :to="{ path: '/results', query: { search_query: searchValue } }"
+        :to="{ name: 'Results', query: { search_query: searchValue } }"
         class="
           rounded-[20px] bg-gray-100 p-3 transition-colors duration-300
 
@@ -92,7 +92,7 @@ onKeyDown('Enter', () => {
         <hr>
       </div>
       <RouterLink
-        :to="{ path: '/results', query: { search_query: searchValue } }"
+        :to="{ name: 'Results', query: { search_query: searchValue } }"
         class="
           px-2 py-3 text-left text-sm font-semibold leading-small text-blue-600
           transition-colors duration-300
@@ -114,7 +114,7 @@ onKeyDown('Enter', () => {
   >
     <div class="relative z-10 flex w-full items-end gap-6 rounded-3xl">
       <RouterLink
-        :to="{ path: '/results', query: { search_query: searchValue } }"
+        :to="{ name: 'Results', query: { search_query: searchValue } }"
         class="
           rounded-[14px] bg-gray-100 p-2.5 transition-colors duration-300
 

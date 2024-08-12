@@ -54,7 +54,7 @@ const currentPageReviews = computed(() => {
         md:mb-10
       "
     >
-      <RouterLink to="/" class="cursor-pointer opacity-50">
+      <RouterLink :to="{ name: 'Home' }" class="cursor-pointer opacity-50">
         Головна
       </RouterLink>
       <ChevronRightIcon class="size-2" />

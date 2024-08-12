@@ -53,11 +53,11 @@ const formattedDate = computed(() => format(data.value!.date, 'd MMMM u'))
           md:mb-12
         "
       >
-        <RouterLink to="/" class="opacity-50">
+        <RouterLink :to="{ name: 'Home' }" class="opacity-50">
           Головна
         </RouterLink>
         <ChevronRightIcon class="size-2" />
-        <RouterLink to="/articles" class="opacity-50">
+        <RouterLink :to="{ name: 'Articles' }" class="opacity-50">
           Статті
         </RouterLink>
         <ChevronRightIcon class="size-2" />
