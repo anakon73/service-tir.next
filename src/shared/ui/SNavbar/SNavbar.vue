@@ -21,7 +21,7 @@ import { links } from './config'
         v-for="link in links"
         v-slot="{ isActive }"
         :key="link.name.toLocaleLowerCase()"
-        :to="link.route"
+        :to="{ name: link.routeName }"
       >
         <p
           :class="cn(
