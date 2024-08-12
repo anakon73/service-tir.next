@@ -32,7 +32,7 @@ const totalPages = computed(() => {
 
 function changePage(newPage: number) {
   router.push({
-    path: route.path,
+    name: route.name,
     query: { ...route.query, page: newPage === 1 ? undefined : newPage },
   })
 }
