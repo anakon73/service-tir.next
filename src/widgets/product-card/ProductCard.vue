@@ -24,7 +24,7 @@ const liked = ref(false)
 
 <template>
   <RouterLink
-    :to="`/product/${code}`"
+    :to="{ name: 'Product', params: { code } }"
     class="
       card relative inline-flex h-full select-none flex-col justify-between rounded-2xl
       px-3 pb-6 pt-3 text-gray-900
