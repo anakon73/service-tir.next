@@ -1,9 +1,19 @@
-export const links = [
-  { name: 'Головна', route: '/' },
-  { name: 'Каталог', route: '/catalog' },
-  { name: 'Послуги', route: '/services' },
-  { name: 'Про нас', route: '/about-us' },
-  { name: 'Контакти', route: '/contacts' },
-  { name: 'Відгуки', route: '/reviews' },
-  { name: 'Статті', route: '/articles' },
+export const links: {
+  name: string
+  routeName:
+    'Home'
+    | 'Catalog'
+    | 'Services'
+    | 'AboutUs'
+    | 'Contacts'
+    | 'Reviews'
+    | 'Articles'
+}[] = [
+  { name: 'Головна', routeName: 'Home' },
+  { name: 'Каталог', routeName: 'Catalog' },
+  { name: 'Послуги', routeName: 'Services' },
+  { name: 'Про нас', routeName: 'AboutUs' },
+  { name: 'Контакти', routeName: 'Contacts' },
+  { name: 'Відгуки', routeName: 'Reviews' },
+  { name: 'Статті', routeName: 'Articles' },
 ]

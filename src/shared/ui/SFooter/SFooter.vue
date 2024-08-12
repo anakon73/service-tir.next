@@ -14,7 +14,7 @@ import { links } from './config'
         xl:flex
       "
     >
-      <RouterLink to="/">
+      <RouterLink :to="{ name: 'Home' }">
         <img
           src="/src/shared/assets/images/logo.svg"
           alt="service tir logo"
@@ -33,7 +33,7 @@ import { links } from './config'
           v-for="link in links"
           v-slot="{ isActive }"
           :key="link.name.toLocaleLowerCase()"
-          :to="link.route"
+          :to="{ name: link.routeName }"
         >
           <p
             :class="cn(
