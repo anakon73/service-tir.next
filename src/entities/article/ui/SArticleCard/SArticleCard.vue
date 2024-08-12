@@ -57,7 +57,7 @@ const formattedDate = computed(() => format(date.value, 'd MMMM u'))
         >
           {{ name }}
         </h1>
-        <RouterLink :to="`/blog/${id}`">
+        <RouterLink :to="{ name: 'Blog', params: { id } }">
           <ArrowUpRightIcon class="size-6 pt-2" />
         </RouterLink>
       </div>
