@@ -15,7 +15,7 @@ defineProps<Props>()
 <template>
   <div
     class="
-      card flex max-w-[560px] flex-col gap-3 rounded-2xl p-3
+      card flex h-full max-w-[560px] flex-col gap-3 rounded-2xl p-3
 
       lg:flex-row lg:gap-4 lg:pr-5
     "
