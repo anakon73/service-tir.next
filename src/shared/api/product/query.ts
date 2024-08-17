@@ -2,6 +2,7 @@ import { queryOptions, useQuery } from '@tanstack/vue-query'
 import {
   type ProductByCodeKeyParams,
   type ProductsSearchKeyParams,
+  getHotProducts,
   getProducts,
   productByCode,
   productsSearch,
@@ -9,10 +10,11 @@ import {
 import { paramsAnd } from '../lib'
 
 const entity = 'product'
-const Scopes = { All: 'all', ByCode: 'by-code', Search: 'search' } as const
+const Scopes = { All: 'all', Hot: 'hot', ByCode: 'by-code', Search: 'search' } as const
 
 const keys = {
   getProducts: () => [{ entity, scope: Scopes.All }],
+  getHotProducts: () => [{ entity, scope: Scopes.Hot }],
   byCode: (
     params: ProductByCodeKeyParams,
   ) => [{ entity, scope: Scopes.ByCode, ...params }],
@@ -36,6 +38,17 @@ export function useProductsQuery() {
 
 export function useProducts() {
   return useQuery(useProductsQuery())
+}
+
+export function useHotProductsQuery() {
+  return queryOptions({
+    queryKey: keys.getHotProducts(),
+    queryFn: getHotProducts,
+  })
+}
+
+export function useHotProducts() {
+  return useQuery(useHotProductsQuery())
 }
 
 export function useProductByCodeQuery(params: ProductByCodeKeyParams) {

@@ -10,6 +10,11 @@ const endpoints = {
     method: 'get',
     schema: ProductSchema,
   },
+  hotProducts: {
+    url: '/api/products/hot-deals',
+    method: 'get',
+    schema: ProductSchema,
+  },
   byCode: {
     url: ({ code }: ProductByCodeParams) => `/api/products/${code}`,
     method: 'get',
@@ -26,6 +31,14 @@ export { endpoints as productEndpoints }
 
 export async function getProducts() {
   const { url, method, schema } = endpoints.getProducts
+
+  return z.array(schema)
+    .parse(await fetch(url, { method }).then(r => r.json()))
+    .map(product => normalizeProduct(product))
+}
+
+export async function getHotProducts() {
+  const { url, method, schema } = endpoints.hotProducts
 
   return z.array(schema)
     .parse(await fetch(url, { method }).then(r => r.json()))

@@ -18,6 +18,9 @@ export const productsHandlers = [
       return HttpResponse.json(products)
     }
   }),
+  http.get('/api/products/hot-deals', () => {
+    return HttpResponse.json(products.slice(0, 6))
+  }),
   http.get('/api/products/:code', ({ params }) => {
     const { code } = params
     const item = products.find(p => p.code === +code)
