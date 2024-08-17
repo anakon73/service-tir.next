@@ -56,7 +56,7 @@ onKeyDown('Enter', () => {
       <input
         v-model="searchValue"
         class="
-          w-full border-x-0 border-b border-t-0 border-gray-100 p-0 pb-2 text-xs
+          w-4/5 border-x-0 border-b border-t-0 border-gray-100 p-0 pb-2 text-xs
           font-medium leading-7 text-gray-900
 
           focus:ring-0
