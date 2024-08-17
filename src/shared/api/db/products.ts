@@ -1,11 +1,12 @@
 /* eslint-disable max-len */
 import type { z } from 'zod'
+
+import { makeReviewSchemaMock } from '../review/mock'
 import type {
   BaseProductSchema,
   ProductSchema,
   SpecsSchema,
 } from '../product'
-import { makeReviewSchemaMock } from '../review/mock'
 
 const specs: z.infer<typeof SpecsSchema> = [
   { name: 'Товщина', value: '1/2: 45/131 мм' },
