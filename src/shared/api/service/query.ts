@@ -3,17 +3,19 @@ import { paramsAnd } from '../lib'
 import {
   type ServiceByIdKeyParams,
   type ServicesByCategoryKeyParams,
+  getPopularServices,
   serviceById,
   servicesByCategory,
 } from './api'
 
 const entity = 'service'
-const Scopes = { ByCategory: 'by-category', ById: 'by-id' } as const
+const Scopes = { ByCategory: 'by-category', Popular: 'popular', ById: 'by-id' } as const
 
 const keys = {
   byCategory: (
     params: ServicesByCategoryKeyParams,
   ) => [{ entity, scope: Scopes.ByCategory, ...params }],
+  popularServices: () => [{ entity, scope: Scopes.Popular }],
   byId: (
     params: ServiceByIdKeyParams,
   ) => [{ entity, scope: Scopes.ById, ...params }],
@@ -37,6 +39,17 @@ export function useServicesByCategoryQuery(params: ServicesByCategoryKeyParams) 
 
 export function useServicesByCategory(params: ServicesByCategoryKeyParams) {
   return useQuery(useServicesByCategoryQuery(params))
+}
+
+export function usePopularServicesQuery() {
+  return queryOptions({
+    queryKey: keys.popularServices(),
+    queryFn: getPopularServices,
+  })
+}
+
+export function usePopularServices() {
+  return useQuery(usePopularServicesQuery())
 }
 
 export function useServiceByIdQuery(params: ServiceByIdKeyParams) {

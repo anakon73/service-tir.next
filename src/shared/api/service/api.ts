@@ -13,6 +13,11 @@ const endpoints = {
     method: 'get',
     schema: ServiceSchema,
   },
+  popularServices: {
+    url: '/api/services/popular',
+    method: 'get',
+    schema: ServiceSchema,
+  },
   byId: {
     url: ({ id }: ServiceByIdParams) => `/api/services/${id}`,
     method: 'get',
@@ -31,6 +36,14 @@ export async function servicesByCategory(
 
   return z.array(schema)
     .parse(await fetch(url({ category }), { method }).then(r => r.json()))
+    .map(service => normalizeService(service))
+}
+
+export async function getPopularServices() {
+  const { url, method, schema } = endpoints.popularServices
+
+  return z.array(schema)
+    .parse(await fetch(url, { method }).then(r => r.json()))
     .map(service => normalizeService(service))
 }
 
