@@ -30,7 +30,7 @@ const next = ref(null)
 </script>
 
 <template>
-  <div class="max-w-[1140px]">
+  <div class="-mx-5">
     <div
       v-if="$slots.default"
       class="mb-7 flex items-center justify-between px-5"
@@ -59,6 +59,7 @@ const next = ref(null)
     >
       <SwiperSlide
         v-for="{
+          code,
           description,
           image,
           name,
@@ -71,6 +72,7 @@ const next = ref(null)
         class="!h-auto"
       >
         <ProductCard
+          :code="code"
           :name="name"
           :description="description"
           :image="image"

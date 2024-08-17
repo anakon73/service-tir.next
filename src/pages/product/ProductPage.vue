@@ -388,7 +388,7 @@ const inStock = computed(() => {
       <ReviewsSwiper class="-mx-5" :list="product.reviews" />
     </div>
 
-    <ProductsSwiper class="-mx-5" :list="product?.similarProducts!">
+    <ProductsSwiper :list="product?.similarProducts!">
       <div class="font-jakarta text-4xl font-bold leading-extra-height">
         Схожі товари
       </div>
