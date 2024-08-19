@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
 import { ArrowRightIcon } from '@heroicons/vue/24/solid'
 
 import { ref } from 'vue'
@@ -64,7 +63,7 @@ const isOpen = ref(false)
         XVI века.
       </p>
       <button
-        :as="RouterLink"
+        as="RouterLink"
         :to="{ name: 'Service', params: { id: 1 } }"
         class="
           whitespace-nowrap rounded-large bg-blue-600 px-7 py-4 text-sm font-bold

@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue'
 import { Field, useForm } from 'vee-validate'
-import { RouterLink } from 'vue-router'
 import { toTypedSchema } from '@vee-validate/zod'
 
 import { useUserStore } from '@/entities/user'
@@ -58,7 +57,7 @@ watch(initialValues, (values) => {
     </Field>
     <div class="flex gap-5">
       <SButton
-        :as="RouterLink"
+        as="RouterLink"
         :to="{ name: 'Authentication' }"
         type="button"
         variant="light"

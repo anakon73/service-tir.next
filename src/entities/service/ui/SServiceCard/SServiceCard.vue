@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { RouterLink } from 'vue-router'
 import { SButton } from '@/shared/ui/SButton'
 
 export interface Props {
@@ -41,7 +40,7 @@ defineProps<Props>()
         </p>
       </div>
       <SButton
-        :as="RouterLink"
+        as="RouterLink"
         :to="{ name: 'Service', params: { id } }"
         class="self-start"
       >
