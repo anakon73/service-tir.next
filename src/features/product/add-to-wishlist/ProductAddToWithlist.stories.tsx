@@ -17,6 +17,7 @@ export default {
     liked: { control: 'boolean' },
 
     like: { table: { disable: true } },
+    code: { table: { disable: true } },
   },
 } satisfies Meta<ProductAddToWishlistProps & ProductAddToWishlistEmits>
 

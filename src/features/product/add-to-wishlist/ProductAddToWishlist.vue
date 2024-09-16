@@ -1,11 +1,17 @@
 <script setup lang="ts">
-import { type ButtonHTMLAttributes, computed, toRefs } from 'vue'
+import { computed, toRefs } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useQueryClient } from '@tanstack/vue-query'
 import { HeartIcon } from '@heroicons/vue/24/outline'
 import { HeartIcon as HeartIconSolid } from '@heroicons/vue/24/solid'
 
+import { useUserStore } from '@/entities/user'
+
+import { useLikeProduct } from '@/shared/api/product'
 import { cn } from '@/shared/lib/styles'
 
-export interface Props extends /* @vue-ignore */ ButtonHTMLAttributes {
+export interface Props {
+  code: number
   liked: boolean
 }
 
@@ -15,13 +21,25 @@ export type Emits = {
 
 const props = defineProps<Props>()
 
-const emits = defineEmits<Emits>()
+const { code, liked } = toRefs(props)
 
-const { liked } = toRefs(props)
+const store = useUserStore()
+
+const { user } = storeToRefs(store)
+
+const { mutate } = useLikeProduct()
+
+const queryClient = useQueryClient()
 
 function likeProduct(e: Event) {
   e.preventDefault()
-  emits('like', !liked.value)
+  mutate(
+    { code: code.value, email: user.value!.email },
+    { onSuccess: (updatedUser) => {
+      store.setUser(updatedUser)
+      queryClient.invalidateQueries({ queryKey: [{ scope: 'liked' }] })
+    } },
+  )
 }
 
 const computedIcon = computed(() => {
