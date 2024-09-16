@@ -26,7 +26,7 @@ onClickOutside(panel, () => emits('close'))
 </script>
 
 <template>
-  <Dialog as="div" :open="open" class="relative z-20">
+  <Dialog as="div" :open="open" class="relative z-50">
     <DialogOverlay
       class="fixed inset-0 z-40 bg-black/25"
     />
