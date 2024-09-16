@@ -15,6 +15,10 @@ import { ResultsPage } from './results'
 import { ReviewsPage } from './reviews'
 import { ServicePage } from './service'
 import { ServicesPage } from './services'
+import { CartPage } from './cart'
+import { ProfilePage } from './profile'
+import { FavoriteTab, InfoTab, MainTab, OrdersTab } from './profile/ui'
+import { OrderPage } from './order'
 
 export const routes: RouteRecordRaw[] = [
   {
@@ -96,6 +100,28 @@ export const routes: RouteRecordRaw[] = [
     path: '/services',
     component: ServicesPage,
   },
+  {
+    name: 'Cart',
+    path: '/cart',
+    component: CartPage,
+  },
+  {
+    name: 'Order',
+    path: '/order',
+    component: OrderPage,
+  },
+  {
+    name: 'Profile',
+    path: '/profile',
+    component: ProfilePage,
+    children: [
+      { name: 'ProfileMain', path: '/profile/main', component: MainTab },
+      { name: 'ProfileInfo', path: '/profile/info', component: InfoTab },
+      { name: 'ProfileFavorite', path: '/profile/favorite', component: FavoriteTab },
+      { name: 'ProfileOrders', path: '/profile/orders', component: OrdersTab },
+    ],
+  },
+  { path: '/:pathMatch(.*)*', redirect: '/' },
 ]
 
 export interface RouteNamedMap {
@@ -125,6 +151,13 @@ export interface RouteNamedMap {
     { id: string | number }
   >
   Services: RouteRecordInfo<'Services', '/services'>
+  Cart: RouteRecordInfo<'Cart', '/cart'>
+  Order: RouteRecordInfo<'Order', '/order'>
+  Profile: RouteRecordInfo<'Profile', '/profile'>
+  ProfileMain: RouteRecordInfo<'ProfileMain', '/profile'>
+  ProfileInfo: RouteRecordInfo<'ProfileInfo', '/profile/info'>
+  ProfileFavorite: RouteRecordInfo<'ProfileFavorite', '/profile/favorite'>
+  ProfileOrders: RouteRecordInfo<'ProfileOrders', '/profile/orders'>
 }
 
 declare module 'vue-router' {
