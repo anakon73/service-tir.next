@@ -58,29 +58,11 @@ const next = ref(null)
       class="mb-6 !px-5 !pb-4 !pt-2"
     >
       <SwiperSlide
-        v-for="{
-          code,
-          description,
-          image,
-          name,
-          price,
-          priceWithDiscount,
-          rate,
-          discount,
-        } in list"
-        :key="name"
+        v-for="product in list"
+        :key="product.name"
         class="!h-auto"
       >
-        <ProductCard
-          :code="code"
-          :name="name"
-          :description="description"
-          :image="image"
-          :price="price"
-          :price-with-discount="priceWithDiscount"
-          :rate="rate"
-          :discount="discount"
-        />
+        <ProductCard :="product" />
       </SwiperSlide>
     </Swiper>
     <div class="mt-5 flex items-end justify-center gap-5 pb-6">
