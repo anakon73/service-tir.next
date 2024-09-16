@@ -1,16 +1,24 @@
-import { queryOptions, useQuery } from '@tanstack/vue-query'
+import { queryOptions, useMutation, useQuery } from '@tanstack/vue-query'
 import {
   type ProductByCodeKeyParams,
   type ProductsSearchKeyParams,
   getHotProducts,
+  getLikedProducts,
   getProducts,
+  likeProduct,
   productByCode,
   productsSearch,
 } from './api'
 import { paramsAnd } from '../lib'
 
 const entity = 'product'
-const Scopes = { All: 'all', Hot: 'hot', ByCode: 'by-code', Search: 'search' } as const
+const Scopes = {
+  All: 'all',
+  Hot: 'hot',
+  ByCode: 'by-code',
+  Search: 'search',
+  Liked: 'liked',
+} as const
 
 const keys = {
   getProducts: () => [{ entity, scope: Scopes.All }],
@@ -21,6 +29,7 @@ const keys = {
   search: (
     params: ProductsSearchKeyParams,
   ) => [{ entity, scope: Scopes.Search, ...params }],
+  getLikedProducts: () => [{ entity, scope: Scopes.Liked }],
 } as const
 
 export {
@@ -81,4 +90,19 @@ export function useProductsSearchQuery(params: ProductsSearchKeyParams) {
 
 export function useProductsSearch(params: ProductsSearchKeyParams) {
   return useQuery(useProductsSearchQuery(params))
+}
+
+export function useLikedProductsQuery() {
+  return queryOptions({
+    queryKey: keys.getLikedProducts(),
+    queryFn: getLikedProducts,
+  })
+}
+
+export function useLikedProducts() {
+  return useQuery(useLikedProductsQuery())
+}
+
+export function useLikeProduct() {
+  return useMutation({ mutationFn: likeProduct })
 }
