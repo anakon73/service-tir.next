@@ -1,6 +1,7 @@
 <script setup lang="ts">
-import { useRoute } from 'vue-router'
 import { ref, watch } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useRoute } from 'vue-router'
 import {
   Bars3Icon,
   HeartIcon,
@@ -9,16 +10,15 @@ import {
   XMarkIcon,
 } from '@heroicons/vue/24/outline'
 
-import { storeToRefs } from 'pinia'
 import { ProductSearch } from '@/features/product/search'
+import { useUserStore } from '@/entities/user'
 
 import { cn } from '@/shared/lib/styles'
 import { SNavbar } from '@/shared/ui/SNavbar'
-import { useUserStore } from '@/entities/user'
 
 const userStore = useUserStore()
 
-const { user } = storeToRefs(userStore)
+const { user, totalPrice } = storeToRefs(userStore)
 
 const isShowDropdown = ref(false)
 
@@ -101,15 +101,16 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
             "
           />
           <div class="text-xs font-medium">
-            <p
+            <RouterLink
+              :to="{ name: 'ProfileMain' }"
               class="
-                transition-colors duration-300
+                block transition-colors duration-300
 
                 hover:text-zinc-200
               "
             >
               {{ user.name }}
-            </p>
+            </RouterLink>
             <button
               class="
                 text-white transition-colors duration-300
@@ -144,7 +145,11 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
             Особистий кабінет
           </p>
         </RouterLink>
-        <button class="group flex items-center gap-2">
+        <RouterLink
+          v-if="user"
+          :to="{ name: 'ProfileFavorite' }"
+          class="group flex items-center gap-2"
+        >
           <div class="relative">
             <HeartIcon
               class="
@@ -161,7 +166,7 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
                 text-sky-500
               "
             >
-              0
+              {{ user.likedProducts.length }}
             </div>
           </div>
           <p
@@ -173,11 +178,11 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
           >
             Обране
           </p>
-        </button>
-        <div class="group">
+        </RouterLink>
+        <RouterLink v-if="user" :to="{ name: 'Cart' }">
           <div
             class="
-              flex items-center gap-2 transition-colors duration-300
+              group flex items-center gap-2 transition-colors duration-300
 
               group-hover:text-zinc-200
             "
@@ -197,18 +202,20 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
                   text-[8px] text-emerald-500
                 "
               >
-                6
+                {{ user.cart.length }}
               </div>
             </div>
             <div class="flex gap-2">
               <p>
                 &#8372;
-                {{ Number('10000').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") }}
+                {{
+                  totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+                }}
               </p>
               <p>Кошик</p>
             </div>
           </div>
-        </div>
+        </RouterLink>
         <ProductSearch mobile />
       </div>
       <header
@@ -250,9 +257,12 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
                 "
               />
               <div class="text-xs font-medium">
-                <p class="transition-colors duration-300">
+                <RouterLink
+                  :to="{ name: 'ProfileMain' }"
+                  class="block transition-colors duration-300"
+                >
                   {{ user.name }}
-                </p>
+                </RouterLink>
                 <button
                   class="
                     text-blue-600 transition-colors duration-300
@@ -275,7 +285,7 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
               />
             </RouterLink>
 
-            <button class="relative">
+            <RouterLink v-if="user" :to="{ name: 'ProfileFavorite' }" class="relative">
               <HeartIcon
                 class="
                   size-5 text-gray-900
@@ -291,10 +301,14 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
                   text-[8px] text-sky-500
                 "
               >
-                0
+                {{ user.likedProducts.length }}
               </div>
-            </button>
-            <button class="flex items-center gap-2">
+            </RouterLink>
+            <RouterLink
+              v-if="user"
+              :to="{ name: 'Cart' }"
+              class="flex items-center gap-2"
+            >
               <div class="relative">
                 <ShoppingCartIcon
                   class="
@@ -310,14 +324,16 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
                     text-center text-[8px] text-emerald-500
                   "
                 >
-                  6
+                  {{ user.cart.length }}
                 </div>
               </div>
               <div class="max-w-[80px] truncate">
                 &#8372;
-                {{ Number('10000').toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ") }}
+                {{
+                  totalPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, " ")
+                }}
               </div>
-            </button>
+            </RouterLink>
           </div>
         </div>
         <div
