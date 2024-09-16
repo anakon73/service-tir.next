@@ -1,5 +1,10 @@
 import { useMutation } from '@tanstack/vue-query'
-import { loginUser, registerUser, resetPassword, setEmailForResetPassword } from './api'
+import {
+  loginUser,
+  registerUser,
+  resetPassword,
+  setEmailForResetPassword,
+} from './api'
 
 export function useRegisterUser() {
   return useMutation({ mutationFn: registerUser })

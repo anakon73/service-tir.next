@@ -1,11 +1,11 @@
 import { z } from 'zod'
-import { ProductSchema } from '../product'
+import { CartItemSchema } from '../cart'
 
 export const UserSchema = z.object({
   name: z.string(),
   email: z.string().email(),
   password: z.string(),
-  liked_products: z.array(ProductSchema),
+  likedProducts: z.array(z.number()),
   orders: z.array(z.any()),
-  cart: z.array(ProductSchema),
+  cart: z.array(z.lazy(() => CartItemSchema)),
 })

@@ -1,8 +1,8 @@
 import { z } from 'zod'
 import { type ApiEndpointsAndSchemas, handleError } from '../lib'
 
-import { normalizeUser } from './normalizers'
 import { UserSchema } from './types'
+import { normalizeUser } from './normalizers'
 
 const endpoints = {
   register: {
@@ -29,14 +29,8 @@ const endpoints = {
 
 export { endpoints as userEndpoints }
 
-export type RegisterUserParams = {
-  name: string
-  email: string
-  password: string
-}
-export async function registerUser(
-  { name, email, password }: RegisterUserParams,
-) {
+export type RegisterUserParams = { name: string, email: string, password: string }
+export async function registerUser({ name, email, password }: RegisterUserParams) {
   const { url, method, schema } = endpoints.register
 
   const response = await fetch(
@@ -47,10 +41,7 @@ export async function registerUser(
   return normalizeUser(await handleError(response, schema))
 }
 
-export type LoginUserParams = {
-  email: string
-  password: string
-}
+export type LoginUserParams = { email: string, password: string }
 export async function loginUser({ email, password }: LoginUserParams) {
   const { url, method, schema } = endpoints.login
 
