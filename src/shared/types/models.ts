@@ -91,7 +91,7 @@ export interface Service {
 }
 
 export type CartItem = {
-  product: Product
+  productCode: number
   count: number
 }
 
@@ -106,7 +106,7 @@ export interface User {
   name: string
   email: string
   password: string
-  likedProducts: Product[]
-  orders: any[]
-  cart: Product[]
+  likedProducts: number[]
+  orders: Order[]
+  cart: CartItem[]
 }
