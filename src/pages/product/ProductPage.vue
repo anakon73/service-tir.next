@@ -1,24 +1,50 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
+import { storeToRefs } from 'pinia'
+import { useQueryClient } from '@tanstack/vue-query'
 import { ChevronRightIcon } from '@heroicons/vue/24/solid'
 
 import { ReviewsSwiper } from '@/widgets/reviews-swiper'
 import { ProductsSwiper } from '@/widgets/products-swiper'
 
 import { ProductAddToWishlist } from '@/features/product/add-to-wishlist'
-import { SRating } from '@/entities/product'
 
+import { SRating } from '@/entities/product'
+import { useUserStore } from '@/entities/user'
+
+import { useProductToCart } from '@/shared/api/cart'
 import { cn } from '@/shared/lib/styles'
 import { useProductByCode } from '@/shared/api/product'
 import { SButton } from '@/shared/ui/SButton'
 
-const isLiked = ref(false)
 const selectedView = ref<'description' | 'specs' | 'reviews'>('description')
 
 const { params: { code } } = useRoute()
 
 const { data: product, isLoading } = useProductByCode({ code: +code || 6358726 })
+
+const store = useUserStore()
+
+const { user } = storeToRefs(store)
+
+const queryClient = useQueryClient()
+
+const { mutate } = useProductToCart()
+
+function handleClick() {
+  if (user.value?.email) {
+    mutate(
+      { email: user.value.email, productCode: +code },
+      { onSuccess: (newUser) => {
+        store.setUser(newUser)
+        queryClient.invalidateQueries({ queryKey: [{ entity: 'cart' }] })
+      } },
+    )
+  }
+}
+
+const liked = computed(() => user.value?.likedProducts.includes(+code))
 
 const inStock = computed(() => {
   if (product.value!.quantity >= 5) {
@@ -136,9 +162,9 @@ const inStock = computed(() => {
         class="card relative flex flex-col gap-2 rounded-2xl bg-white p-3"
       >
         <ProductAddToWishlist
-          :liked="isLiked"
+          :code="+code"
+          :liked="liked!"
           class="absolute right-7 top-7"
-          @like="isLiked = $event"
         />
         <div
           class="
@@ -241,7 +267,7 @@ const inStock = computed(() => {
           <div v-else class="text-2xl font-bold text-gray-900">
             {{ product.price }} &#8372;
           </div>
-          <SButton>
+          <SButton @click="handleClick">
             В кошик
           </SButton>
         </div>
