@@ -108,32 +108,11 @@ const currentPageProducts = computed(() => {
         sm:grid-cols-3
       "
     >
-      <div
-        v-for="{
-          code,
-          name,
-          description,
-          rate,
-          image,
-          price,
-          discount,
-          priceWithDiscount,
-        } in currentPageProducts"
-        :key="code"
-      >
-        <ProductCard
-          v-bind="{
-            code,
-            name,
-            description,
-            rate,
-            image,
-            price,
-            discount,
-            priceWithDiscount,
-          }"
-        />
-      </div>
+      <ProductCard
+        v-for="product in currentPageProducts"
+        :key="product.code"
+        :="product"
+      />
     </div>
     <SPagination
       :selected-page="selectedPage"
