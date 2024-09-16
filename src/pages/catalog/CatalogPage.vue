@@ -139,15 +139,8 @@ const currentPageProducts = computed(() => {
         >
           <ProductCard
             v-for="product in currentPageProducts"
-            :key="product.name"
-            :code="product.code"
-            :image="product.image"
-            :description="product.description"
-            :discount="product.discount"
-            :price-with-discount="product.priceWithDiscount"
-            :price="product.price"
-            :name="product.name"
-            :rate="product.rate"
+            :key="product.code"
+            :="product"
           />
         </div>
         <SPagination
