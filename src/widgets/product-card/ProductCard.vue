@@ -1,8 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue'
-import { ProductAddToWishlist } from '@/features/product/add-to-wishlist'
-import { SRating } from '@/entities/product'
+import { computed, toRefs } from 'vue'
+import { storeToRefs } from 'pinia'
+import { useQueryClient } from '@tanstack/vue-query'
 
+import { ProductAddToWishlist } from '@/features/product/add-to-wishlist'
+
+import { SRating } from '@/entities/product'
+import { useUserStore } from '@/entities/user'
+
+import { useProductToCart } from '@/shared/api/cart'
 import type { Rating } from '@/shared/types'
 import { SButton } from '@/shared/ui/SButton'
 
@@ -17,9 +23,32 @@ export interface Props {
   priceWithDiscount: number | null
 }
 
-defineProps<Props>()
+const props = defineProps<Props>()
 
-const liked = ref(false)
+const { code } = toRefs(props)
+
+const store = useUserStore()
+
+const { user } = storeToRefs(store)
+
+const queryClient = useQueryClient()
+
+const { mutate } = useProductToCart()
+
+function handleClick(e: Event) {
+  e.preventDefault()
+  if (user.value?.email) {
+    mutate(
+      { email: user.value.email, productCode: code.value },
+      { onSuccess: (newUser) => {
+        store.setUser(newUser)
+        queryClient.invalidateQueries({ queryKey: [{ entity: 'cart' }] })
+      } },
+    )
+  }
+}
+
+const liked = computed(() => user.value?.likedProducts.includes(code.value))
 </script>
 
 <template>
@@ -41,11 +70,8 @@ const liked = ref(false)
           lg:h-[188px] lg:max-w-none
         "
       >
-        <button class="absolute right-2 top-2 z-10">
-          <ProductAddToWishlist
-            :liked="liked"
-            @like="liked = $event"
-          />
+        <button v-if="user?.email" class="absolute right-2 top-2 z-10">
+          <ProductAddToWishlist :liked="liked!" :code="code" />
         </button>
         <img
           class="
@@ -127,7 +153,7 @@ const liked = ref(false)
       >
         {{ price }} ₴
       </div>
-      <SButton>
+      <SButton @click="handleClick($event)">
         В кошик
       </SButton>
     </div>
