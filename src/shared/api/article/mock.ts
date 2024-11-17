@@ -52,11 +52,26 @@ export function makeArticleMock(): Article {
   return normalizeArticle(makeArticleSchemaMock())
 }
 
-const articles = Array.from({ length: 20 }, () => makeArticleSchemaMock())
+const articles = Array.from({ length: 60 }, () => makeArticleSchemaMock())
 
 export const articlesHandlers = [
-  http.get(`${API_URL}/api/articles`, () => {
-    return HttpResponse.json(articles)
+  http.get(`${API_URL}/api/articles`, ({ request }) => {
+    const url = new URL(request.url)
+
+    const page = +url.searchParams.get('page')!
+
+    const startIndex = (+page! - 1) * 12
+    const endIndex = startIndex + 12
+
+    const paginatedArticles = articles.slice(startIndex, endIndex)
+
+    return HttpResponse.json({
+      data: paginatedArticles,
+      current_page: +page!,
+      per_page: 12,
+      total: articles.length,
+      last_page: articles.length / 12,
+    })
   }),
   http.get(`${API_URL}/api/articles/:id`, ({ params }) => {
     const { id } = params
