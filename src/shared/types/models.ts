@@ -27,7 +27,12 @@ export interface Product {
   specs: Specs
   similarProducts: Omit<
     Product,
-'specs' | 'similarProducts' | 'fullDescription' | 'images' | 'reviews' | 'quantity'
+    'specs'
+    | 'similarProducts'
+    | 'fullDescription'
+    | 'images'
+    | 'reviews'
+    | 'quantity'
   >[]
   fullDescription: string
   images: string[]
@@ -49,9 +54,17 @@ export interface SearchItem {
   price: number
 }
 
+export interface SimilarArticles {
+  id: number
+  name: string
+  description: string
+  previewImage: string
+  createdAt: Date
+  updatedAt: Date
+}
+
 export interface Article {
   id: number
-  date: Date
   name: string
   description: string
   previewImage: string
@@ -59,7 +72,9 @@ export interface Article {
     image: string
     text: string[]
   }[]
-  similarArticles: Omit<Article, 'paragraphs' | 'similarArticles'>[]
+  similarArticles: SimilarArticles[]
+  createdAt: Date
+  updatedAt: Date
 }
 
 export type Price = {
@@ -109,4 +124,12 @@ export interface User {
   likedProducts: number[]
   orders: Order[]
   cart: CartItem[]
+}
+
+export interface Pagination<T> {
+  data: T[]
+  currentPage: number
+  perPage: number
+  total: number
+  lastPage: number
 }
