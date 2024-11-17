@@ -2,6 +2,7 @@ import type { z } from 'zod'
 import { HttpResponse, http } from 'msw'
 import { fakerUK as f } from '@faker-js/faker'
 
+import { API_URL } from '@/shared/config'
 import type { Review } from '@/shared/types'
 import { SuccessfulResponseMock } from '../lib'
 
@@ -20,13 +21,17 @@ export function makeReviewSchemaMock(): z.infer<typeof ReviewSchema> {
   }
 }
 
-export const makeReviewMock = (): Review => normalizeReview(makeReviewSchemaMock())
+export function makeReviewMock(): Review {
+  return normalizeReview(makeReviewSchemaMock())
+}
 
 export const reviewHandlers = [
-  http.get('/api/reviews', () => {
-    return HttpResponse.json(Array.from({ length: 37 }, () => makeReviewSchemaMock()))
+  http.get(`${API_URL}/api/reviews`, () => {
+    return HttpResponse.json(
+      Array.from({ length: 37 }, () => makeReviewSchemaMock()),
+    )
   }),
-  http.post('/api/reviews', () => {
+  http.post(`${API_URL}/api/reviews`, () => {
     return HttpResponse.json(SuccessfulResponseMock)
   }),
 ]

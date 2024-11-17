@@ -1,5 +1,8 @@
 import { HttpResponse, http } from 'msw'
+
+import { API_URL } from '@/shared/config'
 import type { User } from '@/shared/types'
+
 import type {
   LoginUserParams,
   ResetPasswordParams,
@@ -29,7 +32,7 @@ export function updateUserInLocalStorage(updatedUser: User, userIndex: number) {
 }
 
 export const userHandlers = [
-  http.post('/api/register', async ({ request }) => {
+  http.post(`${API_URL}/api/register`, async ({ request }) => {
     const newUser: User = {
       ...await request.json() as User,
       likedProducts: [],
@@ -47,7 +50,7 @@ export const userHandlers = [
       return HttpResponse.json(newUser, { status: 201 })
     }
   }),
-  http.post('/api/login', async ({ request }) => {
+  http.post(`${API_URL}/api/login`, async ({ request }) => {
     const { email, password } = await request.json() as LoginUserParams
 
     const users = getUsersFromLocalStorage()
@@ -62,19 +65,22 @@ export const userHandlers = [
       return HttpResponse.json('Incorrect email or password', { status: 401 })
     }
   }),
-  http.post('/api/set-email-for-reset-password', async ({ request }) => {
-    const { email } = await request.json() as SetEmailForResetPasswordParams
+  http.post(
+    `${API_URL}/api/set-email-for-reset-password`,
+    async ({ request }) => {
+      const { email } = await request.json() as SetEmailForResetPasswordParams
 
-    const users = getUsersFromLocalStorage()
+      const users = getUsersFromLocalStorage()
 
-    if (users.some(user => user.email === email)) {
-      return HttpResponse.json(email, { status: 200 })
-    }
-    else {
-      return HttpResponse.json('Not found a user with that email', { status: 401 })
-    }
-  }),
-  http.post('/api/reset-password', async ({ request }) => {
+      if (users.some(user => user.email === email)) {
+        return HttpResponse.json(email, { status: 200 })
+      }
+      else {
+        return HttpResponse.json('Not found a user with that email', { status: 401 })
+      }
+    },
+  ),
+  http.post(`${API_URL}/api/reset-password`, async ({ request }) => {
     const { email, password } = await request.json() as ResetPasswordParams
 
     const users = getUsersFromLocalStorage()

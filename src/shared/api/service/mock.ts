@@ -4,7 +4,9 @@ import { fakerUK as f } from '@faker-js/faker'
 
 import { Categories } from '@/features/service/category/types'
 
+import { API_URL } from '@/shared/config'
 import type { Service } from '@/shared/types'
+
 import services from '../db/services'
 
 import type { ServiceSchema } from './types'
@@ -33,10 +35,12 @@ export function makeServiceSchemaMock(): z.infer<typeof ServiceSchema> {
   }
 }
 
-export const makeServiceMock = (): Service => normalizeService(makeServiceSchemaMock())
+export function makeServiceMock(): Service {
+  return normalizeService(makeServiceSchemaMock())
+}
 
 export const serviceHandlers = [
-  http.get('/api/services', ({ request }) => {
+  http.get(`${API_URL}/api/services`, ({ request }) => {
     const url = new URL(request.url)
 
     const category = url.searchParams.get('category')
@@ -50,10 +54,10 @@ export const serviceHandlers = [
       )
     }
   }),
-  http.get('/api/services/popular', () => {
+  http.get(`${API_URL}/api/services/popular`, () => {
     return HttpResponse.json(services.slice(0, 6))
   }),
-  http.get('/api/services/:id', ({ params }) => {
+  http.get(`${API_URL}/api/services/:id`, ({ params }) => {
     const { id } = params
     const item = services.find(i => i.id === +id)
     return HttpResponse.json(item)

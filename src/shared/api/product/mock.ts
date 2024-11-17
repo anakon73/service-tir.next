@@ -2,10 +2,14 @@ import type { z } from 'zod'
 import { faker as f } from '@faker-js/faker'
 import { HttpResponse, http } from 'msw'
 
+import { API_URL } from '@/shared/config'
 import type { Product, User } from '@/shared/types'
 
 import products from '../db/products'
-import { getUsersFromLocalStorage, updateUserInLocalStorage } from '../user/mock'
+import {
+  getUsersFromLocalStorage,
+  updateUserInLocalStorage,
+} from '../user/mock'
 
 import type { ProductSchema } from './types'
 import { normalizeProduct } from './normalizers'
@@ -15,7 +19,9 @@ function makeProductSchemaMock(): z.infer<typeof ProductSchema> {
   const name = f.commerce.productName()
   const price = +f.commerce.price({ min: 1000, max: 10000, dec: 2 })
   const discountPercentage = f.number.int({ min: 10, max: 90 })
-  const price_with_discount = Math.trunc(price - (price * discountPercentage / 100))
+  const price_with_discount = Math.trunc(
+    price - (price * discountPercentage / 100),
+  )
 
   return {
     code: f.number.int({ min: 1000000, max: 9999999 }),
@@ -68,10 +74,12 @@ function makeProductSchemaMock(): z.infer<typeof ProductSchema> {
   }
 }
 
-export const makeProductMock = (): Product => normalizeProduct(makeProductSchemaMock())
+export function makeProductMock(): Product {
+  return normalizeProduct(makeProductSchemaMock())
+}
 
 export const productsHandlers = [
-  http.get('/api/products', ({ request }) => {
+  http.get(`${API_URL}/api/products`, ({ request }) => {
     const url = new URL(request.url)
 
     const searchValue = url.searchParams.get('search')
@@ -87,20 +95,22 @@ export const productsHandlers = [
       return HttpResponse.json(products)
     }
   }),
-  http.get('/api/products/hot-deals', () => {
+  http.get(`${API_URL}/api/products/hot-deals`, () => {
     return HttpResponse.json(products.slice(0, 6))
   }),
-  http.get('/api/products/liked', () => {
+  http.get(`${API_URL}/api/products/liked`, () => {
     const user = JSON.parse(localStorage.getItem('user')!) as User
-    const filteredProducts = products.filter(p => user.likedProducts.includes(p.code))
+    const filteredProducts = products.filter(
+      p => user.likedProducts.includes(p.code),
+    )
     return HttpResponse.json(filteredProducts)
   }),
-  http.get('/api/products/:code', ({ params }) => {
+  http.get(`${API_URL}/api/products/:code`, ({ params }) => {
     const { code } = params
     const item = products.find(p => p.code === +code)
     return HttpResponse.json(item)
   }),
-  http.post('/api/like-product', async ({ request }) => {
+  http.post(`${API_URL}/api/like-product`, async ({ request }) => {
     const { code, email } = await request.json() as LikeProductParams
 
     const users = getUsersFromLocalStorage()
