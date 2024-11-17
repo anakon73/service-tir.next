@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { type ApiEndpointsAndSchemas, handleError } from '../lib'
+import { type ApiEndpointsAndSchemas, client } from '../lib'
 
 import { UserSchema } from './types'
 import { normalizeUser } from './normalizers'
@@ -29,28 +29,28 @@ const endpoints = {
 
 export { endpoints as userEndpoints }
 
-export type RegisterUserParams = { name: string, email: string, password: string }
-export async function registerUser({ name, email, password }: RegisterUserParams) {
+export type RegisterUserParams = {
+  name: string
+  email: string
+  password: string
+}
+export async function registerUser(
+  { name, email, password }: RegisterUserParams,
+) {
   const { url, method, schema } = endpoints.register
 
-  const response = await fetch(
-    url,
-    { method, body: JSON.stringify({ name, email, password }) },
-  )
+  const data = await client[method](url, { name, email, password }, schema)
 
-  return normalizeUser(await handleError(response, schema))
+  return normalizeUser(data)
 }
 
 export type LoginUserParams = { email: string, password: string }
 export async function loginUser({ email, password }: LoginUserParams) {
   const { url, method, schema } = endpoints.login
 
-  const response = await fetch(
-    url,
-    { method, body: JSON.stringify({ email, password }) },
-  )
+  const data = await client[method](url, { email, password }, schema)
 
-  return normalizeUser(await handleError(response, schema))
+  return normalizeUser(data)
 }
 
 export type SetEmailForResetPasswordParams = { email: string }
@@ -59,16 +59,16 @@ export async function setEmailForResetPassword(
 ) {
   const { url, method, schema } = endpoints.setEmailForResetPassword
 
-  const response = await fetch(url, { method, body: JSON.stringify({ email }) })
+  const data = await client[method](url, { email }, schema)
 
-  return handleError(response, schema)
+  return data
 }
 
 export type ResetPasswordParams = { email: string, password: string }
 export async function resetPassword({ email, password }: ResetPasswordParams) {
   const { url, method, schema } = endpoints.resetPassword
 
-  const response = await fetch(url, { method, body: JSON.stringify({ email, password }) })
+  const data = await client[method](url, { email, password }, schema)
 
-  return normalizeUser(await handleError(response, schema))
+  return normalizeUser(data)
 }

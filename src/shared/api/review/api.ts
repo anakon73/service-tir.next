@@ -1,5 +1,5 @@
 import { z } from 'zod'
-import { type ApiEndpointsAndSchemas, SuccessfulResponse } from '../lib'
+import { type ApiEndpointsAndSchemas, SuccessfulResponse, client } from '../lib'
 
 import { ReviewSchema } from './types'
 import { normalizeReview } from './normalizers'
@@ -8,7 +8,7 @@ const endpoints = {
   getReviews: {
     url: '/api/reviews',
     method: 'get',
-    schema: ReviewSchema,
+    schema: z.array(ReviewSchema),
   },
   create: {
     url: '/api/reviews',
@@ -22,9 +22,9 @@ export { endpoints as reviewEndpoints }
 export async function getReviews() {
   const { url, method, schema } = endpoints.getReviews
 
-  return z.array(schema)
-    .parse(await fetch(url, { method }).then(r => r.json()))
-    .map(review => normalizeReview(review))
+  const data = await client[method](url, schema)
+
+  return data.map(normalizeReview)
 }
 
 export type CreateReviewParams = {
@@ -37,7 +37,7 @@ export async function createReview(
 ) {
   const { url, method, schema } = endpoints.create
 
-  await fetch(url, { method, body: JSON.stringify({ author, comment, rate }) })
+  const data = await client[method](url, { author, comment, rate }, schema)
 
-  return schema
+  return data
 }

@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-import { type ApiEndpointsAndSchemas, handleError } from '../lib'
+import { type ApiEndpointsAndSchemas, client } from '../lib'
 import { UserSchema, normalizeUser } from '../user'
 
 import { CartItemSchema } from './types'
@@ -10,7 +10,7 @@ const endpoints = {
   getCart: {
     url: '/api/cart',
     method: 'get',
-    schema: CartItemSchema,
+    schema: z.array(CartItemSchema),
   },
   productToCart: {
     url: '/api/product-to-cart',
@@ -34,43 +34,38 @@ export { endpoints as cartEndpoints }
 export async function getCart() {
   const { url, method, schema } = endpoints.getCart
 
-  return z.array(schema)
-    .parse((await fetch(url, { method }).then(r => r.json())))
-    .map(item => normalizeCartItem(item))
+  const data = await client[method](url, schema)
+
+  return data.map(normalizeCartItem)
 }
 
 export type ProductToCartParams = { email: string, productCode: number }
-export async function productToCart({ email, productCode }: ProductToCartParams) {
+export async function productToCart(
+  { email, productCode }: ProductToCartParams,
+) {
   const { url, method, schema } = endpoints.productToCart
 
-  const response = await fetch(
-    url,
-    { method, body: JSON.stringify({ email, productCode }) },
-  )
+  const data = await client[method](url, { email, productCode }, schema)
 
-  return normalizeUser(await handleError(response, schema))
+  return normalizeUser(data)
 }
 
 export type RemoveFromCartParams = { email: string, productCode: number }
-export async function removeFromCart({ email, productCode }: RemoveFromCartParams) {
+export async function removeFromCart(
+  { email, productCode }: RemoveFromCartParams,
+) {
   const { url, method, schema } = endpoints.removeFromCart
 
-  const response = await fetch(
-    url,
-    { method, body: JSON.stringify({ email, productCode }) },
-  )
+  const data = await client[method](url, { email, productCode }, schema)
 
-  return normalizeUser(await handleError(response, schema))
+  return normalizeUser(data)
 }
 
 export type CreateOrderParams = { email: string }
 export async function createOrder({ email }: CreateOrderParams) {
   const { url, method, schema } = endpoints.createOrder
 
-  const response = await fetch(
-    url,
-    { method, body: JSON.stringify({ email }) },
-  )
+  const data = await client[method](url, { email }, schema)
 
-  return normalizeUser(await handleError(response, schema))
+  return normalizeUser(data)
 }
