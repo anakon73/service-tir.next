@@ -1,14 +1,13 @@
-import { z } from 'zod'
-import type { ApiEndpointsAndSchemas, ToKeyParams } from '../lib'
+import { type ApiEndpointsAndSchemas, type ToKeyParams, client } from '../lib'
 
-import { ArticleSchema } from './types'
-import { normalizeArticle } from './normalizers'
+import { ArticleSchema, PaginatedArticlesSchema } from './types'
+import { normalizeArticle, normalizePaginatedArticles } from './normalizers'
 
 const endpoints = {
   getArticles: {
-    url: '/api/articles',
+    url: `/api/articles`,
     method: 'get',
-    schema: ArticleSchema,
+    schema: PaginatedArticlesSchema,
   },
   byId: {
     url: ({ id }: ArticleByIdParams) => `/api/articles/${id}`,
@@ -19,12 +18,16 @@ const endpoints = {
 
 export { endpoints as articlesEndpoints }
 
-export async function getArticles() {
+export type GetArticlesParams = { page: number }
+export type GetArticlesKeyParams = ToKeyParams<GetArticlesParams>
+export async function getArticles({ page }: GetArticlesParams) {
   const { url, method, schema } = endpoints.getArticles
 
-  return z.array(schema)
-    .parse(await fetch(url, { method }).then(r => r.json()))
-    .map(article => normalizeArticle(article))
+  const queryParams = new URLSearchParams({ page: String(page) }).toString()
+
+  const data = await client[method](`${url}?${queryParams}`, schema)
+
+  return normalizePaginatedArticles(data)
 }
 
 export type ArticleByIdParams = { id: number }
@@ -32,7 +35,7 @@ export type ArticleByIdKeyParams = ToKeyParams<ArticleByIdParams>
 export async function articleById({ id }: ArticleByIdParams) {
   const { url, method, schema } = endpoints.byId
 
-  return normalizeArticle(
-    schema.parse(await fetch(url({ id }), { method }).then(r => r.json())),
-  )
+  const data = await client[method](url({ id }), schema)
+
+  return normalizeArticle(data)
 }

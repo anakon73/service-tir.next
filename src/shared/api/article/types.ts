@@ -1,21 +1,29 @@
 import { z } from 'zod'
+import { PaginatedResponseSchema, dateValidation } from '@/shared/lib/validation'
 
 export const ParagraphSchema = z.object({
-  image: z.string().url(),
   text: z.array(z.string()),
+  image: z.string().url(),
 })
 
-export const BaseArticleSchema = z.object({
+export const SimilarArticleSchema = z.object({
   id: z.number(),
-  date: z.string(),
   name: z.string(),
   description: z.string(),
   preview_image: z.string().url(),
+  created_at: dateValidation,
+  updated_at: dateValidation,
+})
+
+export const ArticleSchema = z.object({
+  id: z.number(),
+  name: z.string(),
+  description: z.string(),
+  preview_image: z.string(),
   paragraphs: z.array(ParagraphSchema),
+  similar_articles: z.array(SimilarArticleSchema),
+  created_at: dateValidation,
+  updated_at: dateValidation,
 })
 
-export const ArticleSimilarSchema = BaseArticleSchema.omit({ paragraphs: true })
-
-export const ArticleSchema = BaseArticleSchema.extend({
-  similar_articles: z.array(BaseArticleSchema),
-})
+export const PaginatedArticlesSchema = PaginatedResponseSchema(ArticleSchema)

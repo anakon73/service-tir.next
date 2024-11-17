@@ -1,51 +1,43 @@
 import type { z } from 'zod'
 import { objectPick } from '@antfu/utils'
 
-import type { Article } from '@/shared/types'
-import type { ArticleSchema, ArticleSimilarSchema, BaseArticleSchema } from './types'
+import type { Article, Pagination, SimilarArticles } from '@/shared/types'
+import type {
+  ArticleSchema,
+  PaginatedArticlesSchema,
+  SimilarArticleSchema,
+} from './types'
+import { normalizePagination } from '../lib'
 
-export function normalizeBaseArticle(
-  article: z.infer<typeof BaseArticleSchema>,
-): Omit<Article, 'similarArticles'> {
-  const { date: articleDate, preview_image } = article
-
-  const date = new Date(articleDate)
-
-  return {
-    ...objectPick(article, [
-      'description',
-      'id',
-      'name',
-      'paragraphs',
-    ]),
-    date,
-    previewImage: preview_image,
-  }
-}
-
-export function normalizeArticleSimilar(
-  article: z.infer<typeof ArticleSimilarSchema>,
-): Omit<Article, 'paragraphs' | 'similarArticles'> {
-  const { date: articleDate, preview_image } = article
-
-  const date = new Date(articleDate)
+export function normalizeSimilarArticles(
+  article: z.infer<typeof SimilarArticleSchema>,
+): SimilarArticles {
+  const { created_at, preview_image, updated_at } = article
 
   return {
-    ...objectPick(article, [
-      'description',
-      'id',
-      'name',
-    ]),
-    date,
+    ...objectPick(article, ['description', 'id', 'name']),
+    createdAt: created_at,
     previewImage: preview_image,
+    updatedAt: updated_at,
   }
 }
 
 export function normalizeArticle(
   article: z.infer<typeof ArticleSchema>,
 ): Article {
+  const { created_at, preview_image, updated_at, similar_articles } = article
+
   return {
-    ...normalizeBaseArticle(article),
-    similarArticles: article.similar_articles.map(a => normalizeArticleSimilar(a)),
+    ...objectPick(article, ['description', 'id', 'name', 'paragraphs']),
+    createdAt: created_at,
+    previewImage: preview_image,
+    updatedAt: updated_at,
+    similarArticles: similar_articles.map(normalizeSimilarArticles),
   }
+}
+
+export function normalizePaginatedArticles(
+  rawData: z.infer<typeof PaginatedArticlesSchema>,
+): Pagination<Article> {
+  return normalizePagination(rawData, normalizeArticle)
 }
