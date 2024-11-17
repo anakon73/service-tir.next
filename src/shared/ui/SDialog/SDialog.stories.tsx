@@ -29,4 +29,4 @@ export default {
 
 type Story = StoryObj
 
-export const Default: Story = { }
+export const Default: Story = { name: 'SDialog' }
