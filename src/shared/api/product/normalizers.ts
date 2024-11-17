@@ -66,7 +66,9 @@ export function normalizeProduct(
     ...objectPick(product, ['images', 'quantity']),
     ...normalizeBaseProduct(product),
     reviews: product.reviews.map(r => normalizeReview(r)),
-    similarProducts: product.similar_products.map(p => normalizeProductSimilar(p)),
+    similarProducts: product.similar_products.map(
+      p => normalizeProductSimilar(p),
+    ),
     fullDescription: product.full_description,
   }
 }

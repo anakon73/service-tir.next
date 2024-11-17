@@ -9,7 +9,11 @@ import {
 } from './api'
 
 const entity = 'service'
-const Scopes = { ByCategory: 'by-category', Popular: 'popular', ById: 'by-id' } as const
+const Scopes = {
+  ByCategory: 'by-category',
+  Popular: 'popular',
+  ById: 'by-id',
+} as const
 
 const keys = {
   byCategory: (
@@ -27,7 +31,9 @@ export {
   keys as serviceKeys,
 }
 
-export function useServicesByCategoryQuery(params: ServicesByCategoryKeyParams) {
+export function useServicesByCategoryQuery(
+  params: ServicesByCategoryKeyParams,
+) {
   return queryOptions({
     queryKey: keys.byCategory(params),
     queryFn: (
