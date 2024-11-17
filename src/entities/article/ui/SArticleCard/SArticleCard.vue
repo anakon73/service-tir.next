@@ -5,17 +5,17 @@ import { ArrowUpRightIcon } from '@heroicons/vue/24/solid'
 
 export interface Props {
   id: number
-  date: Date
+  createdAt: Date
   name: string
   description: string
-  image: string
+  previewImage: string
 }
 
 const props = defineProps<Props>()
 
-const { date } = toRefs(props)
+const { createdAt } = toRefs(props)
 
-const formattedDate = computed(() => format(date.value, 'd MMMM u'))
+const formattedDate = computed(() => format(createdAt.value, 'd MMMM u'))
 </script>
 
 <template>
@@ -27,7 +27,7 @@ const formattedDate = computed(() => format(date.value, 'd MMMM u'))
     "
   >
     <img
-      :src="image"
+      :src="previewImage"
       alt="article image"
       class="
         h-40 rounded-lg object-cover
