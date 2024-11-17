@@ -119,7 +119,7 @@ const currentPageProducts = computed(() => {
     <SPagination
       :selected-page="selectedPage"
       :items-per-page="24"
-      :length="filteredProducts.length"
+      :total="filteredProducts.length"
       @change-page="selectedPage = $event"
     />
   </div>

@@ -116,7 +116,7 @@ const currentPageReviews = computed(() => {
       />
     </div>
     <SPagination
-      :length="reviews.length"
+      :total="reviews.length"
       :selected-page="selectedPage"
       :items-per-page="16"
       @change-page="selectedPage = $event"
