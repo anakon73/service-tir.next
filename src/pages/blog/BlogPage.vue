@@ -23,7 +23,7 @@ const { params: { id } } = useRoute()
 
 const { data, isLoading } = useArticleById({ id: +id || 1 })
 
-const formattedDate = computed(() => format(data.value!.date, 'd MMMM u'))
+const formattedDate = computed(() => format(data.value!.createdAt, 'd MMMM u'))
 </script>
 
 <template>
@@ -145,13 +145,7 @@ const formattedDate = computed(() => format(data.value!.date, 'd MMMM u'))
         :space-between="20"
       >
         <SwiperSlide v-for="similar in data?.similarArticles" :key="similar.id">
-          <SArticleCard
-            :id="similar.id"
-            :date="similar.date"
-            :image="similar.previewImage"
-            :description="similar.description"
-            :name="similar.name"
-          />
+          <SArticleCard :="similar" />
         </SwiperSlide>
       </Swiper>
       <div class="mt-5 flex items-end justify-center gap-5">
