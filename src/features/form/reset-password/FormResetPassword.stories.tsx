@@ -8,4 +8,4 @@ const meta = {
 
 export default meta
 
-export const Default: StoryObj<typeof FormResetPassword> = { name: 'ResetPassword' }
+export const Default: StoryObj<typeof meta> = { name: 'ResetPassword' }
