@@ -19,8 +19,8 @@ defineEmits<{ changeCategory: [tab: Categories] }>()
       :key="category"
       :class="cn(
         `
-          rounded-full px-2 py-1.5 text-xs font-medium leading-5 transition-colors
-          duration-300
+          rounded-full px-2 py-1.5 text-xs font-medium leading-5
+          transition-colors duration-300
         `,
         category === selectedCategory
           ? `

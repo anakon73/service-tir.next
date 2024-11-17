@@ -7,7 +7,16 @@ import type { UserSchema } from './types'
 
 export function normalizeUser(user: z.infer<typeof UserSchema>): User {
   return {
-    ...objectPick(user, ['name', 'email', 'password', 'likedProducts', 'orders']),
+    ...objectPick(
+      user,
+      [
+        'name',
+        'email',
+        'password',
+        'likedProducts',
+        'orders',
+      ],
+    ),
     cart: user.cart.map(item => normalizeCartItem(item)),
   }
 }

@@ -1,6 +1,10 @@
 <script setup lang="ts">
 import { ref } from 'vue'
-import { ArrowRightIcon, ChevronRightIcon, XMarkIcon } from '@heroicons/vue/24/solid'
+import {
+  ArrowRightIcon,
+  ChevronRightIcon,
+  XMarkIcon,
+} from '@heroicons/vue/24/solid'
 
 import { useRoute } from 'vue-router'
 import { ServicePriceList } from '@/widgets/service-price-list'
@@ -43,10 +47,12 @@ const { data: service, isLoading } = useServiceById({ id: +id || 1 })
       >
         <XMarkIcon class="size-3" />
       </button>
-      <div class="mx-auto flex w-full max-w-[340px] flex-col items-center gap-3">
+      <div
+        class="mx-auto flex w-full max-w-[340px] flex-col items-center gap-3"
+      >
         <h2
           class="
-          text-xl font-semibold leading-[30px] tracking-[0.4px] text-black
+            text-xl font-semibold leading-[30px] tracking-[0.4px] text-black
           "
         >
           Запис на ремонт
@@ -56,7 +62,8 @@ const { data: service, isLoading } = useServiceById({ id: +id || 1 })
         </p>
         <ul
           class="
-            flex flex-col items-center gap-2.5 text-lg font-medium leading-7 text-blue-600
+            flex flex-col items-center gap-2.5 text-lg font-medium leading-7
+            text-blue-600
           "
         >
           <li>
@@ -140,7 +147,10 @@ const { data: service, isLoading } = useServiceById({ id: +id || 1 })
             Головна
           </RouterLink>
           <ChevronRightIcon class="size-2" />
-          <RouterLink :to="{ name: 'Services' }" class="cursor-pointer opacity-50">
+          <RouterLink
+            :to="{ name: 'Services' }"
+            class="cursor-pointer opacity-50"
+          >
             Послуги
           </RouterLink>
           <ChevronRightIcon class="size-2" />
@@ -166,7 +176,8 @@ const { data: service, isLoading } = useServiceById({ id: +id || 1 })
           >
             <h1
               class="
-                font-jakarta text-4xl font-bold leading-extra-height text-gray-900
+                font-jakarta text-4xl font-bold leading-extra-height
+                text-gray-900
 
                 lg:text-big
               "
@@ -213,7 +224,9 @@ const { data: service, isLoading } = useServiceById({ id: +id || 1 })
           🤑
         </div>
         <h1
-          class="font-jakarta text-big font-bold leading-extra-height text-gray-900"
+          class="
+            font-jakarta text-big font-bold leading-extra-height text-gray-900
+          "
         >
           Ціни
         </h1>
@@ -272,7 +285,8 @@ const { data: service, isLoading } = useServiceById({ id: +id || 1 })
           <div>
             <h1
               class="
-                mb-3 font-jakarta text-3xl font-bold leading-normal text-gray-900
+                mb-3 font-jakarta text-3xl font-bold leading-normal
+                text-gray-900
 
                 lg:text-big lg:leading-extra-height
               "
@@ -326,8 +340,7 @@ const { data: service, isLoading } = useServiceById({ id: +id || 1 })
               <div class="mr-4 flex items-center gap-3">
                 <div
                   class="
-                  paragraphIcon mr-3 size-10
-                  rounded-full bg-white p-2 text-lg
+                    paragraphIcon mr-3 size-10 rounded-full bg-white p-2 text-lg
                   "
                 >
                   💬
@@ -358,8 +371,8 @@ const { data: service, isLoading } = useServiceById({ id: +id || 1 })
             >
               <p
                 class="
-                  whitespace-nowrap text-xs font-bold text-white transition-colors
-                  duration-300
+                  whitespace-nowrap text-xs font-bold text-white
+                  transition-colors duration-300
 
                   group-hover:text-zinc-100
                 "

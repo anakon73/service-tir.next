@@ -22,7 +22,10 @@ const selectedView = ref<'description' | 'specs' | 'reviews'>('description')
 
 const { params: { code } } = useRoute()
 
-const { data: product, isLoading } = useProductByCode({ code: +code || 6358726 })
+const {
+  data: product,
+  isLoading,
+} = useProductByCode({ code: +code || 6358726 })
 
 const store = useUserStore()
 
@@ -85,7 +88,8 @@ const inStock = computed(() => {
   >
     <div
       class="
-        mb-9 flex items-center gap-1 text-xs text-gray-900 transition-colors duration-300
+        mb-9 flex items-center gap-1 text-xs text-gray-900 transition-colors
+        duration-300
 
         hover:text-gray-950
 
@@ -168,7 +172,8 @@ const inStock = computed(() => {
         />
         <div
           class="
-            mb-2 flex h-64 items-center justify-center rounded-2xl border bg-white
+            mb-2 flex h-64 items-center justify-center rounded-2xl border
+            bg-white
 
             md:h-80 md:max-w-[472px]
           "
@@ -255,7 +260,9 @@ const inStock = computed(() => {
           <div v-if="product.discount">
             <div class="flex items-center gap-2.5">
               <p
-                class="text-xs font-bold leading-5 text-gray-400/50 line-through"
+                class="
+                text-xs font-bold leading-5 text-gray-400/50 line-through
+                "
               >
                 {{ product.price }} &#8372;
               </p>

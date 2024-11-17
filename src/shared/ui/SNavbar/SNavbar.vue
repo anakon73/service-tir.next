@@ -13,8 +13,7 @@ import { links } from './config'
   >
     <ul
       class="
-      flex w-full select-none items-center justify-center
-      gap-14 text-gray-900
+        flex w-full select-none items-center justify-center gap-14 text-gray-900
       "
     >
       <RouterLink
@@ -30,7 +29,9 @@ import { links } from './config'
 
               hover:text-slate-400
             `,
-            isActive && 'font-bold underline decoration-2 underline-offset-[23px]',
+            isActive && `
+              font-bold underline decoration-2 underline-offset-[23px]
+            `,
           )"
         >
           {{ link.name }}

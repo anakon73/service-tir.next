@@ -27,7 +27,8 @@ function formatPhoneNumber(number: string) {
   >
     <div
       class="
-        mb-8 flex items-center gap-1 text-xs text-gray-900 transition-colors duration-300
+        mb-8 flex items-center gap-1 text-xs text-gray-900 transition-colors
+        duration-300
 
         hover:text-gray-950
 
@@ -47,7 +48,8 @@ function formatPhoneNumber(number: string) {
         </div>
         <h1
           class="
-            whitespace-nowrap font-jakarta text-2xl font-bold leading-[26px] text-gray-900
+            whitespace-nowrap font-jakarta text-2xl font-bold leading-[26px]
+            text-gray-900
 
             sm:text-big sm:leading-extra-height
           "

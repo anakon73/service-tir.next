@@ -16,7 +16,8 @@ import { tabs } from './config.ts'
   >
     <div
       class="
-        mb-8 flex items-center gap-1 text-xs text-gray-900 transition-colors duration-300
+        mb-8 flex items-center gap-1 text-xs text-gray-900 transition-colors
+        duration-300
 
         hover:text-gray-950
 

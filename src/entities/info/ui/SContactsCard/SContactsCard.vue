@@ -23,7 +23,8 @@ import { SButton } from '@/shared/ui/SButton'
       </div>
       <h1
         class="
-          whitespace-nowrap font-jakarta text-3xl font-bold leading-normal text-gray-900
+          whitespace-nowrap font-jakarta text-3xl font-bold leading-normal
+          text-gray-900
 
           lg:text-big lg:leading-extra-height
         "

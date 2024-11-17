@@ -17,7 +17,8 @@ const isOpen = ref(false)
   <div class="container">
     <div
       class="
-        mb-8 flex items-center gap-1 text-xs text-gray-900 transition-colors duration-300
+        mb-8 flex items-center gap-1 text-xs text-gray-900 transition-colors
+        duration-300
 
         hover:text-gray-950
 
@@ -117,7 +118,9 @@ const isOpen = ref(false)
           md:mb-10
         "
       >
-        <div class="paragraphIcon mr-3 size-10 rounded-full bg-white p-2 text-lg">
+        <div
+          class="paragraphIcon mr-3 size-10 rounded-full bg-white p-2 text-lg"
+        >
           🌟
         </div>
         <div>
@@ -200,7 +203,9 @@ const isOpen = ref(false)
             class="h-[540px] rounded-2xl object-cover"
             :src="worker.image"
           >
-          <div class="flex justify-between font-inter font-medium leading-small">
+          <div
+            class="flex justify-between font-inter font-medium leading-small"
+          >
             <p class="text-neutral-800">
               {{ worker.name }}
             </p>
@@ -226,7 +231,9 @@ const isOpen = ref(false)
             class="h-[540px] rounded-2xl object-cover"
             :src="worker.image"
           >
-          <div class="flex justify-between font-inter font-medium leading-small">
+          <div
+            class="flex justify-between font-inter font-medium leading-small"
+          >
             <p class="text-neutral-800">
               {{ worker.name }}
             </p>
@@ -261,8 +268,7 @@ const isOpen = ref(false)
             <div class="mr-4 flex items-center gap-3">
               <div
                 class="
-                paragraphIcon mr-3 size-10
-                rounded-full bg-white p-2 text-lg
+                  paragraphIcon mr-3 size-10 rounded-full bg-white p-2 text-lg
                 "
               >
                 💬

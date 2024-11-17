@@ -11,7 +11,7 @@ export default antfu(
       'readable-tailwind': eslintPluginReadableTailwind,
     },
     rules: {
-      'max-len': ['error', 90],
+      'max-len': ['error', 80, { ignoreStrings: true }],
       'import/order': [
         'warn',
         { groups: ['builtin', 'external'], warnOnUnassignedImports: true },
@@ -29,7 +29,7 @@ export default antfu(
       }],
       ...eslintPluginReadableTailwind.configs.warning.rules,
       ...eslintPluginReadableTailwind.configs.error.rules,
-      'readable-tailwind/multiline': ['warn', { printWidth: 90 }],
+      'readable-tailwind/multiline': ['warn', { printWidth: 80 }],
     },
   },
   ...compat.config({ extends: ['plugin:storybook/recommended'] }),

@@ -57,7 +57,8 @@ defineProps<Props>()
     </div>
     <div
       class="
-        flex grid-cols-7 flex-wrap items-center gap-3 rounded-b-2xl bg-white px-3 py-4
+        flex grid-cols-7 flex-wrap items-center gap-3 rounded-b-2xl bg-white
+        px-3 py-4
 
         md:grid md:px-4
       "
@@ -66,8 +67,8 @@ defineProps<Props>()
         v-for="product in products"
         :key="product.code"
         class="
-          flex aspect-square max-w-24 items-center justify-center rounded-xl bg-indigo-100
-          p-4
+          flex aspect-square max-w-24 items-center justify-center rounded-xl
+          bg-indigo-100 p-4
         "
       >
         <img

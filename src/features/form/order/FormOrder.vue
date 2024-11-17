@@ -88,8 +88,8 @@ watch(initialValues, (values) => {
       <div class="flex items-center gap-2.5">
         <p
           class="
-            flex h-7 w-7 items-center justify-center rounded-full bg-blue-600 font-medium
-            leading-5 text-white shadow-md
+            flex h-7 w-7 items-center justify-center rounded-full bg-blue-600
+            font-medium leading-5 text-white shadow-md
           "
         >
           1
@@ -192,8 +192,8 @@ watch(initialValues, (values) => {
       <div class="flex items-center gap-2.5">
         <p
           class="
-            flex h-7 w-7 items-center justify-center rounded-full bg-white font-medium
-            leading-5 text-black shadow-md
+            flex h-7 w-7 items-center justify-center rounded-full bg-white
+            font-medium leading-5 text-black shadow-md
           "
         >
           2
@@ -254,8 +254,8 @@ watch(initialValues, (values) => {
       <div class="flex items-center gap-2.5">
         <p
           class="
-            flex h-7 w-7 items-center justify-center rounded-full bg-white font-medium
-            leading-5 text-black shadow-md
+            flex h-7 w-7 items-center justify-center rounded-full bg-white
+            font-medium leading-5 text-black shadow-md
           "
         >
           3

@@ -11,7 +11,10 @@ describe('sTextarea', () => {
   })
 
   it('should add placeholder to textarea', () => {
-    const wrapper = mount(STextarea, { props: { placeholder: 'Write text...' } })
+    const wrapper = mount(
+      STextarea,
+      { props: { placeholder: 'Write text...' } },
+    )
 
     expect(wrapper.find('[placeholder="Write text..."]'))
   })

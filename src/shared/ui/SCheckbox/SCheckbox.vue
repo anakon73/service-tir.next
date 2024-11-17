@@ -1,4 +1,8 @@
-<script setup lang="ts" generic="TModel extends CheckboxValue, TValue extends TModel">
+<script
+ setup
+ lang="ts"
+ generic="TModel extends CheckboxValue, TValue extends TModel"
+>
 import type { InputHTMLAttributes } from 'vue'
 import { useVModel } from '@vueuse/core'
 

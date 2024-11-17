@@ -44,8 +44,8 @@ import { ArrowRightIcon } from '@heroicons/vue/24/solid'
           </p>
           <button
             class="
-              flex items-center gap-1 self-start text-sm font-medium text-blue-600
-              transition-colors duration-300
+              flex items-center gap-1 self-start text-sm font-medium
+              text-blue-600 transition-colors duration-300
 
               hover:text-blue-800
             "

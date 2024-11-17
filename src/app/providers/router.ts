@@ -17,7 +17,11 @@ router.beforeEach((to, _from, next) => {
   const userStore = useUserStore()
 
   if (
-    (to.name?.startsWith('Profile') || to.name === 'Cart' || to.name === 'Order')
+    (
+      to.name?.startsWith('Profile')
+      || to.name === 'Cart'
+      || to.name === 'Order'
+    )
     && !userStore.user
   ) {
     next({ name: 'Register' })

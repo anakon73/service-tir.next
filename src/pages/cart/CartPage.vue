@@ -16,7 +16,8 @@ const { cartList, price, totalPrice, totalDiscount } = storeToRefs(store)
   <div class="container mb-24">
     <div
       class="
-        mb-8 flex items-center gap-1 text-xs text-gray-900 transition-colors duration-300
+        mb-8 flex items-center gap-1 text-xs text-gray-900 transition-colors
+        duration-300
 
         hover:text-gray-950
 
@@ -74,8 +75,8 @@ const { cartList, price, totalPrice, totalDiscount } = storeToRefs(store)
       </div>
       <div
         class="
-          card row-end-1 flex w-full flex-col gap-6 rounded-xl border border-gray-100
-          bg-white px-5 py-6
+          card row-end-1 flex w-full flex-col gap-6 rounded-xl border
+          border-gray-100 bg-white px-5 py-6
 
           lg:max-w-[270px]
         "
@@ -105,7 +106,9 @@ const { cartList, price, totalPrice, totalDiscount } = storeToRefs(store)
             </div>
             <hr>
             <div
-              class="flex items-center justify-between font-semibold text-gray-900"
+              class="
+                flex items-center justify-between font-semibold text-gray-900
+              "
             >
               <p class="text-lg">
                 Сума
@@ -116,7 +119,11 @@ const { cartList, price, totalPrice, totalDiscount } = storeToRefs(store)
             </div>
           </div>
         </div>
-        <SButton :to="{ name: 'Order' }" :as="RouterLink" class="flex justify-center">
+        <SButton
+          :to="{ name: 'Order' }"
+          :as="RouterLink"
+          class="flex justify-center"
+        >
           Оформити замовлення
         </SButton>
       </div>

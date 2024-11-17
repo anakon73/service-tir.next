@@ -19,8 +19,8 @@ import { SInput } from '@/shared/ui/SInput'
       <SInput class="w-full" label="Пароль" />
       <button
         class="
-          mb-8 block text-xs font-medium leading-[18px] text-blue-600 transition-colors
-          duration-300
+          mb-8 block text-xs font-medium leading-[18px] text-blue-600
+          transition-colors duration-300
 
           hover:text-blue-800
         "

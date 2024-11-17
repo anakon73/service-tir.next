@@ -45,7 +45,8 @@ const currentPageProducts = computed(() => {
   >
     <div
       class="
-        mb-8 flex items-center gap-1 text-xs text-gray-900 transition-colors duration-300
+        mb-8 flex items-center gap-1 text-xs text-gray-900 transition-colors
+        duration-300
 
         hover:text-gray-950
 
@@ -104,13 +105,17 @@ const currentPageProducts = computed(() => {
       <div v-if="isFetching" class="w-full text-center text-3xl font-bold">
         Loading
       </div>
-      <div v-else-if="!products?.length" class="w-full text-center text-3xl font-bold">
+      <div
+        v-else-if="!products?.length"
+        class="w-full text-center text-3xl font-bold"
+      >
         No Products
       </div>
       <div v-else>
         <button
           class="
-            card mb-8 flex w-full items-center justify-between rounded-2xl px-6 py-3
+            card mb-8 flex w-full items-center justify-between rounded-2xl px-6
+            py-3
 
             lg:hidden
           "

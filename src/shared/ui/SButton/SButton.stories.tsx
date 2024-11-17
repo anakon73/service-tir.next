@@ -53,7 +53,9 @@ export const Link: Story = {
 export const LinkWhite: Story = { args: { variant: 'link-white' } }
 
 const ButtonsWrapper: FunctionalComponent = (_, { slots }) => (
-  <div class="flex items-center justify-center gap-8 rounded-md bg-slate-200 p-1">
+  <div
+    class="flex items-center justify-center gap-8 rounded-md bg-slate-200 p-1"
+  >
     {slots.default?.()}
   </div>
 )

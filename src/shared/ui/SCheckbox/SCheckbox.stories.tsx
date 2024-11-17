@@ -8,7 +8,7 @@ import {
   type SCheckboxSlots,
 } from '.'
 
-export default {
+const meta = {
   title: 'Shared/UI/SCheckbox',
   // @ts-expect-error Storybook bug for generic components
   component: SCheckbox,
@@ -30,13 +30,19 @@ export default {
 
     'default': { control: 'text' },
   },
-} satisfies Meta<SCheckboxProps<boolean, false> & SCheckboxEmits<false> & SCheckboxSlots>
+} satisfies Meta<
+  SCheckboxProps<boolean, false>
+  & SCheckboxEmits<false>
+  & SCheckboxSlots
+>
 
-type Story = StoryObj<typeof SCheckbox>
+export default meta
+
+type Story = StoryObj<typeof meta>
 
 export const Default: Story = {}
 
-export const SubCheckbox: Story = { args: { SubCheckbox: true } }
+export const SubCheckbox: Story = { args: { subCheckbox: true } }
 
 export const WithTitle: Story = {
   args: {

@@ -33,8 +33,8 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
       <div
         :class="cn(
           `
-            fixed top-0 z-50 flex size-full flex-col gap-6 overflow-y-auto bg-blue-600
-            px-8 py-7 text-white transition-all duration-300 ease-in
+            fixed top-0 z-50 flex size-full flex-col gap-6 overflow-y-auto
+            bg-blue-600 px-8 py-7 text-white transition-all duration-300 ease-in
 
             md:hidden
           `,
@@ -161,9 +161,9 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
             <div
               id="favorite"
               class="
-                absolute -top-0.5 left-3.5 inline-flex h-2.5 items-center justify-center
-                rounded-full border border-white bg-cyan-100 px-0.5 text-center text-[8px]
-                text-sky-500
+                absolute -top-0.5 left-3.5 inline-flex h-2.5 items-center
+                justify-center rounded-full border border-white bg-cyan-100
+                px-0.5 text-center text-[8px] text-sky-500
               "
             >
               {{ user.likedProducts.length }}
@@ -197,9 +197,9 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
               />
               <div
                 class="
-                  absolute -top-0.5 left-3.5 inline-flex h-2.5 items-center justify-center
-                  rounded-full border border-white bg-green-100 px-0.5 text-center
-                  text-[8px] text-emerald-500
+                  absolute -top-0.5 left-3.5 inline-flex h-2.5 items-center
+                  justify-center rounded-full border border-white bg-green-100
+                  px-0.5 text-center text-[8px] text-emerald-500
                 "
               >
                 {{ user.cart.length }}
@@ -285,7 +285,11 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
               />
             </RouterLink>
 
-            <RouterLink v-if="user" :to="{ name: 'ProfileFavorite' }" class="relative">
+            <RouterLink
+              v-if="user"
+              :to="{ name: 'ProfileFavorite' }"
+              class="relative"
+            >
               <HeartIcon
                 class="
                   size-5 text-gray-900
@@ -296,9 +300,9 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
               <div
                 id="favorite"
                 class="
-                  absolute -top-0.5 left-3.5 inline-flex h-2.5 items-center justify-center
-                  rounded-full border border-white bg-cyan-100 px-0.5 text-center
-                  text-[8px] text-sky-500
+                  absolute -top-0.5 left-3.5 inline-flex h-2.5 items-center
+                  justify-center rounded-full border border-white bg-cyan-100
+                  px-0.5 text-center text-[8px] text-sky-500
                 "
               >
                 {{ user.likedProducts.length }}
@@ -320,8 +324,8 @@ watch(() => route.fullPath, () => isShowDropdown.value = false)
                 <div
                   class="
                     absolute -top-0.5 left-3.5 inline-flex h-2.5 items-center
-                    justify-center rounded-full border border-white bg-green-100 px-0.5
-                    text-center text-[8px] text-emerald-500
+                    justify-center rounded-full border border-white bg-green-100
+                    px-0.5 text-center text-[8px] text-emerald-500
                   "
                 >
                   {{ user.cart.length }}

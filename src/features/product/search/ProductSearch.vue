@@ -39,8 +39,7 @@ onKeyDown('Enter', () => {
   >
     <div
       class="
-      relative z-10 flex w-full max-w-lg
-      items-end gap-6 rounded-3xl bg-white
+        relative z-10 flex w-full max-w-lg items-end gap-6 rounded-3xl bg-white
       "
     >
       <RouterLink
@@ -126,8 +125,8 @@ onKeyDown('Enter', () => {
       <input
         v-model="searchValue"
         class="
-          w-full border-x-0 border-b border-t-0 border-zinc-50 bg-blue-600 p-0 pb-2
-          text-xs font-medium leading-7 text-white
+          w-full border-x-0 border-b border-t-0 border-zinc-50 bg-blue-600 p-0
+          pb-2 text-xs font-medium leading-7 text-white
 
           focus:border-white focus:ring-0
 

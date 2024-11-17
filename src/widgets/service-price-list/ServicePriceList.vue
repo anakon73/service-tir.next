@@ -7,7 +7,9 @@ defineProps<{ items: Price[] }>()
 
 <template>
   <div
-    class="w-full rounded-2xl border border-slate-300 bg-white p-1.5 drop-shadow-list"
+    class="
+      w-full rounded-2xl border border-slate-300 bg-white p-1.5 drop-shadow-list
+    "
   >
     <div
       class="

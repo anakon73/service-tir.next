@@ -1,1 +1,4 @@
-export { default as OrderItem, type Props as OrderItemProps } from './OrderItem.vue'
+export {
+  default as OrderItem,
+  type Props as OrderItemProps,
+} from './OrderItem.vue'

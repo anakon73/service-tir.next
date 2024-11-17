@@ -55,8 +55,8 @@ const liked = computed(() => user.value?.likedProducts.includes(code.value))
   <RouterLink
     :to="{ name: 'Product', params: { code } }"
     class="
-      card relative inline-flex h-full select-none flex-col justify-between rounded-2xl
-      px-3 pb-6 pt-3 text-gray-900
+      card relative inline-flex h-full select-none flex-col justify-between
+      rounded-2xl px-3 pb-6 pt-3 text-gray-900
 
       lg:max-w-none
     "
@@ -64,8 +64,8 @@ const liked = computed(() => user.value?.likedProducts.includes(code.value))
     <div>
       <div
         class="
-          relative mb-3 flex h-[130px] w-auto items-center justify-center rounded-2xl
-          border bg-white
+          relative mb-3 flex h-[130px] w-auto items-center justify-center
+          rounded-2xl border bg-white
 
           lg:h-[188px] lg:max-w-none
         "
@@ -124,8 +124,8 @@ const liked = computed(() => user.value?.likedProducts.includes(code.value))
         <div class="mb-1 flex gap-2">
           <p
             class="
-              whitespace-nowrap text-[10px] font-bold leading-5 text-gray-400 line-through
-              opacity-50
+              whitespace-nowrap text-[10px] font-bold leading-5 text-gray-400
+              line-through opacity-50
 
               lg:text-xs
             "

@@ -53,7 +53,8 @@ const currentPageProducts = computed(() => {
   >
     <div
       class="
-        mb-8 flex items-center gap-1 text-xs text-gray-900 transition-colors duration-300
+        mb-8 flex items-center gap-1 text-xs text-gray-900 transition-colors
+        duration-300
 
         hover:text-gray-950
 
@@ -80,7 +81,8 @@ const currentPageProducts = computed(() => {
       </div>
       <h1
         class="
-          self-center font-jakarta text-2xl font-bold leading-[26px] text-gray-900
+          self-center font-jakarta text-2xl font-bold leading-[26px]
+          text-gray-900
 
           lg:text-[44px] lg:leading-extra-height
         "

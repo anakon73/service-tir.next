@@ -115,10 +115,26 @@ export const routes: RouteRecordRaw[] = [
     path: '/profile',
     component: ProfilePage,
     children: [
-      { name: 'ProfileMain', path: '/profile/main', component: MainTab },
-      { name: 'ProfileInfo', path: '/profile/info', component: InfoTab },
-      { name: 'ProfileFavorite', path: '/profile/favorite', component: FavoriteTab },
-      { name: 'ProfileOrders', path: '/profile/orders', component: OrdersTab },
+      {
+        name: 'ProfileMain',
+        path: '/profile/main',
+        component: MainTab,
+      },
+      {
+        name: 'ProfileInfo',
+        path: '/profile/info',
+        component: InfoTab,
+      },
+      {
+        name: 'ProfileFavorite',
+        path: '/profile/favorite',
+        component: FavoriteTab,
+      },
+      {
+        name: 'ProfileOrders',
+        path: '/profile/orders',
+        component: OrdersTab,
+      },
     ],
   },
   { path: '/:pathMatch(.*)*', redirect: '/' },

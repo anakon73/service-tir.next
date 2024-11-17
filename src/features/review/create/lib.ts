@@ -17,7 +17,8 @@ export function produceInitialValues(
 export function produceValidationSchema() {
   const fields: ValidationSchema<FormFields> = {
     author: z.string().min(2, 'Ім\'я повинна містити принаймі 2 літери'),
-    comment: z.string().min(8, 'Відгук повиненин складатися принаймі з 8 літер'),
+    comment:
+    z.string().min(8, 'Відгук повиненин складатися принаймі з 8 літер'),
   }
 
   return z.object(fields)

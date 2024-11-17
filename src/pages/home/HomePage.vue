@@ -1,7 +1,8 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { ArrowRightIcon } from '@heroicons/vue/24/solid'
 
-import { ref } from 'vue'
+import { ServicesSwiper } from '@/widgets/services-swiper'
 import { ProductsSwiper } from '@/widgets/products-swiper'
 import { ReviewCard } from '@/widgets/review-card'
 import { ReviewsSwiper } from '@/widgets/reviews-swiper'
@@ -15,7 +16,6 @@ import { usePopularServices } from '@/shared/api/service'
 import { SButton } from '@/shared/ui/SButton'
 
 import { advantages, reviews } from './config'
-import { ServicesSwiper } from '@/widgets/services-swiper'
 
 const { data: products } = useHotProducts()
 const { data: services } = usePopularServices()
@@ -66,8 +66,8 @@ const isOpen = ref(false)
         as="RouterLink"
         :to="{ name: 'Service', params: { id: 1 } }"
         class="
-          whitespace-nowrap rounded-large bg-blue-600 px-7 py-4 text-sm font-bold
-          text-white transition-colors duration-300
+          whitespace-nowrap rounded-large bg-blue-600 px-7 py-4 text-sm
+          font-bold text-white transition-colors duration-300
 
           hover:bg-blue-700 hover:text-zinc-100
         "
@@ -185,7 +185,9 @@ const isOpen = ref(false)
           md:mb-10
         "
       >
-        <div class="paragraphIcon mr-3 size-10 rounded-full bg-white p-2 text-lg">
+        <div
+          class="paragraphIcon mr-3 size-10 rounded-full bg-white p-2 text-lg"
+        >
           🌟
         </div>
         <div>
@@ -245,8 +247,7 @@ const isOpen = ref(false)
             <div class="mr-4 flex items-center gap-3">
               <div
                 class="
-                paragraphIcon mr-3 size-10
-                rounded-full bg-white p-2 text-lg
+                  paragraphIcon mr-3 size-10 rounded-full bg-white p-2 text-lg
                 "
               >
                 💬

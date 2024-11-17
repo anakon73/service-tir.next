@@ -63,8 +63,8 @@ onUnmounted(() => {
     <div
       :class="cn(
         `
-          card relative z-40 inline-flex h-screen w-full max-w-[270px] flex-col gap-5
-          overflow-y-auto overflow-x-hidden bg-white pb-24 pl-5 pr-14 pt-5
+          card relative z-40 inline-flex h-screen w-full max-w-[270px] flex-col
+          gap-5 overflow-y-auto overflow-x-hidden bg-white pb-24 pl-5 pr-14 pt-5
           transition-transform duration-300 ease-in-out
 
           lg:size-auto lg:rounded-2xl lg:pb-5
@@ -109,8 +109,8 @@ onUnmounted(() => {
             placeholder="Від"
             type="number"
             class="
-              w-[72px] rounded border border-slate-300 bg-white text-sm font-semibold
-              text-gray-900
+              w-[72px] rounded border border-slate-300 bg-white text-sm
+              font-semibold text-gray-900
 
               [&::-webkit-inner-spin-button]:appearance-none
               [&::-webkit-outer-spin-button]:appearance-none
@@ -128,8 +128,8 @@ onUnmounted(() => {
             placeholder="До"
             type="number"
             class="
-              w-[72px] rounded border border-slate-300 bg-white text-sm font-semibold
-              text-gray-900
+              w-[72px] rounded border border-slate-300 bg-white text-sm
+              font-semibold text-gray-900
 
               [&::-webkit-inner-spin-button]:appearance-none
               [&::-webkit-outer-spin-button]:appearance-none
@@ -144,8 +144,8 @@ onUnmounted(() => {
       <div>
         <button
           class="
-            whitespace-nowrap rounded-large bg-blue-600 px-9 py-3 text-xs font-bold
-            text-white transition-colors duration-300
+            whitespace-nowrap rounded-large bg-blue-600 px-9 py-3 text-xs
+            font-bold text-white transition-colors duration-300
 
             hover:bg-blue-700 hover:text-zinc-100
           "

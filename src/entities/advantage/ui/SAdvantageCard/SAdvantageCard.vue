@@ -11,8 +11,8 @@ defineProps<Props>()
 <template>
   <div
     class="
-      card inline-flex h-full flex-col gap-3 rounded-2xl border border-gray-100 bg-white
-      p-6
+      card inline-flex h-full flex-col gap-3 rounded-2xl border border-gray-100
+      bg-white p-6
     "
   >
     <div class="size-[50px] rounded-lg bg-gray-100 p-3 text-lg">

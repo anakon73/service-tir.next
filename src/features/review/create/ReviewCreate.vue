@@ -29,7 +29,9 @@ const rating = ref(0)
 
 const initialValues = computed(() => produceInitialValues())
 
-const validationSchema = computed(() => toTypedSchema(produceValidationSchema()))
+const validationSchema = computed(
+  () => toTypedSchema(produceValidationSchema()),
+)
 
 const { handleSubmit, resetForm } = useForm<FormFields>({
   initialValues: produceInitialValues(),
@@ -88,7 +90,9 @@ watch(initialValues, (values) => {
       </button>
       <div class="flex flex-col items-center gap-3">
         <h1
-          class="text-center font-semibold leading-[30px] tracking-[0.4px] text-black"
+          class="
+            text-center font-semibold leading-[30px] tracking-[0.4px] text-black
+          "
         >
           Залишити відгук
         </h1>
@@ -115,7 +119,7 @@ watch(initialValues, (values) => {
             Імʼя
           </label>
           <Field v-slot="{ field, errorMessage, meta }" name="author">
-            <SInput v-bind="field" />
+            <SInput v-bind="field" class="w-full" />
             <p v-if="errorMessage && meta.touched" class="text-xs text-red-600">
               {{ errorMessage }}
             </p>
@@ -147,7 +151,9 @@ watch(initialValues, (values) => {
     >
       <div class="flex flex-col items-center gap-3">
         <CheckCircleIcon class="size-[60px] text-emerald-500" />
-        <h1 class="text-center text-xl font-bold leading-[30px] tracking-[0.4px]">
+        <h1
+          class="text-center text-xl font-bold leading-[30px] tracking-[0.4px]"
+        >
           Ваш відгук надіслано
         </h1>
         <p class="max-w-[450px] text-center leading-6 tracking-[0.32px]">
