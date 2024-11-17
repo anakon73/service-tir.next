@@ -10,16 +10,12 @@ export default {
   component: SPagination,
 
   args: {
-    length: 33,
+    total: 39,
     selectedPage: 1,
     itemsPerPage: 18,
   },
 
   argTypes: {
-    length: { control: 'number' },
-    selectedPage: { control: 'number' },
-    itemsPerPage: { control: 'number' },
-
     changePage: { table: { disable: true } },
   },
 } satisfies Meta<SPaginationProps & SPaginationEmits>
