@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
 import { ChevronRightIcon } from '@heroicons/vue/24/solid'
 
 import { SArticleCard } from '@/entities/article'
@@ -7,18 +7,9 @@ import { SArticleCard } from '@/entities/article'
 import { useArticles } from '@/shared/api/article'
 import { SPagination } from '@/shared/ui/SPagination'
 
-const { data: articles, isFetching } = useArticles()
-
 const selectedPage = ref(1)
 
-const currentPageArticles = computed(() => {
-  const startIndex = (selectedPage.value - 1) * 12
-  const endIndex = startIndex + 12
-  if (articles.value?.length)
-    return articles.value.slice(startIndex, endIndex)
-
-  return []
-})
+const { data: articles, isFetching } = useArticles({ page: selectedPage })
 </script>
 
 <template>
@@ -31,7 +22,8 @@ const currentPageArticles = computed(() => {
   >
     <div
       class="
-        mb-9 flex items-center gap-1 text-xs text-gray-900 transition-colors duration-300
+        mb-9 flex items-center gap-1 text-xs text-gray-900 transition-colors
+        duration-300
 
         hover:text-gray-950
 
@@ -69,7 +61,7 @@ const currentPageArticles = computed(() => {
       Is Loading...
     </div>
     <div
-      v-else-if="!articles?.length"
+      v-else-if="!articles?.data"
       class="w-full text-center text-3xl font-bold"
     >
       No Articles
@@ -87,18 +79,14 @@ const currentPageArticles = computed(() => {
         "
       >
         <SArticleCard
-          v-for="article in currentPageArticles"
-          :id="article.id"
+          v-for="article in articles.data"
           :key="article.id"
-          :description="article.description"
-          :image="article.previewImage"
-          :date="article.date"
-          :name="article.name"
+          :="article"
         />
       </div>
       <SPagination
         :items-per-page="12"
-        :length="articles.length"
+        :total="articles.total"
         :selected-page="selectedPage"
         @change-page="selectedPage = $event"
       />
