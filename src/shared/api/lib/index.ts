@@ -1,6 +1,33 @@
+import { z } from 'zod'
 import type { MaybeRef } from 'vue'
 import { and } from '@vueuse/math'
-import { z } from 'zod'
+import { objectPick } from '@vueuse/core'
+
+import type { Pagination } from '@/shared/types'
+import { RestClient } from './RestClient'
+
+export const client = new RestClient()
+
+export function normalizePagination<T, RawItem>(
+  rawData: {
+    data: RawItem[]
+    total: number
+    current_page: number
+    last_page: number
+    per_page: number
+  },
+  itemNormalizer: (item: RawItem) => T,
+): Pagination<T> {
+  const { data, current_page, last_page, per_page } = rawData
+
+  return {
+    ...objectPick(rawData, ['total']),
+    data: data.map(itemNormalizer),
+    currentPage: current_page,
+    lastPage: last_page,
+    perPage: per_page,
+  }
+}
 
 // Endpoints
 type EndpointAndSchema = {
@@ -27,23 +54,3 @@ export const SuccessfulResponse = z.object({ status: z.literal('success') })
 export const SuccessfulResponseMock = {
   status: 'success',
 } satisfies z.infer<typeof SuccessfulResponse>
-
-// Error handling
-export class FetchError extends Error {
-  constructor(
-    public response: Response,
-    message?: string,
-  ) {
-    super(message ?? response.statusText)
-  }
-}
-
-export async function handleError<T>(
-  response: Response,
-  schema: z.ZodType<T>,
-): Promise<T> {
-  if (response.ok) {
-    return schema.parse(await response.json())
-  }
-  throw new FetchError(await response.json())
-}
