@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import { SRating } from '@/entities/product'
-import type { Rating } from '@/shared/types'
 
 export interface Props {
-  rate: Rating
+  rate: number
   author: string
   productName: string
   comment: string
@@ -59,10 +58,7 @@ defineProps<Props>()
         >
           {{ productName }}
         </p>
-        <SRating
-          :rating="rate"
-          :with-quantity="false"
-        />
+        <SRating :rate="rate" />
       </div>
     </div>
     <p

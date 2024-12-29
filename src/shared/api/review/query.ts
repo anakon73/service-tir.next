@@ -1,11 +1,13 @@
 import { queryOptions, useMutation, useQuery } from '@tanstack/vue-query'
-import { createReview, getReviews } from './api'
+import { type GetReviewsKeyParams, createReview, getReviews } from './api'
 
 const entity = 'review'
 const Scopes = { All: 'all' } as const
 
 const keys = {
-  getReviews: () => [{ entity, scope: Scopes.All }],
+  getReviews: (
+    params: GetReviewsKeyParams,
+  ) => [{ entity, scope: Scopes.All, ...params }],
 } as const
 
 export {
@@ -14,15 +16,15 @@ export {
   keys as reviewKeys,
 }
 
-export function useReviewsQuery() {
+export function useReviewsQuery(params: GetReviewsKeyParams) {
   return queryOptions({
-    queryKey: keys.getReviews(),
-    queryFn: getReviews,
+    queryKey: keys.getReviews(params),
+    queryFn: ({ queryKey: [{ page }] }) => getReviews({ page: page! }),
   })
 }
 
-export function useReviews() {
-  return useQuery(useReviewsQuery())
+export function useReviews(params: GetReviewsKeyParams) {
+  return useQuery(useReviewsQuery(params))
 }
 
 export function useCreateReview() {

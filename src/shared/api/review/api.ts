@@ -1,14 +1,18 @@
-import { z } from 'zod'
-import { type ApiEndpointsAndSchemas, SuccessfulResponse, client } from '../lib'
+import {
+  type ApiEndpointsAndSchemas,
+  SuccessfulResponse,
+  type ToKeyParams,
+  client,
+} from '../lib'
 
-import { ReviewSchema } from './types'
-import { normalizeReview } from './normalizers'
+import { normalizePaginatedReviews } from './normalizers'
+import { PaginatedReviewsSchema } from './types'
 
 const endpoints = {
   getReviews: {
     url: '/api/reviews',
     method: 'get',
-    schema: z.array(ReviewSchema),
+    schema: PaginatedReviewsSchema,
   },
   create: {
     url: '/api/reviews',
@@ -19,12 +23,16 @@ const endpoints = {
 
 export { endpoints as reviewEndpoints }
 
-export async function getReviews() {
+export type GetReviewsParams = { page: number }
+export type GetReviewsKeyParams = ToKeyParams<GetReviewsParams>
+export async function getReviews({ page }: GetReviewsParams) {
   const { url, method, schema } = endpoints.getReviews
 
-  const data = await client[method](url, schema)
+  const queryParams = new URLSearchParams({ page: String(page) }).toString()
 
-  return data.map(normalizeReview)
+  const data = await client[method](`${url}?${queryParams}`, schema)
+
+  return normalizePaginatedReviews(data)
 }
 
 export type CreateReviewParams = {

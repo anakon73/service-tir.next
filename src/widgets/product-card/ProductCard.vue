@@ -93,10 +93,7 @@ const liked = computed(() => user.value?.likedProducts.includes(code.value))
         {{ name }}
       </h1>
       <div class="mb-2 flex flex-wrap items-center">
-        <SRating
-          quantity
-          :rating="rate"
-        />
+        <SRating :quantity="rate.quantity" :rate="rate.rate" />
       </div>
       <div
         class="

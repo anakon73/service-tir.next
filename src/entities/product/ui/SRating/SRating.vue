@@ -1,10 +1,9 @@
 <script setup lang="ts">
-import type { Rating } from '@/shared/types'
 import { SStar } from '@/shared/ui/SStar'
 
 export interface Props {
-  rating: Rating
-  quantity?: boolean
+  rate: number
+  quantity?: number
 }
 
 defineProps<Props>()
@@ -12,18 +11,18 @@ defineProps<Props>()
 
 <template>
   <div class="flex items-center">
-    <SStar :active="rating.rate >= 0.5" />
+    <SStar :active="rate >= 0.5" />
     <SStar
-      :active="rating.rate >= 1.5"
+      :active="rate >= 1.5"
     />
     <SStar
-      :active="rating.rate >= 2.5"
+      :active="rate >= 2.5"
     />
     <SStar
-      :active="rating.rate >= 3.5"
+      :active="rate >= 3.5"
     />
     <SStar
-      :active="rating.rate >= 4.5"
+      :active="rate >= 4.5"
     />
 
     <p
@@ -36,9 +35,9 @@ defineProps<Props>()
       "
     >
       <span class="font-medium leading-5 text-blue-600">{{
-        rating.rate
+        rate
       }}</span>
-      ({{ rating.quantity }}
+      ({{ quantity }}
       відгуків)
     </p>
   </div>

@@ -4,19 +4,14 @@ import { mount } from '@vue/test-utils'
 import { SRating } from '.'
 
 describe('sRating', () => {
-  const rating = {
-    quantity: 127,
-    rate: 4.8,
-  }
-
   it('should render component', () => {
-    const wrapper = mount(SRating, { props: { rating } })
+    const wrapper = mount(SRating, { props: { rate: 4 } })
 
     expect(wrapper.element instanceof HTMLDivElement).toBeTruthy()
   })
 
   it('should render component with quantity', () => {
-    const wrapper = mount(SRating, { props: { rating, quantity: true } })
+    const wrapper = mount(SRating, { props: { rate: 4, quantity: 15 } })
 
     expect(wrapper.find('[aria-label="quantity"]').exists()).toBeTruthy()
   })

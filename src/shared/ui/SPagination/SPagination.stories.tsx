@@ -1,11 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/vue3'
-import {
-  SPagination,
-  type SPaginationEmits,
-  type SPaginationProps,
-} from '.'
+import { SPagination } from '.'
 
-export default {
+const meta = {
   title: 'Shared/UI/SPagination',
   component: SPagination,
 
@@ -14,12 +10,8 @@ export default {
     selectedPage: 1,
     itemsPerPage: 18,
   },
+} satisfies Meta<typeof SPagination>
 
-  argTypes: {
-    changePage: { table: { disable: true } },
-  },
-} satisfies Meta<SPaginationProps & SPaginationEmits>
+export default meta
 
-type Story = StoryObj<SPaginationProps & SPaginationEmits>
-
-export const Default: Story = { name: 'SPagination' }
+export const Default: StoryObj<typeof meta> = { name: 'SPagination' }

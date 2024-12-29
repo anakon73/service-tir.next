@@ -42,8 +42,8 @@ defineProps<Props>()
             Код: {{ code }}
           </p>
           <SRating
-            with-quantity
-            :rating="rate"
+            :quantity="rate.quantity"
+            :rate="rate.rate"
           />
         </div>
       </div>

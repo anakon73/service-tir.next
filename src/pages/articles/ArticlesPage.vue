@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRoute } from 'vue-router'
 import { ChevronRightIcon } from '@heroicons/vue/24/solid'
 
 import { SArticleCard } from '@/entities/article'
@@ -7,7 +8,9 @@ import { SArticleCard } from '@/entities/article'
 import { useArticles } from '@/shared/api/article'
 import { SPagination } from '@/shared/ui/SPagination'
 
-const selectedPage = ref(1)
+const route = useRoute()
+
+const selectedPage = ref(route.query.page ? +route.query.page : 1)
 
 const { data: articles, isFetching } = useArticles({ page: selectedPage })
 </script>
@@ -88,7 +91,6 @@ const { data: articles, isFetching } = useArticles({ page: selectedPage })
         :items-per-page="12"
         :total="articles.total"
         :selected-page="selectedPage"
-        @change-page="selectedPage = $event"
       />
     </div>
   </div>

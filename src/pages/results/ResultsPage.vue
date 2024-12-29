@@ -11,7 +11,8 @@ import { SPagination } from '@/shared/ui/SPagination'
 const route = useRoute()
 
 const searchValue = ref(route.query.search_query?.toString() || ' ')
-const selectedPage = ref(1)
+
+const selectedPage = ref(route.query.page ? +route.query.page : 1)
 
 const { data, isFetching } = useProductsSearch({ search: searchValue })
 
@@ -120,7 +121,6 @@ const currentPageProducts = computed(() => {
       :selected-page="selectedPage"
       :items-per-page="24"
       :total="filteredProducts.length"
-      @change-page="selectedPage = $event"
     />
   </div>
 </template>

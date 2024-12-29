@@ -21,13 +21,7 @@ const props = withDefaults(defineProps<Props>(), {
   itemsPerPage: 18,
 })
 
-const emits = defineEmits<Emits>()
-
 const { itemsPerPage, total, selectedPage } = toRefs(props)
-
-export type Emits = {
-  changePage: [page: number]
-}
 
 const route = useRoute()
 const router = useRouter()
@@ -48,12 +42,6 @@ watch(
   (newPage) => {
     if (+newPage! > totalPages.value) {
       changePage(1)
-    }
-    if (newPage) {
-      emits('changePage', +newPage)
-    }
-    else {
-      emits('changePage', 1)
     }
   },
   { immediate: true },

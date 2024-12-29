@@ -1,42 +1,53 @@
-export interface Rating {
+export interface Review {
+  id: number
+  createdAt: Date
+  updatedAt: Date
+  author: string
+  product: {
+    id: number
+    name: string
+  }
+  comment: string
+  rate: number
+}
+
+export type Rating = {
   rate: number
   quantity: number
 }
 
-export type Specs = {
+export type Spec = {
   name: string
   value: string
-}[]
-
-export interface Review {
-  rate: Rating
-  author: string
-  productName: string
-  comment: string
 }
 
-export interface Product {
+export interface SimilarProduct {
+  id: number
   code: number
   name: string
   description: string
-  discount: boolean
-  rate: Rating
   image: string
   price: number
-  priceWithDiscount: number | null
-  specs: Specs
-  similarProducts: Omit<
-    Product,
-    'specs'
-    | 'similarProducts'
-    | 'fullDescription'
-    | 'images'
-    | 'reviews'
-    | 'quantity'
-  >[]
-  fullDescription: string
-  images: string[]
+  rate: Rating
+  price_with_discount: number | null
+}
+
+export interface Product {
+  id: number
+  created_at: Date
+  updated_at: Date
+  code: number
+  name: string
+  description: string
+  image: string
+  price: number
+  rate: Rating
+  price_with_discount: number | null
+  full_description: string
+  specs: Spec[]
   reviews: Review[]
+  similar_products: SimilarProduct[]
+  images: string[]
   quantity: number
 }
 

@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { computed, ref } from 'vue'
+import { useRoute } from 'vue-router'
 import {
   AdjustmentsHorizontalIcon,
   ChevronDownIcon,
@@ -16,7 +17,9 @@ const { data: products, isFetching } = useProducts()
 
 const showFilters = ref(false)
 
-const selectedPage = ref()
+const route = useRoute()
+
+const selectedPage = ref(route.query.page ? +route.query.page : 1)
 
 const currentPageProducts = computed(() => {
   const startIndex = (selectedPage.value - 1) * 18
@@ -148,11 +151,7 @@ const currentPageProducts = computed(() => {
             :="product"
           />
         </div>
-        <SPagination
-          :total="products.length"
-          :selected-page="selectedPage"
-          @change-page="selectedPage = $event"
-        />
+        <SPagination :total="products.length" :selected-page="selectedPage" />
       </div>
     </div>
   </div>

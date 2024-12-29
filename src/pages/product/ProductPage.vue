@@ -157,7 +157,7 @@ const inStock = computed(() => {
             {{ inStock }}
           </p>
         </div>
-        <SRating quantity :rating="product.rate" />
+        <SRating :quantity="product.rate.quantity" :rate="product.rate.rate" />
         <p class="text-xs text-neutral-500/70">
           Код: {{ product.code }}
         </p>
@@ -239,7 +239,10 @@ const inStock = computed(() => {
                 {{ inStock }}
               </p>
             </div>
-            <SRating quantity :rating="product.rate" />
+            <SRating
+              :quantity="product.rate.quantity"
+              :rate="product.rate.rate"
+            />
           </div>
           <div class="flex flex-col gap-3 text-sm text-gray-900">
             <div
@@ -415,7 +418,10 @@ const inStock = computed(() => {
           >
             {{ product.name }}
           </p>
-          <SRating quantity :rating="product.rate" />
+          <SRating
+            :quantity="product.rate.quantity"
+            :rate="product.rate.rate"
+          />
         </div>
       </div>
       <ReviewsSwiper class="-mx-5" :list="product.reviews" />

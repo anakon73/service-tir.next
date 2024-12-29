@@ -7,16 +7,12 @@ export default {
   component: SRating,
   tags: ['autodocs'],
 
-  argTypes: {
-    quantity: { type: 'boolean' },
+  args: {
+    rate: 4,
   },
 
-  args: {
-    quantity: false,
-    rating: {
-      quantity: 127,
-      rate: 4.8,
-    },
+  argTypes: {
+    quantity: { type: 'number' },
   },
 } satisfies Meta<typeof SRating>
 
@@ -24,4 +20,4 @@ type Story = StoryObj<typeof SRating>
 
 export const Default: Story = {}
 
-export const WithQuantity: Story = { args: { quantity: true } }
+export const WithQuantity: Story = { args: { quantity: 15 } }

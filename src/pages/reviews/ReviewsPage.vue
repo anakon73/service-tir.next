@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { ref } from 'vue'
+import { useRoute } from 'vue-router'
 import { ChevronRightIcon } from '@heroicons/vue/24/solid'
 
 import { ReviewCard } from '@/widgets/review-card'
@@ -9,20 +10,13 @@ import { SButton } from '@/shared/ui/SButton'
 import { SPagination } from '@/shared/ui/SPagination'
 import ReviewCreate from '@/features/review/create/ReviewCreate.vue'
 
-const { data: reviews, isLoading } = useReviews()
+const route = useRoute()
+
+const selectedPage = ref(route.query.page ? +route.query.page : 1)
+
+const { data: reviews, isLoading } = useReviews({ page: selectedPage })
 
 const isOpen = ref(false)
-
-const selectedPage = ref(1)
-
-const currentPageReviews = computed(() => {
-  const startIndex = (selectedPage.value - 1) * 16
-  const endIndex = startIndex + 16
-  if (reviews.value?.length)
-    return reviews.value.slice(startIndex, endIndex)
-
-  return []
-})
 </script>
 
 <template>
@@ -31,7 +25,7 @@ const currentPageReviews = computed(() => {
     Is Loading...
   </div>
   <div
-    v-else-if="!reviews?.length"
+    v-else-if="!reviews?.data.length"
     class="w-full text-center text-3xl font-bold"
   >
     No Found Reviews
@@ -107,19 +101,18 @@ const currentPageReviews = computed(() => {
       "
     >
       <ReviewCard
-        v-for="(review, i) in currentPageReviews"
-        :key="i"
+        v-for="review in reviews.data"
+        :key="review.id"
         :author="review.author"
         :comment="review.comment"
-        :product-name="review.productName"
+        :product-name="review.product.name"
         :rate="review.rate"
       />
     </div>
     <SPagination
-      :total="reviews.length"
+      :total="reviews.total"
       :selected-page="selectedPage"
       :items-per-page="16"
-      @change-page="selectedPage = $event"
     />
   </div>
 </template>

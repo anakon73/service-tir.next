@@ -1,4 +1,5 @@
 import { queryOptions, useMutation, useQuery } from '@tanstack/vue-query'
+import { paramsAnd } from '../lib'
 import {
   type ProductByCodeKeyParams,
   type ProductsSearchKeyParams,
@@ -9,7 +10,6 @@ import {
   productByCode,
   productsSearch,
 } from './api'
-import { paramsAnd } from '../lib'
 
 const entity = 'product'
 const Scopes = {
